@@ -10,7 +10,6 @@ export const StyledLines = styled.div`
   height: 2px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px;
-  transition: all 0.3s ease-in-out;
 
   &::before,
   &::after {
@@ -19,7 +18,7 @@ export const StyledLines = styled.div`
     height: 2px;
     background-color: ${({ theme }) => theme.color.white};
     border-radius: 8px;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out, width 0.2s ease-in-out 0.2s;
     content: '';
   }
 
@@ -40,20 +39,40 @@ export const StyledBurger = styled.div<BurgerProps>`
   height: ${({ size }) => (size ? `${size}px` : '24px')};
   cursor: pointer;
 
-  &:hover,
-  &:active {
+  &.opened {
     ${StyledLines} {
-      &::before,
-      &::after {
-        width: 50%;
-      }
+      transform: rotate(135deg);
+      transition: transform 0.2s ease-in-out 0.2s;
 
       &::before {
-        transform: rotate(45deg) translate(2px, 1px);
+        transform: rotate(90deg) scaleX(0.3) translateX(-10px);
       }
 
       &::after {
-        transform: rotate(-45deg) translate(2px, -1px);
+        transform: rotate(90deg) scaleX(0.3) translateX(10px);
+      }
+    }
+  }
+
+  &.closed {
+    &:hover,
+    &:active {
+      ${StyledLines} {
+        transition: transform 0.2s ease-in-out;
+
+        &::before,
+        &::after {
+          width: 50%;
+          transition: transform 0.2s ease-in-out 0.2s, width 0.2s ease-in-out;
+        }
+
+        &::before {
+          transform: rotate(45deg) translateX(4px);
+        }
+
+        &::after {
+          transform: rotate(-45deg) translateX(4px);
+        }
       }
     }
   }

@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-
-export const StyledMenu = styled.div<{ isOpen: boolean }>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+export const StyledMenuWrapper = styled.div<{ isOpen: boolean }>`
   width: ${({ theme }) => theme.metrics.menuWidth};
   height: 100vh;
-  overflow-y: auto;
+  padding-top: ${({ theme }) => theme.metrics.topbarHeight};
   background-color: ${({ theme }) => theme.color.black};
+  box-shadow: 0 0 10px 0 ${({ theme }) => theme.color.black};
   transition: width 0.3s ease-in-out;
   ${({ isOpen }) =>
     !isOpen &&
@@ -19,17 +15,19 @@ export const StyledMenu = styled.div<{ isOpen: boolean }>`
   `}
 `;
 
-export const StyledCloseWrapper = styled.div`
+export const StyledMenu = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
-  padding: 32px 32px 0 0;
+  height: 100%;
+  overflow-y: auto;
 `;
 
 export const StyledLink = styled(Link)`
   width: 100%;
-  padding: 8px 32px;
+  padding: 8px 24px;
   color: ${({ theme }) => theme.color.white};
   font-weight: ${({ theme }) => theme.weight.regular};
   font-size: ${({ theme }) => theme.size.diplodocus};
@@ -55,7 +53,6 @@ export const StyledLink = styled(Link)`
   :hover {
     color: ${({ theme }) => theme.color.green1};
   }
-
 `;
 
 export const StyledLogoWrapper = styled.div`
@@ -70,5 +67,3 @@ export const StyledLogoWrapper = styled.div`
     margin-top: 16px;
   }
 `;
-  
-

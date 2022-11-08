@@ -12,8 +12,8 @@ export const StyledTopBar = styled.div`
 
 export const StyledBurgerWrapper = styled.div`
   position: absolute;
+  z-index: 300;
   justify-self: flex-start;
   width: 100%;
   padding-left: 24px;
 `;
-

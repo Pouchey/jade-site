@@ -1,4 +1,5 @@
 import Button from '_components/button';
+import Loader from '_components/loader';
 
 import Player from '_modules/player/components';
 
@@ -15,6 +16,8 @@ export default () => {
           size="diplodocus"
           onClick={() => console.log('add a song')}
         />
+        
+        <Loader label='test'/>
       </StyledWrapper>
     </StyledContainer>
   );
