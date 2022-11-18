@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
-import {  LoaderType } from './types';
 
+import { LoaderType } from './types';
 
 const loaderAnimation = keyframes`
   0% {
@@ -14,39 +14,32 @@ const loaderAnimation = keyframes`
   }
 `;
 
-
 export const StyledLoaderWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  width:fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
 `;
-
 
 export const StyledBar = styled.span<LoaderType>`
   width: ${({ size }) => (size || 32) / 8}px;
-  height: ${({ size }) => (size || 32) }px;
+  height: ${({ size }) => size || 32}px;
   margin: 2px;
-  border-radius: 8px;
   background-color: ${({ theme, color }) => theme.color[color || 'black']};
-
-`
+  border-radius: 8px;
+`;
 
 export const StyledLoader = styled.div<LoaderType>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-
 `;
 
 export const StyledLoaderLabel = styled.div`
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
   font-size: ${({ theme }) => theme.size.big};
 `;
-
-

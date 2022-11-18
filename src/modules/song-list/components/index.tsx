@@ -1,11 +1,34 @@
 import Button from '_components/button';
-import Loader from '_components/loader';
 
 import Player from '_modules/player/components';
+import { SongType } from '_modules/song/types';
+import useScrollShadow from '../hooks/useScrollShadow';
 
-import { StyledContainer, StyledWrapper } from './style';
+import SongItem from './song-item';
+import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
+
+const songs: SongType[] = [];
+for (let i = 0; i < 10; i++) {
+  songs.push({
+    id: i,
+    songName: 'Song Name',
+    artist: 'Artist',
+    icon: {
+      url: 'https://picsum.photos/200',
+      alt: 'Play',
+    },
+    count: i,
+    requester: {
+      id: i,
+      name: 'Requester Name',
+    },
+  });
+}
 
 export default () => {
+
+  const [scroll,{onScroll}]  = useScrollShadow();
+
   return (
     <StyledContainer>
       <StyledWrapper>
@@ -16,8 +39,11 @@ export default () => {
           size="diplodocus"
           onClick={() => console.log('add a song')}
         />
-        
-        <Loader label='test'/>
+        <StyledSongItemList onScroll={onScroll} scroll={scroll}>
+          {songs?.map((song) => (
+            <SongItem key={song.id} song={song} />
+          ))}
+        </StyledSongItemList>
       </StyledWrapper>
     </StyledContainer>
   );

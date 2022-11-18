@@ -1,4 +1,3 @@
-
 import { ThemeType } from '_style/theme';
 
 export interface LoaderProps {

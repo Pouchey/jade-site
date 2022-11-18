@@ -23,7 +23,6 @@ const modalAnimation = keyframes`
   }
 `;
 
-
 export const ModalContainer = styled.div`
   position: fixed;
   top: 0;
@@ -47,5 +46,3 @@ export const ModalContent = styled.div`
   border-radius: 8px;
   animation: ${modalAnimation} 0.3s ease-in-out;
 `;
-
-

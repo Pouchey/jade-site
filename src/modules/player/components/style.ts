@@ -6,6 +6,7 @@ export const StyledPlayer = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 16px;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px;
 `;
