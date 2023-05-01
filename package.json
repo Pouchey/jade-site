@@ -34,7 +34,7 @@
     "nx": "16.0.1"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "./apps/*",
+    "./packages/*"
   ]
 }

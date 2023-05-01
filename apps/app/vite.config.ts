@@ -13,6 +13,7 @@ const aliases = {
   _modules: path.resolve(__dirname, 'src/modules'),
   _style: path.resolve(__dirname, 'src/style'),
   _types: path.resolve(__dirname, 'src/types'),
+  _utils: '@jaderowley/utils/src',
 };
 
 export default defineConfig(({ mode }) => {

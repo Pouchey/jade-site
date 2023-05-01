@@ -1,7 +1,9 @@
 {
+  
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "lib": [
+  "baseUrl": ".",
+  "lib": [
       "DOM",
       "DOM.Iterable",
       "ESNext"
@@ -23,6 +25,9 @@
       ],
       "_style/*": [
         "./src/style/*"
+      ],
+      "_utils/*": [
+        "@jaderowley/utils/src/*"
       ],
     }
   },
