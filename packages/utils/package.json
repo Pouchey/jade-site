@@ -1,0 +1,16 @@
+{
+  "name": "utils",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc"
+  },
+  "author": "Rouchet Théophile",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}

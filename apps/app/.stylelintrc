@@ -1,0 +1,7 @@
+{
+  "customSyntax": "postcss-styled-syntax",
+  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+  "rules": {
+    "color-function-notation": null
+  }
+}

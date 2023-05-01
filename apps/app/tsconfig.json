@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "paths": {
+      "_components/*": [
+        "./src/components/*"
+      ],
+      "_hooks/*": [
+        "./src/hooks/*"
+      ],
+      "_modules/*": [
+        "./src/modules/*"
+      ],
+      "_services/*": [
+        "./src/services/*"
+      ],
+      "_style/*": [
+        "./src/style/*"
+      ],
+    }
+  },
+  "include": [
+    "vite.config.ts",
+  ],
+}
