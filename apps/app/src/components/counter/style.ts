@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CounterElement } from './types';
 
 export const StyledCounterText = styled.span`
-  font-size: ${({ theme }) => theme.size.grizzly};
+  font-size: ${({ theme }) => theme.size.huge};
   font-weight: ${({ theme }) => theme.weight.medium};
   color: ${({ theme }) => theme.color.black};
 `;
@@ -29,7 +29,7 @@ export const StyledReadOnyCounter = styled.div<CounterElement>`
 export const StyledCounter = styled(StyledReadOnyCounter)`
   justify-content: center;
   width: 80px;
-  min-width: 100px;
+  min-width: 80px;
   height: 40px;
   min-height: 40px;
   cursor: pointer;

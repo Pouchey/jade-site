@@ -3,19 +3,17 @@ import { memo } from 'react';
 import { StyledSvgWrapper } from './style';
 import { IconProps } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const svgs: Record<string, any> = import.meta.glob('./svg/*.svg', {
-  eager: true,
-});
+const svgs = import.meta.glob('./svg/*.svg', { eager: true });
 
-//  Cache the svgs in memory
-const cache: Map<string, React.FC<React.SVGProps<SVGSVGElement>>> = new Map();
+const cache = new Map<string, React.FC>();
 
-for (const [key, value] of Object.entries(svgs)) {
-  const name = key.replace('./svg/', '').replace('.svg', '');
+for (const path in svgs) {
+  const name = path.match(/\.\/svg\/(.*)\.svg$/)?.[1];
+  if (name) {
+    const Icon = svgs[path] as { ReactComponent: React.FC };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  cache.set(name, value.ReactComponent);
+    cache.set(name, Icon.ReactComponent);
+  }
 }
 
 export default memo(({ glyph, size = 32, color = 'black' }: IconProps) => {

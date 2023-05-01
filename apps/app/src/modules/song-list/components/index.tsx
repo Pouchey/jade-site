@@ -1,9 +1,8 @@
 import Button from '_components/button';
 
 import Player from '_modules/player/components';
+import useScrollShadow from '_modules/song-list/hooks/useScrollShadow';
 import { SongType } from '_modules/song/types';
-
-import useScrollShadow from '../hooks/useScrollShadow';
 
 import SongItem from './song-item';
 import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';

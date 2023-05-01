@@ -19,7 +19,8 @@
     "parserOptions": {
       "ecmaFeatures": { "jsx": true },
       "ecmaVersion": "latest",
-      "sourceType": "module"
+      "sourceType": "module",
+      "project": ["./apps/app/tsconfig.json"]
     },
     "rules": {
       "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],

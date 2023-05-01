@@ -13,7 +13,7 @@
     "build": "nx run-many --target=build",
     "dev:app": "nx dev app",
     "graph": "nx graph",
-    "lint:scripts": "eslint --fix --ext .ts,.tsx ",
+    "lint:scripts": "eslint --fix --ext ./**/*.{ts,tsx}",
     "lint:styles": "stylelint --fix \"./**/*.{ts,tsx}\"",
     "format": "prettier --write \"./**/*.{ts,tsx}\"",
     "lint:all": "npm run lint:scripts && npm run lint:styles && npm run format"

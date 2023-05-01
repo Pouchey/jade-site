@@ -24,12 +24,10 @@ export default ({ onSubmit }: FormProps) => {
   };
 
   const { register, handleSubmit } = useForm<FormValues>({
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     resolver: yupResolver(schema),
   });
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledLabel>Name :</StyledLabel>
       <StyledInput {...register('name')} placeholder="Entrez un nom" />
