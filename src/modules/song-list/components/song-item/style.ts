@@ -33,19 +33,19 @@ export const StyledDesc = styled.div`
 `;
 
 export const StyledSongName = styled.div`
-  font-weight: ${({ theme }) => theme.weight.medium};
   font-size: ${({ theme }) => theme.size.tall};
-  white-space: nowrap;
-  text-transform: uppercase;
+  font-weight: ${({ theme }) => theme.weight.medium};
   text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 export const StyledArtist = styled.div`
   overflow: hidden;
   font-size: ${({ theme }) => theme.size.tall};
-  white-space: nowrap;
-  text-transform: uppercase;
   text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 
   ::before {
     margin: 0 8px;

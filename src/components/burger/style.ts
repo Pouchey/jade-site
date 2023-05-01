@@ -16,10 +16,10 @@ export const StyledLines = styled.div`
     position: absolute;
     width: 100%;
     height: 2px;
+    content: '';
     background-color: ${({ theme }) => theme.color.white};
     border-radius: 8px;
     transition: transform 0.2s ease-in-out, width 0.2s ease-in-out 0.2s;
-    content: '';
   }
 
   &::before {
@@ -41,8 +41,8 @@ export const StyledBurger = styled.div<BurgerProps>`
 
   &.opened {
     ${StyledLines} {
-      transform: rotate(135deg);
       transition: transform 0.2s ease-in-out 0.2s;
+      transform: rotate(135deg);
 
       &::before {
         transform: rotate(90deg) scaleX(0.3) translateX(-10px);

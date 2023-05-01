@@ -1,18 +1,18 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import { LoaderType } from './types';
 
-const loaderAnimation = keyframes`
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
+// const loaderAnimation = keyframes`
+//   0% {
+//     transform: scale(0);
+//     opacity: 1;
+//   }
 
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-`;
+//   100% {
+//     transform: scale(1);
+//     opacity: 0;
+//   }
+// `;
 
 export const StyledLoaderWrapper = styled.div`
   display: flex;

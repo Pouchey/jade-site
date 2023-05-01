@@ -29,8 +29,8 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledLabel = styled.label`
-  font-weight: ${({ theme }) => theme.weight.medium};
   font-size: ${({ theme }) => theme.size.big};
+  font-weight: ${({ theme }) => theme.weight.medium};
 `;
 
 export const StyledIconButton = styled.span`

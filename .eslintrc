@@ -1,24 +1,34 @@
 {
-  "env": {
-      "browser": true,
-      "es2021": true
-  },
-  "extends": [
+    "extends": [
       "eslint:recommended",
+      "plugin:react/recommended",
       "plugin:@typescript-eslint/recommended",
       "plugin:@typescript-eslint/recommended-requiring-type-checking",
-  ],
-  "overrides": [
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
+      "prettier"
+    ],
+    "settings": {
+      "react": { "version": "detect" }
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "overrides": [],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": { "jsx": true },
       "ecmaVersion": "latest",
       "sourceType": "module",
       "project": "./tsconfig.json"
-  },
-  "plugins": [
-      "@typescript-eslint"
-  ],
-  "rules": {
+    },
+    "rules": {
+      "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+      "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+      "react/prop-types": "off",
+      "react/display-name": "off",
+      "react/react-in-jsx-scope": "off"
+    },
+    "plugins": ["@typescript-eslint"]
   }
-}
+  

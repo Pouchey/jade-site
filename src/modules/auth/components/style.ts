@@ -37,6 +37,6 @@ export const StyledAuth = styled.div`
 
 export const StyledWelcome = styled.div`
   margin: 32px;
-  font-weight: ${({ theme }) => theme.weight.medium};
   font-size: ${({ theme }) => theme.size.diplodocus};
+  font-weight: ${({ theme }) => theme.weight.medium};
 `;

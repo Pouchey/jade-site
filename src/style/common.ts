@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledTitle = styled.div`
-  color: ${({ theme }) => theme.color.white};
-  font-weight: ${({ theme }) => theme.weight.regular};
-  font-size: ${({ theme }) => theme.size.diplodocus};
   font-family: 'Ms Madi', cursive;
+  font-size: ${({ theme }) => theme.size.diplodocus};
+  font-weight: ${({ theme }) => theme.weight.regular};
   line-height: 50px;
+  color: ${({ theme }) => theme.color.white};
 `;
 
 export const StyledDarkTitle = styled(StyledTitle)`

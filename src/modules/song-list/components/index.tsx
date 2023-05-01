@@ -2,6 +2,7 @@ import Button from '_components/button';
 
 import Player from '_modules/player/components';
 import { SongType } from '_modules/song/types';
+
 import useScrollShadow from '../hooks/useScrollShadow';
 
 import SongItem from './song-item';
@@ -26,8 +27,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 export default () => {
-
-  const [scroll,{onScroll}]  = useScrollShadow();
+  const [scroll, { onScroll }] = useScrollShadow();
 
   return (
     <StyledContainer>

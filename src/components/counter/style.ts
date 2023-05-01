@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { CounterElement } from './types';
 
 export const StyledCounterText = styled.span`
-  color: ${({ theme }) => theme.color.black};
-  font-weight: ${({ theme }) => theme.weight.medium};
   font-size: ${({ theme }) => theme.size.grizzly};
+  font-weight: ${({ theme }) => theme.weight.medium};
+  color: ${({ theme }) => theme.color.black};
 `;
 
-export const StyledLike = styled.span``;
+export const StyledLike = styled.span`
+  display: flex;
+`;
 
 export const StyledReadOnyCounter = styled.div<CounterElement>`
   display: flex;
@@ -30,9 +32,9 @@ export const StyledCounter = styled(StyledReadOnyCounter)`
   min-width: 100px;
   height: 40px;
   min-height: 40px;
+  cursor: pointer;
   border: 1px solid ${({ theme }) => theme.color.black};
   border-radius: 32px;
-  cursor: pointer;
 
   ${StyledCounterText} {
     margin: 0 8px;

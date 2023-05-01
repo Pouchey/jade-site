@@ -28,22 +28,22 @@ export const StyledMenu = styled.div`
 export const StyledLink = styled(Link)`
   width: 100%;
   padding: 8px 24px;
-  color: ${({ theme }) => theme.color.white};
-  font-weight: ${({ theme }) => theme.weight.regular};
-  font-size: ${({ theme }) => theme.size.diplodocus};
   font-family: 'Ms Madi', cursive;
+  font-size: ${({ theme }) => theme.size.diplodocus};
+  font-weight: ${({ theme }) => theme.weight.regular};
   line-height: 50px;
-  white-space: nowrap;
+  color: ${({ theme }) => theme.color.white};
   text-overflow: hidden;
+  white-space: nowrap;
   transition: color 0.3s ease-in-out;
 
   ::after {
     display: block;
     width: 100%;
     height: 2px;
+    content: '';
     background-color: ${({ theme }) => theme.color.green1};
     transition: all 0.3s ease-in-out;
-    content: '';
   }
 
   :hover::after {

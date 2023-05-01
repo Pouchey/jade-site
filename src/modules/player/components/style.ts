@@ -35,19 +35,19 @@ export const StyledDesc = styled.div`
 export const StyledSongName = styled.h1`
   margin-bottom: 8px;
   overflow: hidden;
-  font-weight: ${({ theme }) => theme.weight.medium};
   font-size: ${({ theme }) => theme.size.huge};
-  white-space: nowrap;
-  text-transform: uppercase;
+  font-weight: ${({ theme }) => theme.weight.medium};
   text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 export const StyledArtist = styled.h2`
   overflow: hidden;
-  font-weight: ${({ theme }) => theme.weight.regular};
   font-size: ${({ theme }) => theme.size.huge};
-  white-space: nowrap;
+  font-weight: ${({ theme }) => theme.weight.regular};
   text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const StyledPlayerInfos = styled.div`

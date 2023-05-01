@@ -5,8 +5,8 @@ import theme from './theme';
 export default createGlobalStyle`
   * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    margin: 0;
     scrollbar-width: none;
     
     ::-webkit-scrollbar {
@@ -15,12 +15,12 @@ export default createGlobalStyle`
   }
   
   body {
-    height: 100%;
-    color: ${theme.color.black};
-    font-weight: ${theme.weight.regular};
-    font-size: ${theme.size.normal};;
+    height: 100%;;
     font-family: Inter, sans-serif;
+    font-size: ${theme.size.normal};
+    font-weight: ${theme.weight.regular};
     line-height: 18px;
+    color: ${theme.color.black};
   }
 
   #app {
