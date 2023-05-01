@@ -7,11 +7,7 @@
     "dev": "vite",
     "dev:host": "vite --host",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint:scripts": "eslint --fix --ext .ts,.tsx src",
-    "lint:styles": "stylelint --fix \"src/**/*.{ts,tsx}\"",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "lint:all": "npm run lint:scripts && npm run lint:styles && npm run format"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
@@ -27,25 +23,13 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
-    "@types/node": "^18.16.3",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
     "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
     "@vitejs/plugin-react": "^4.0.0",
-    "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.32.2",
-    "postcss-styled-syntax": "^0.4.0",
-    "prettier": "^2.8.8",
-    "stylelint": "^15.6.0",
-    "stylelint-config-recess-order": "^4.0.0",
-    "stylelint-config-standard": "^33.0.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.3",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-svgr": "^2.4.0"
   }
-
 }
