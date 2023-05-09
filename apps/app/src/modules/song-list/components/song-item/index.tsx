@@ -15,6 +15,8 @@ import {
 } from './style';
 
 export default ({ song }: SongProps) => {
+  throw new Error('test');
+
   return (
     <StyledSongItemWrapper>
       <StyledImageWrapper>

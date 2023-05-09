@@ -14,8 +14,8 @@ const queryClient = new QueryClient();
 const MainApp: React.FC = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <ErrorBoundary>
-        <GlobalStyle />
         <BrowserRouter>
           <Routes>
             <Route path="/*" element={<App />} />

@@ -9,4 +9,5 @@ export interface LoaderProps {
 export interface LoaderType {
   color?: keyof ThemeType['color'];
   size?: number;
+  delay?: number;
 }

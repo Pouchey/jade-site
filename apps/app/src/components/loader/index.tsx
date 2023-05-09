@@ -6,15 +6,15 @@ import {
 } from './style';
 import { LoaderProps } from './types';
 
-export default ({ label, color = 'green2', size = 32 }: LoaderProps) => {
+const bars = [1, 0.9, 0.8, 0.7, 0.6];
+
+export default ({ label, color = 'green2', size = 48 }: LoaderProps) => {
   return (
     <StyledLoaderWrapper>
       <StyledLoader color={color} size={size}>
-        <StyledBar color={color} size={size} />
-        <StyledBar color={color} size={size} />
-        <StyledBar color={color} size={size} />
-        <StyledBar color={color} size={size} />
-        <StyledBar color={color} size={size} />
+        {bars.map((bar) => (
+          <StyledBar key={bar} color={color} size={size} delay={bar} />
+        ))}
       </StyledLoader>
       <StyledLoaderLabel>{label}</StyledLoaderLabel>
     </StyledLoaderWrapper>

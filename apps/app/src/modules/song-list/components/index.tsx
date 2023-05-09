@@ -1,4 +1,5 @@
 import Button from '_components/button';
+import Loader from '_components/loader';
 
 import Player from '_modules/player/components';
 import useScrollShadow from '_modules/song-list/hooks/useScrollShadow';
@@ -15,7 +16,15 @@ import {
 export default () => {
   const [scroll, { onScroll }] = useScrollShadow();
 
-  const { data: songs } = useFetchSongs();
+  const { isFetching, data: songs } = useFetchSongs();
+
+  if (isFetching) {
+    return (
+      <StyledContainer>
+        <Loader label="Chargement..." />;
+      </StyledContainer>
+    );
+  }
 
   return (
     <StyledContainer>

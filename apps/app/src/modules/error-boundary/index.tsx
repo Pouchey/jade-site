@@ -1,6 +1,9 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 
 import Button from '_components/button';
+import Loader from '_components/loader';
+
+import { StyledErrorWrapper } from './style';
 
 interface Props {
   children?: ReactNode;
@@ -16,7 +19,6 @@ class ErrorBoundary extends Component<Props, State> {
   };
 
   public static getDerivedStateFromError(): State {
-    // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
@@ -29,10 +31,10 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <>
-          <h1>Sorry.. there was an error</h1>
+        <StyledErrorWrapper>
+          <Loader label="Une erreur est survenue." />
           <Button onClick={this.handleReload} label="Relancer l'application" />
-        </>
+        </StyledErrorWrapper>
       );
     }
 
