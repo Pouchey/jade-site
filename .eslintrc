@@ -27,6 +27,14 @@
       "error",
       { "ignoreRestSiblings": true }
     ],
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        "checksVoidReturn": {
+          "attributes": false
+        }
+      }
+    ],
     "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "react/prop-types": "off",
     "react/display-name": "off",

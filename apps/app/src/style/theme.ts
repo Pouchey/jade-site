@@ -42,6 +42,7 @@ export const metrics = {
 
 export const responsive = {
   mobileSmall: '480px',
+  mobile: '768px',
 };
 
 export type ThemeType = {

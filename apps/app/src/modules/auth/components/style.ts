@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  display: grid;
-  grid-template-areas: 'left right ';
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 `;
 
 export const StyledPanel = styled.div`
   display: flex;
   flex-direction: column;
-  grid-area: left;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -21,12 +19,15 @@ export const StyledPanel = styled.div`
   *:last-child {
     margin-top: 64px;
   }
+
+  @media (width < ${({ theme }) => theme.responsive.mobile}) {
+    display: none;
+  }
 `;
 
 export const StyledAuth = styled.div`
   display: flex;
   flex-direction: column;
-  grid-area: right;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
