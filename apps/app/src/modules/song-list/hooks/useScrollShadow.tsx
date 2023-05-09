@@ -9,5 +9,4 @@ export default () => {
 
 export type ScrollProps = {
   scroll: number;
-  onScroll: (event: React.UIEvent<HTMLDivElement>) => void;
 };

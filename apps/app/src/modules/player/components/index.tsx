@@ -2,6 +2,8 @@ import Counter from '_components/counter';
 import Image from '_components/image';
 import Label from '_components/label';
 
+import { useFetchPlayer } from '../hooks/useServices';
+
 import {
   StyledPlayer,
   StyledSongName,
@@ -13,38 +15,28 @@ import {
   StyledCounterWrapper,
 } from './style';
 
-const foo = {
-  songName: 'Song Name',
-  artist: 'Artist',
-  icon: {
-    url: 'https://picsum.photos/200',
-    alt: 'Play',
-  },
-  count: 1,
-  requester: {
-    id: 1,
-    name: 'Requester Name',
-  },
-};
-
 export default () => {
+  const { data: player } = useFetchPlayer();
+
+  if (!player) return null;
+
   return (
     <StyledPlayer>
       <StyledPlayerSection>
         <StyledImageWrapper>
-          <Image size={100} url={foo.icon.url} alt={foo.icon.alt} />
+          <Image size={100} url={player.icon.url} alt={player.icon.alt} />
         </StyledImageWrapper>
         <StyledDesc>
-          <StyledSongName>{foo.songName}</StyledSongName>
-          <StyledArtist>{foo.artist}</StyledArtist>
+          <StyledSongName>{player.songName}</StyledSongName>
+          <StyledArtist>{player.artist}</StyledArtist>
         </StyledDesc>
       </StyledPlayerSection>
       <StyledPlayerSection>
         <StyledPlayerInfos>
           <StyledCounterWrapper>
-            <Counter readonly count={foo.count} />
+            <Counter readonly count={player.count} />
           </StyledCounterWrapper>
-          <Label content={`Requested by ${foo.requester.name}`} />
+          <Label content={`Requested by ${player.requester.name}`} />
         </StyledPlayerInfos>
       </StyledPlayerSection>
     </StyledPlayer>

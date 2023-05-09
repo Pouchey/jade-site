@@ -1,13 +1,17 @@
-import * as SongRequestFake from '_modules/song/services/fake';
-import * as SongRequestHttp from '_modules/song/services/http';
+import PlayerRequestFake from '_modules/player/services/fake';
+import PlayerRequestHttp from '_modules/player/services/http';
+import SongRequestFake from '_modules/song/services/fake';
+import SongRequestHttp from '_modules/song/services/http';
 
 export const fakeAPI = {
   ...SongRequestFake,
-}.default;
+  ...PlayerRequestFake,
+} as const;
 
 export const httpAPI = {
   ...SongRequestHttp,
-}.default;
+  ...PlayerRequestHttp,
+} as const;
 
 export default () =>
   import.meta.env.VITE_API_MODE === 'http' ? httpAPI : fakeAPI;
