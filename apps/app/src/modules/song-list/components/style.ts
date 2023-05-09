@@ -13,18 +13,18 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledWrapper = styled.div`
-  display: grid;
-  grid-row-gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
   padding: 20px;
-  padding-bottom: 0;
-  overflow: hidden;
 `;
 
 export const StyledSongItemList = styled.div<ScrollProps>`
   position: relative;
-  display: grid;
-  grid-row-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   overflow-y: scroll;
   border-radius: 8px;
 

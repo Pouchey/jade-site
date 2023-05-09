@@ -10,7 +10,7 @@ export const color = {
   grey20: '#FBFBFE',
   // White and black
   black: '#1E1E1E',
-  white: '#FFF',
+  white: '#effff7',
   // Brand colors
   green1: '#9ED2C6',
   green2: '#54BAB9',
@@ -40,11 +40,16 @@ export const metrics = {
   menuWidth: '300px',
 };
 
+export const responsive = {
+  mobileSmall: '480px',
+};
+
 export type ThemeType = {
   color: typeof color;
   size: typeof size;
   weight: typeof weight;
   metrics: typeof metrics;
+  responsive: typeof responsive;
 };
 
 const theme: ThemeType = {
@@ -52,6 +57,7 @@ const theme: ThemeType = {
   size,
   weight,
   metrics,
+  responsive,
 };
 
 export default theme;

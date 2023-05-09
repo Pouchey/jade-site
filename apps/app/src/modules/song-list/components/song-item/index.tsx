@@ -18,7 +18,7 @@ export default ({ song }: SongProps) => {
   return (
     <StyledSongItemWrapper>
       <StyledImageWrapper>
-        <Image url={song.icon.url} alt={song.icon.alt} size={50} />
+        <Image url={song.icon.url} alt={song.icon.alt} size={64} />
       </StyledImageWrapper>
       <StyledInformationWrapper>
         <StyledDesc>

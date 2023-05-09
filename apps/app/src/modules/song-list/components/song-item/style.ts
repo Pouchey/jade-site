@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const StyledSongItemWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 50px 1fr 100px;
+  display: flex;
+  gap: 16px;
   width: 100%;
-  padding: 12px;
+  padding: 12px 20px;
   background-color: ${({ theme }) => theme.color.white};
-  border-radius: 8px;
+  border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 `;
 
 export const StyledImageWrapper = styled.div`
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 64px;
+  min-height: 64px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.grey30};
   border-radius: 8px;
@@ -30,6 +30,11 @@ export const StyledDesc = styled.div`
   display: flex;
   width: 100%;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.responsive.mobileSmall}) {
+    flex-direction: column;
+    gap: 4px;
+  }
 `;
 
 export const StyledSongName = styled.div`
@@ -50,6 +55,13 @@ export const StyledArtist = styled.div`
   ::before {
     margin: 0 8px;
     content: '-';
+  }
+
+  @media (max-width: ${({ theme }) => theme.responsive.mobileSmall}) {
+    ::before {
+      margin: 0;
+      content: '';
+    }
   }
 `;
 

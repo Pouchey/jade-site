@@ -12,6 +12,7 @@ const aliases = {
   _hooks: path.resolve(__dirname, 'src/hooks'),
   _modules: path.resolve(__dirname, 'src/modules'),
   _style: path.resolve(__dirname, 'src/style'),
+  _services: path.resolve(__dirname, 'src/services'),
   _types: path.resolve(__dirname, 'src/types'),
   _utils: '@jaderowley/utils/src',
 };
