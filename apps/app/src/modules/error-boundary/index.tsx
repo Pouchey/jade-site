@@ -32,8 +32,13 @@ class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <StyledErrorWrapper>
-          <Loader label="Une erreur est survenue." />
-          <Button onClick={this.handleReload} label="Relancer l'application" />
+          <div>
+            <Loader label="Une erreur est survenue." />
+            <Button
+              onClick={this.handleReload}
+              label="Relancer l'application"
+            />
+          </div>
         </StyledErrorWrapper>
       );
     }
