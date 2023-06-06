@@ -47,6 +47,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: './',
+    baseUrl: '/',
     resolve: {
       alias: aliases,
     },

@@ -7,6 +7,7 @@ export const StyledTopBar = styled.div`
   align-items: center;
   justify-content: center;
   height: 50px;
+  cursor: pointer;
   background-color: ${({ theme }) => theme.color.black};
 `;
 

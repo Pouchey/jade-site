@@ -13,7 +13,7 @@ import {
   StyledMenuWrapper,
 } from './style';
 
-const Menu = React.memo(() => {
+const MenuContent = React.memo(() => {
   const { state } = useMenuContext();
 
   return (
@@ -33,4 +33,4 @@ const Menu = React.memo(() => {
   );
 });
 
-export default Menu;
+export default MenuContent;

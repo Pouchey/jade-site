@@ -11,7 +11,9 @@ import { theme, GlobalStyle } from './style';
 
 const queryClient = new QueryClient();
 
-const MainApp = () => (
+const container = document.getElementById('root') as HTMLElement;
+const root = createRoot(container);
+root.render(
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -26,7 +28,3 @@ const MainApp = () => (
     </ThemeProvider>
   </QueryClientProvider>
 );
-
-const container = document.getElementById('root') as HTMLElement;
-const root = createRoot(container);
-root.render(<MainApp />);

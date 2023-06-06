@@ -1,11 +1,11 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-import Menu from '_modules/ui/components/menu';
+import MenuContent from './Menu';
 
-const MenuPortal = React.memo(() => {
+const Menu = React.memo(() => {
   const container = document.getElementById('menu') as HTMLElement;
-  return createPortal(<Menu />, container);
+  return createPortal(<MenuContent />, container);
 });
 
-export default MenuPortal;
+export default Menu;
