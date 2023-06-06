@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ModalContainer, ModalContent } from './style';
 import { ModalProps } from './types';
 
-export default ({ children, isLoading }: ModalProps) =>
+const Modal = ({ children, isLoading }: ModalProps) =>
   createPortal(
     <ModalContainer className="modal">
       {isLoading ? (
@@ -14,3 +14,5 @@ export default ({ children, isLoading }: ModalProps) =>
     </ModalContainer>,
     document.getElementById('modal') as HTMLElement
   );
+
+export default Modal;

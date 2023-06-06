@@ -15,7 +15,7 @@ import {
   StyledCounterWrapper,
 } from './style';
 
-export default () => {
+const Player = () => {
   const { data: player } = useFetchPlayer();
 
   if (!player) return null;
@@ -42,3 +42,5 @@ export default () => {
     </StyledPlayer>
   );
 };
+
+export default Player;

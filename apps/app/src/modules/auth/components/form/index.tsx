@@ -16,7 +16,7 @@ import {
   StyledPassword,
 } from './style';
 
-export default ({ onSubmit }: FormProps) => {
+const AuthForm = ({ onSubmit }: FormProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const updateShowPassword = () => {
@@ -50,3 +50,5 @@ export default ({ onSubmit }: FormProps) => {
     </StyledForm>
   );
 };
+
+export default AuthForm;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { StyledBurger, StyledLines } from './style';
 import { BurgerProps } from './types';
 
-export default ({ onClick, size = 32 }: BurgerProps) => {
+const Burger = ({ onClick, size = 32 }: BurgerProps) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -21,3 +21,5 @@ export default ({ onClick, size = 32 }: BurgerProps) => {
     </StyledBurger>
   );
 };
+
+export default Burger;

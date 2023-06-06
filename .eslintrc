@@ -38,7 +38,8 @@
     "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "react/prop-types": "off",
     "react/display-name": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react-refresh/only-export-components": "warn"
   },
-  "plugins": ["@typescript-eslint"]
+  "plugins": ["@typescript-eslint", "react-refresh"]
 }

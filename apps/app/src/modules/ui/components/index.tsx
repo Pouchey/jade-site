@@ -4,7 +4,7 @@ import Menu from './menu';
 import { StyledContent, StyledMain } from './style';
 import Topbar from './topbar';
 
-export default ({ children }: { children: React.ReactNode }) => (
+const UIWrapper = ({ children }: { children: React.ReactNode }) => (
   <StyledMain>
     <MenuProvider>
       <Topbar />
@@ -13,3 +13,5 @@ export default ({ children }: { children: React.ReactNode }) => (
     </MenuProvider>
   </StyledMain>
 );
+
+export default UIWrapper;

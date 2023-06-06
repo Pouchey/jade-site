@@ -2,7 +2,7 @@ import Icon from '_components/icon';
 
 import { StyledDarkTitle } from '_style/common';
 
-import Form from './form';
+import AuthForm from './form';
 import {
   StyledContainer,
   StyledAuth,
@@ -10,7 +10,7 @@ import {
   StyledWelcome,
 } from './style';
 
-export default () => {
+const Auth = () => {
   return (
     <StyledContainer>
       <StyledPanel>
@@ -19,8 +19,10 @@ export default () => {
       </StyledPanel>
       <StyledAuth>
         <StyledWelcome>Welcome back</StyledWelcome>
-        <Form onSubmit={(data) => console.log(data)} />
+        <AuthForm onSubmit={(data) => console.log(data)} />
       </StyledAuth>
     </StyledContainer>
   );
 };
+
+export default Auth;

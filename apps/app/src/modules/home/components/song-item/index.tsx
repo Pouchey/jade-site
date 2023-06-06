@@ -14,7 +14,7 @@ import {
   StyledSongName,
 } from './style';
 
-export default ({ song }: SongProps) => {
+const SongItem = ({ song }: SongProps) => {
   return (
     <StyledSongItemWrapper>
       <StyledImageWrapper>
@@ -35,3 +35,5 @@ export default ({ song }: SongProps) => {
     </StyledSongItemWrapper>
   );
 };
+
+export default SongItem;

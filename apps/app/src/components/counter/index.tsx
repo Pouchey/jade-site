@@ -8,7 +8,7 @@ import {
 } from './style';
 import { CounterProps } from './types';
 
-export default ({
+const Counter = ({
   count = 0,
   requested = false,
   readonly = false,
@@ -34,3 +34,5 @@ export default ({
     </StyledCounter>
   );
 };
+
+export default Counter;

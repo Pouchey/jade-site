@@ -8,7 +8,7 @@ import { StyledTitle } from '_style/common';
 
 import { StyledTopBar, StyledBurgerWrapper } from './style';
 
-export default React.memo(() => {
+const Topbar = React.memo(() => {
   const { state, dispatch } = useMenuContext();
 
   const handleMenu = () =>
@@ -24,3 +24,5 @@ export default React.memo(() => {
     </StyledTopBar>
   );
 });
+
+export default Topbar;

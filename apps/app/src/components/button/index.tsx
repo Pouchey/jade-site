@@ -1,6 +1,8 @@
 import { StyledButton } from './style';
 import { ButtonProps } from './types';
 
-export default (props: ButtonProps) => (
+const Button = (props: ButtonProps) => (
   <StyledButton {...props}>{props.label}</StyledButton>
 );
+
+export default Button;

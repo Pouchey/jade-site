@@ -16,7 +16,7 @@ for (const path in svgs) {
   }
 }
 
-export default memo(({ glyph, size = 32, color = 'black' }: IconProps) => {
+const Icon = memo(({ glyph, size = 32, color = 'black' }: IconProps) => {
   const Icon = cache.get(glyph);
 
   if (!glyph || !Icon) return null;
@@ -27,3 +27,5 @@ export default memo(({ glyph, size = 32, color = 'black' }: IconProps) => {
     </StyledSvgWrapper>
   );
 });
+
+export default Icon;

@@ -4,20 +4,13 @@ import Button from '_components/button';
 import Loader from '_components/loader';
 
 import Player from '_modules/player/components';
-import useScrollShadow from '_modules/song-list/hooks/useScrollShadow';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import SongItem from './song-item';
-import {
-  StyledContainer,
-  StyledScrollShadow,
-  StyledSongItemList,
-  StyledWrapper,
-} from './style';
+import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
 
-export default () => {
+const Home = () => {
   const navigate = useNavigate();
-  const [scroll, { onScroll }] = useScrollShadow();
 
   const { isFetching, data: songs } = useFetchSongs();
 
@@ -44,9 +37,7 @@ export default () => {
           onClick={handleAddSong}
         />
       </StyledWrapper>
-      <StyledSongItemList onScroll={onScroll}>
-        <StyledScrollShadow scroll={scroll} />
-
+      <StyledSongItemList>
         {songs?.map((song) => (
           <SongItem key={song.id} song={song} />
         ))}
@@ -54,3 +45,5 @@ export default () => {
     </StyledContainer>
   );
 };
+
+export default Home;
