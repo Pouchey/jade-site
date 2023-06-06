@@ -26,7 +26,6 @@ export const StyledSongItemList = styled.div`
   flex-direction: column;
   width: 100%;
   overflow-y: scroll;
-  border-radius: 8px;
 `;
 
 export const StyledScrollShadow = styled.div<ScrollProps>`

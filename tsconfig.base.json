@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "rootDir":".",
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -13,14 +12,8 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-
+    "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "apps/**/*",
-    "packages/**/*",
-  ],
 
   "exclude": ["**/node_modules"]
-
 }

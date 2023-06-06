@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import Button from '_components/button';
 import Loader from '_components/loader';
 
@@ -14,9 +16,14 @@ import {
 } from './style';
 
 export default () => {
+  const navigate = useNavigate();
   const [scroll, { onScroll }] = useScrollShadow();
 
   const { isFetching, data: songs } = useFetchSongs();
+
+  const handleAddSong = () => {
+    navigate('/songlist');
+  };
 
   if (isFetching) {
     return (
@@ -34,7 +41,7 @@ export default () => {
           label="ADD A SONG"
           color="primary"
           size="diplodocus"
-          onClick={() => console.log('add a song')}
+          onClick={handleAddSong}
         />
       </StyledWrapper>
       <StyledSongItemList onScroll={onScroll}>

@@ -20,7 +20,7 @@
     "ecmaFeatures": { "jsx": true },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": ["./apps/app/tsconfig.json"]
+    "project": true
   },
   "rules": {
     "@typescript-eslint/no-unused-vars": [

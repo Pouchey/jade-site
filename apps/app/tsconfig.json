@@ -1,35 +1,22 @@
 {
-  
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "noEmit": true,
     "paths": {
-      "_components/*": [
-        "./src/components/*"
-      ],
-      "_hooks/*": [
-        "./src/hooks/*"
-      ],
-      "_modules/*": [
-        "./src/modules/*"
-      ],
-      "_services/*": [
-        "./src/services/*"
-      ],
-      "_style/*": [
-        "./src/style/*"
-      ],
-      "_utils/*": [
-        "../../packages/utils/src/*"
-      ],
+      "_components/*": ["./src/components/*"],
+      "_hooks/*": ["./src/hooks/*"],
+      "_modules/*": ["./src/modules/*"],
+      "_services/*": ["./src/services/*"],
+      "_style/*": ["./src/style/*"],
+      "_utils/*": ["../../packages/utils/src/*"]
     }
   },
-
+  "references": [
+    {
+      "path": "../../packages/utils"
+    }
+  ]
 }

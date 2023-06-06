@@ -11,7 +11,7 @@ import { theme, GlobalStyle } from './style';
 
 const queryClient = new QueryClient();
 
-const MainApp: React.FC = () => (
+const MainApp = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
