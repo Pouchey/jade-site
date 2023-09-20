@@ -1,7 +1,11 @@
+import { ThemeType } from '_style/theme';
+
 import { StyledButton } from './style';
 
-interface Props {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
+  size?: keyof ThemeType['size'];
+  color?: 'primary' | 'secondary';
   onClick?: () => void;
 }
 

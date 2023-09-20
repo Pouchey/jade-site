@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 export interface StyledImageProps {
-  size?: number;
+  size: number;
 }
 
-export const StyledImageWrapper = styled.div.attrs(
-  ({ size }: StyledImageProps) => ({
-    iconSize: size ? `${size}px` : '16px',
-  })
-)<StyledImageProps>`
+export const StyledImageWrapper = styled.div.attrs<{
+  iconSize?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+}>(({ size }: any) => ({
+  iconSize: size ? `${size}px` : '32px',
+}))<StyledImageProps>`
   display: flex;
   align-items: center;
   justify-content: center;
