@@ -6,7 +6,14 @@ import {
   StyledLike,
   StyledReadOnyCounter,
 } from './style';
-import { CounterProps } from './types';
+
+interface Props {
+  count: number;
+  requested?: boolean;
+  readonly?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+}
 
 const Counter = ({
   count = 0,
@@ -14,10 +21,10 @@ const Counter = ({
   readonly = false,
   disabled = false,
   onClick,
-}: CounterProps) => {
+}: Props) => {
   if (readonly)
     return (
-      <StyledReadOnyCounter requested={requested}>
+      <StyledReadOnyCounter $requested={requested}>
         <StyledLike>
           <Icon glyph="heart" size={24} color={requested ? 'red1' : 'black'} />
         </StyledLike>
@@ -26,7 +33,11 @@ const Counter = ({
     );
 
   return (
-    <StyledCounter onClick={onClick} disabled={disabled} requested={requested}>
+    <StyledCounter
+      onClick={onClick}
+      $disabled={disabled}
+      $requested={requested}
+    >
       <StyledCounterText>{count}</StyledCounterText>
       <StyledLike>
         <Icon glyph="heart" size={24} color={requested ? 'red1' : 'black'} />

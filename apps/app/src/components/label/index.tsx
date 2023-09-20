@@ -1,7 +1,10 @@
 import { StyledLabel } from './style';
-import { LabelProps } from './types';
 
-const Label = ({ content }: LabelProps) => {
+interface Props {
+  content: string;
+}
+
+const Label = ({ content }: Props) => {
   return <StyledLabel>{content}</StyledLabel>;
 };
 

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-import { CounterElement } from './types';
+export interface StyledCounterProps {
+  $requested?: boolean;
+  $disabled?: boolean;
+}
 
 export const StyledCounterText = styled.span`
   font-size: ${({ theme }) => theme.size.huge};
@@ -12,7 +15,7 @@ export const StyledLike = styled.span`
   display: flex;
 `;
 
-export const StyledReadOnyCounter = styled.div<CounterElement>`
+export const StyledReadOnyCounter = styled.div<StyledCounterProps>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -22,7 +25,7 @@ export const StyledReadOnyCounter = styled.div<CounterElement>`
   }
 
   ${StyledCounterText} {
-    color: ${({ theme, requested }) => requested && theme.color.red1};
+    color: ${({ theme, $requested }) => $requested && theme.color.red1};
   }
 `;
 
@@ -40,9 +43,16 @@ export const StyledCounter = styled(StyledReadOnyCounter)`
     margin: 0 8px;
   }
 
-  ${({ requested, theme }) =>
-    requested &&
+  ${({ $requested, theme }) =>
+    $requested &&
     ` 
       border: 1px solid ${theme.color.red1};
+    `};
+
+  ${({ $disabled, theme }) =>
+    $disabled &&
+    `
+      border: 1px solid ${theme.color.grey30};
+      cursor: not-allowed;
     `};
 `;

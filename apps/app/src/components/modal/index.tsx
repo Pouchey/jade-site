@@ -1,9 +1,13 @@
 import { createPortal } from 'react-dom';
 
 import { ModalContainer, ModalContent } from './style';
-import { ModalProps } from './types';
 
-const Modal = ({ children, isLoading }: ModalProps) =>
+interface Props {
+  children: React.ReactNode;
+  isLoading?: boolean;
+}
+
+const Modal = ({ children, isLoading }: Props) =>
   createPortal(
     <ModalContainer className="modal">
       {isLoading ? (

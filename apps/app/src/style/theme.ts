@@ -10,7 +10,7 @@ export const color = {
   grey20: '#FBFBFE',
   // White and black
   black: '#1E1E1E',
-  white: '#effff7',
+  white: '#Fffff9',
   // Brand colors
   green1: '#9ED2C6',
   green2: '#54BAB9',

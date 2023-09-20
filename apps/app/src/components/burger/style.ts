@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-import { BurgerProps } from './types';
+export interface StyledBurgerProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  size?: number;
+}
 
 export const StyledLines = styled.div`
   position: relative;
@@ -31,7 +34,7 @@ export const StyledLines = styled.div`
   }
 `;
 
-export const StyledBurger = styled.div<BurgerProps>`
+export const StyledBurger = styled.div<StyledBurgerProps>`
   display: flex;
   align-items: center;
   justify-content: center;

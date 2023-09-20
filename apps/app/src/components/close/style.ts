@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-import { CloseProps } from './types';
+export interface StyledCloseProps {
+  size?: number;
+}
 
-export const StyledClose = styled.div<CloseProps>`
+export const StyledClose = styled.div<StyledCloseProps>`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,12 +1,17 @@
 import { useState } from 'react';
 
 import { StyledBurger, StyledLines } from './style';
-import { BurgerProps } from './types';
 
-const Burger = ({ onClick, size = 32 }: BurgerProps) => {
+interface Props {
+  onClick: () => void;
+  size?: number;
+}
+
+const Burger = ({ onClick, size = 32 }: Props) => {
   const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     setOpen(!open);
     onClick();
   };

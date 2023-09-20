@@ -1,9 +1,16 @@
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { ButtonProps } from './types';
+import { ThemeType } from '_style/theme';
 
-export const StyledButton = styled.button<ButtonProps>`
+export interface StyledButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  color?: 'primary' | 'secondary';
+  size?: keyof ThemeType['size'];
+  disabled?: boolean;
+}
+
+export const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;

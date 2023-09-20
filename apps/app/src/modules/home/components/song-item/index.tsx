@@ -15,6 +15,8 @@ import {
 } from './style';
 
 const SongItem = ({ song }: SongProps) => {
+  const isRequested = song.requester.id === 1;
+
   return (
     <StyledSongItemWrapper>
       <StyledImageWrapper>
@@ -30,7 +32,7 @@ const SongItem = ({ song }: SongProps) => {
         )}
       </StyledInformationWrapper>
       <StyledCountWrapper>
-        <Counter count={song.count} requested={song.requester.id === 1} />
+        <Counter count={song.count} requested={isRequested} />
       </StyledCountWrapper>
     </StyledSongItemWrapper>
   );

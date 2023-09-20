@@ -1,6 +1,12 @@
 import styled, { keyframes } from 'styled-components';
 
-import { LoaderType } from './types';
+import { ThemeType } from '_style/theme';
+
+export interface StyledLoaderProps {
+  color?: keyof ThemeType['color'];
+  size?: number;
+  delay?: number;
+}
 
 const loaderAnimation = keyframes`
   0%, 20%, 49% {
@@ -26,7 +32,7 @@ export const StyledLoaderWrapper = styled.div`
   height: 100%;
 `;
 
-export const StyledBar = styled.span<LoaderType>`
+export const StyledBar = styled.span<StyledLoaderProps>`
   width: ${({ size }) => (size || 48) / 3}px;
   height: ${({ size }) => size || 48}px;
   margin: 0 2px;
@@ -39,7 +45,7 @@ export const StyledBar = styled.span<LoaderType>`
   animation-iteration-count: infinite;
 `;
 
-export const StyledLoader = styled.div<LoaderType>`
+export const StyledLoader = styled.div<StyledLoaderProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;

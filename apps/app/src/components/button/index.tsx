@@ -1,7 +1,11 @@
 import { StyledButton } from './style';
-import { ButtonProps } from './types';
 
-const Button = (props: ButtonProps) => (
+interface Props {
+  label: string;
+  onClick?: () => void;
+}
+
+const Button = (props: Props) => (
   <StyledButton {...props}>{props.label}</StyledButton>
 );
 

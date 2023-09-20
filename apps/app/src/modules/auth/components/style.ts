@@ -20,7 +20,7 @@ export const StyledPanel = styled.div`
     margin-top: 64px;
   }
 
-  @media (width < ${({ theme }) => theme.responsive.mobile}) {
+  @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
     display: none;
   }
 `;

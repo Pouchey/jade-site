@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-import { ImageProps } from './types';
+export interface StyledImageProps {
+  size?: number;
+}
 
-export const StyledImageWrapper = styled.div.attrs(({ size }: ImageProps) => ({
-  iconSize: size ? `${size}px` : '16px',
-}))<ImageProps>`
+export const StyledImageWrapper = styled.div.attrs(
+  ({ size }: StyledImageProps) => ({
+    iconSize: size ? `${size}px` : '16px',
+  })
+)<StyledImageProps>`
   display: flex;
   align-items: center;
   justify-content: center;

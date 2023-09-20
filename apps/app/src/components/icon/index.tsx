@@ -1,7 +1,8 @@
 import { memo } from 'react';
 
+import { ThemeType } from '_style/theme';
+
 import { StyledSvgWrapper } from './style';
-import { IconProps } from './types';
 
 const svgs = import.meta.glob('./svg/*.svg', { eager: true });
 
@@ -16,14 +17,20 @@ for (const path in svgs) {
   }
 }
 
-const Icon = memo(({ glyph, size = 32, color = 'black' }: IconProps) => {
-  const Icon = cache.get(glyph);
+interface Props {
+  glyph: string;
+  size?: number;
+  color?: keyof ThemeType['color'];
+}
 
-  if (!glyph || !Icon) return null;
+const Icon = memo(({ glyph, size = 32, color = 'black' }: Props) => {
+  const IconFC = cache.get(glyph);
+
+  if (!glyph || !IconFC) return null;
 
   return (
     <StyledSvgWrapper size={size} color={color}>
-      <Icon />
+      <IconFC />
     </StyledSvgWrapper>
   );
 });

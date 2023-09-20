@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
+  "include": [".", "../../packages"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "rootDir": "../..",
     "jsx": "react-jsx",
-    "noEmit": true,
     "paths": {
       "_components/*": ["./src/components/*"],
       "_hooks/*": ["./src/hooks/*"],
@@ -13,10 +12,5 @@
       "_style/*": ["./src/style/*"],
       "_utils/*": ["../../packages/utils/src/*"]
     }
-  },
-  "references": [
-    {
-      "path": "../../packages/utils"
-    }
-  ]
+  }
 }
