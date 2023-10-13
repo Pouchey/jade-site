@@ -1,4 +1,4 @@
-export type SongType = {
+export type TSong = {
   id: number;
   songName: string;
   artist: string;
@@ -12,7 +12,3 @@ export type SongType = {
     name: string;
   };
 };
-
-export interface SongProps {
-  song: SongType;
-}

@@ -2,7 +2,7 @@ import Counter from '_components/counter';
 import Image from '_components/image';
 import Label from '_components/label';
 
-import { SongProps } from '_modules/song/types';
+import { TSong } from '_modules/song/types';
 
 import {
   StyledArtist,
@@ -14,7 +14,11 @@ import {
   StyledSongName,
 } from './style';
 
-const SongItem = ({ song }: SongProps) => {
+interface Props {
+  song: TSong;
+}
+
+const SongItem = ({ song }: Props) => {
   const isRequested = song.requester.id === 1;
 
   return (

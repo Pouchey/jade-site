@@ -1,9 +1,9 @@
 import httpRequest from '_services/http';
 
-import { SongType } from '../types';
+import { TSong } from '../types';
 
-const fetchSongs = () => httpRequest.get<SongType[]>('/songs');
+const fetchSongs = () => httpRequest.get<TSong[]>('/songs');
 
-const fetchSong = (id: number) => httpRequest.get<SongType>(`/songs/${id}`);
+const fetchSong = (id: number) => httpRequest.get<TSong>(`/songs/${id}`);
 
 export default { fetchSongs, fetchSong };

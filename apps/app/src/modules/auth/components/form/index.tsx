@@ -1,11 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import Button from '_components/button';
 import Icon from '_components/icon';
 
-import { FormProps, FormValues } from '_modules/auth/types';
+import { TAuthForm } from '_modules/auth/types/form';
 
 import schema from './schema';
 import {
@@ -16,14 +16,18 @@ import {
   StyledPassword,
 } from './style';
 
-const AuthForm = ({ onSubmit }: FormProps) => {
+interface Props {
+  onSubmit: SubmitHandler<TAuthForm>;
+}
+
+const AuthForm = ({ onSubmit }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const updateShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const { register, handleSubmit } = useForm<FormValues>({
+  const { register, handleSubmit } = useForm<TAuthForm>({
     resolver: yupResolver(schema),
   });
 

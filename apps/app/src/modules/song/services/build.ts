@@ -1,8 +1,8 @@
 import { randInt } from '_utils/random';
 
-import { SongType } from '../types';
+import { TSong } from '../types';
 
-export const buildSong = (id = randInt(1, 100000)): SongType => {
+export const buildSong = (id = randInt(1, 100000)): TSong => {
   return {
     id,
     songName: `Song ${id}`,
@@ -19,7 +19,7 @@ export const buildSong = (id = randInt(1, 100000)): SongType => {
   };
 };
 
-export const buildSongs = (nb = randInt(10, 100)): SongType[] => {
+export const buildSongs = (nb = randInt(10, 100)): TSong[] => {
   const songs = [];
   for (let i = 0; i < nb; i++) {
     songs.push(buildSong());
