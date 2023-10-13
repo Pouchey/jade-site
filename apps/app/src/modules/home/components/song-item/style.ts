@@ -52,13 +52,13 @@ export const StyledArtist = styled.div`
   text-transform: uppercase;
   white-space: nowrap;
 
-  ::before {
+  &::before {
     margin: 0 8px;
     content: '-';
   }
 
   @media (max-width: ${({ theme }) => theme.responsive.mobileSmall}) {
-    ::before {
+    &::before {
       margin: 0;
       content: '';
     }

@@ -59,7 +59,7 @@ export const StyledPassword = styled.div`
     margin: auto;
     cursor: pointer;
 
-    :hover {
+    &:hover {
       svg {
         fill: ${({ theme }) => theme.color.black};
       }

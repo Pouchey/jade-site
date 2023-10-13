@@ -7,12 +7,18 @@ export interface StyledIconProps {
   color: keyof ThemeType['color'];
 }
 
-export const StyledSvgWrapper = styled.div.attrs<{
-  iconSize?: string;
-  color: keyof ThemeType['color'];
-}>(({ size }: StyledIconProps) => ({
+export const StyledSvgWrapper = styled.div.attrs<
+  StyledIconProps & {
+    iconSize?: string;
+    color: keyof ThemeType['color'];
+  },
+  StyledIconProps & {
+    iconSize?: string;
+    color: keyof ThemeType['color'];
+  }
+>(({ size }: StyledIconProps) => ({
   iconSize: size ? `${size}px` : '32px',
-}))<StyledIconProps>`
+}))`
   display: flex;
   align-items: center;
   justify-content: center;

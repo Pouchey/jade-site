@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const StyledMenuWrapper = styled.div<{ isOpen: boolean }>`
+export interface StyledMenuProps {
+  $isMenuOpened: boolean;
+}
+
+export const StyledMenuWrapper = styled.div<StyledMenuProps>`
   width: ${({ theme }) => theme.metrics.menuWidth};
   height: 100vh;
   padding-top: ${({ theme }) => theme.metrics.topbarHeight};
   background-color: ${({ theme }) => theme.color.black};
   box-shadow: 0 0 10px 0 ${({ theme }) => theme.color.black};
   transition: width 0.3s ease-in-out;
-  ${({ isOpen }) =>
-    !isOpen &&
+
+  ${({ $isMenuOpened }) =>
+    !$isMenuOpened &&
     `
     width: 0;
   `}
@@ -37,7 +42,7 @@ export const StyledLink = styled(Link)`
   white-space: nowrap;
   transition: color 0.3s ease-in-out;
 
-  ::after {
+  &::after {
     display: block;
     width: 100%;
     height: 2px;
@@ -46,11 +51,11 @@ export const StyledLink = styled(Link)`
     transition: all 0.3s ease-in-out;
   }
 
-  :hover::after {
+  &:hover::after {
     width: 50%;
   }
 
-  :hover {
+  &:hover {
     color: ${({ theme }) => theme.color.green1};
   }
 `;

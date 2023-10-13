@@ -16,8 +16,10 @@ import {
 const MenuContent = React.memo(() => {
   const { state } = useMenuContext();
 
+  const isMenuOpened = state?.isMenuOpened;
+
   return (
-    <StyledMenuWrapper isOpen={state.isMenuOpened}>
+    <StyledMenuWrapper $isMenuOpened={isMenuOpened}>
       <StyledMenu>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/request">Request</StyledLink>

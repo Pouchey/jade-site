@@ -13,7 +13,7 @@ export const StyledClose = styled.div<StyledCloseProps>`
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
-  :hover {
+  &:hover {
     transform: rotate(180deg);
   }
 `;

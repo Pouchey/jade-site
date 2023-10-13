@@ -14,7 +14,7 @@ const Image = React.memo(({ url, alt, size = 16 }: Props) => {
   if (!url || !alt) return <Icon glyph="noImage" size={size} color="green1" />;
 
   return (
-    <StyledImageWrapper size={size}>
+    <StyledImageWrapper $size={size}>
       <img src={url} alt={alt} />
     </StyledImageWrapper>
   );
