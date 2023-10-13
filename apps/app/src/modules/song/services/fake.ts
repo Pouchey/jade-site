@@ -1,6 +1,6 @@
 import fakeRequest from '_services/fake';
 
-import { TSong } from '../types';
+import { TSong } from '_shared/song/types';
 
 import { buildSong, buildSongs } from './build';
 

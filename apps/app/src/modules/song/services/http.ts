@@ -1,6 +1,6 @@
 import httpRequest from '_services/http';
 
-import { TSong } from '../types';
+import { TSong } from '_shared/song/types';
 
 const fetchSongs = () => httpRequest.get<TSong[]>('/songs');
 

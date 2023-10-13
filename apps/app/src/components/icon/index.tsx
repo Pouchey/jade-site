@@ -32,7 +32,7 @@ const Icon = memo(({ glyph, size = 32, color = 'black' }: Props) => {
   if (!glyph || !IconFC) return null;
 
   return (
-    <StyledSvgWrapper size={size} color={color}>
+    <StyledSvgWrapper $size={size} $color={color}>
       <IconFC />
     </StyledSvgWrapper>
   );

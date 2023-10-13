@@ -13,6 +13,7 @@ const aliases = {
   _style: path.resolve(__dirname, 'src/style'),
   _services: path.resolve(__dirname, 'src/services'),
   _types: path.resolve(__dirname, 'src/types'),
+  _shared: '@jaderowley/shared/src',
   _utils: '@jaderowley/utils/src',
 };
 

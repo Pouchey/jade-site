@@ -2,7 +2,7 @@ import Counter from '_components/counter';
 import Image from '_components/image';
 import Label from '_components/label';
 
-import { TSong } from '_modules/song/types';
+import { TSong } from '_shared/song/types';
 
 import {
   StyledArtist,

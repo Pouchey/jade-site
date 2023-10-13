@@ -1,6 +1,6 @@
-import { randInt } from '_utils/random';
+import { TSong } from '_shared/song/types';
 
-import { TSong } from '../types';
+import { randInt } from '_utils/random';
 
 export const buildSong = (id = randInt(1, 100000)): TSong => {
   return {

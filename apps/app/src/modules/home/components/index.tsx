@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
 import Button from '_components/button';
+import Label from '_components/label';
 import Loader from '_components/loader';
 
 import Player from '_modules/player/components';
-import { useFetchSongs } from '_modules/song/hooks/useServices';
+import { useFetchPlayer } from '_modules/player/hooks/useServices';
 
 import SongItem from './song-item';
 import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
@@ -12,7 +13,7 @@ import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
 const Home = () => {
   const navigate = useNavigate();
 
-  const { isFetching, data: songs } = useFetchSongs();
+  const { isFetching, data: player } = useFetchPlayer();
 
   const handleAddSong = () => {
     navigate('/songlist');
@@ -26,10 +27,18 @@ const Home = () => {
     );
   }
 
+  if (!player) {
+    return (
+      <StyledContainer>
+        <Label content="Rien pour le moment" />
+      </StyledContainer>
+    );
+  }
+
   return (
     <StyledContainer>
       <StyledWrapper>
-        <Player />
+        <Player current={player.current} />
         <Button
           label="ADD A SONG"
           color="primary"
@@ -38,7 +47,7 @@ const Home = () => {
         />
       </StyledWrapper>
       <StyledSongItemList>
-        {songs?.map((song) => <SongItem key={song.id} song={song} />)}
+        {player.songs?.map((song) => <SongItem key={song.id} song={song} />)}
       </StyledSongItemList>
     </StyledContainer>
   );

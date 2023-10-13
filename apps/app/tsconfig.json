@@ -10,6 +10,7 @@
       "_modules/*": ["./src/modules/*"],
       "_services/*": ["./src/services/*"],
       "_style/*": ["./src/style/*"],
+      "_shared/*": ["../../packages/shared/src/*"],
       "_utils/*": ["../../packages/utils/src/*"]
     }
   }

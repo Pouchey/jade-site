@@ -1,8 +1,10 @@
+import React from 'react';
+
 import Counter from '_components/counter';
 import Image from '_components/image';
 import Label from '_components/label';
 
-import { useFetchPlayer } from '../hooks/useServices';
+import { TSong } from '_shared/song/types';
 
 import {
   StyledPlayer,
@@ -15,32 +17,34 @@ import {
   StyledCounterWrapper,
 } from './style';
 
-const Player = () => {
-  const { data: player } = useFetchPlayer();
+interface Props {
+  current: TSong;
+}
 
-  if (!player) return null;
+const Player = React.memo(({ current }: Props) => {
+  if (!current) return null;
 
   return (
     <StyledPlayer>
       <StyledPlayerSection>
         <StyledImageWrapper>
-          <Image size={100} url={player.icon.url} alt={player.icon.alt} />
+          <Image size={100} url={current.icon.url} alt={current.icon.alt} />
         </StyledImageWrapper>
         <StyledDesc>
-          <StyledSongName>{player.songName}</StyledSongName>
-          <StyledArtist>{player.artist}</StyledArtist>
+          <StyledSongName>{current.songName}</StyledSongName>
+          <StyledArtist>{current.artist}</StyledArtist>
         </StyledDesc>
       </StyledPlayerSection>
       <StyledPlayerSection>
         <StyledPlayerInfos>
           <StyledCounterWrapper>
-            <Counter readonly count={player.count} />
+            <Counter readonly count={current.count} />
           </StyledCounterWrapper>
-          <Label content={`Requested by ${player.requester.name}`} />
+          <Label content={`Requested by ${current.requester.name}`} />
         </StyledPlayerInfos>
       </StyledPlayerSection>
     </StyledPlayer>
   );
-};
+});
 
 export default Player;

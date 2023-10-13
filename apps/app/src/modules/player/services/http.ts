@@ -1,7 +1,7 @@
-import { TSong } from '_modules/song/types';
-
 import httpRequest from '_services/http';
 
-const fetchPlayer = () => httpRequest.get<TSong>('/songs');
+import { TPlayer } from '_shared/player/types';
+
+const fetchPlayer = () => httpRequest.get<TPlayer>('/songs');
 
 export default { fetchPlayer };
