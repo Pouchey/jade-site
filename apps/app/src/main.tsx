@@ -26,5 +26,5 @@ root.render(
         </BrowserRouter>
       </ErrorBoundary>
     </ThemeProvider>
-  </QueryClientProvider>
+  </QueryClientProvider>,
 );

@@ -1,11 +1,13 @@
 {
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ],
   "singleQuote": true,
   "printWidth": 80,
   "importOrder": [
     "^_components(.*)$",
     "^_modules(.*)$",
     "^_services(.*)$",
-    "^_stories(.*)$",
     "^_style(.*)$",
     "^_utils(.*)$",
     "^../(.*)$",

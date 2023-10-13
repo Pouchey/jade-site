@@ -16,7 +16,7 @@ const Modal = ({ children, isLoading }: Props) =>
         <ModalContent>{children}</ModalContent>
       )}
     </ModalContainer>,
-    document.getElementById('modal') as HTMLElement
+    document.getElementById('modal') as HTMLElement,
   );
 
 export default Modal;

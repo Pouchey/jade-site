@@ -6,19 +6,19 @@ const sleep = (duration = randInt(200, 600)) =>
 const logRequest = (url: string, body: unknown, data: unknown) => {
   console.info(
     `%c  REQUEST  ${url}  `,
-    'background-color: #2f6e40; color: white;'
+    'background-color: #2f6e40; color: white;',
   );
   if (body)
     console.info(
       '%c  BODY  ',
       'background-color: #939dba; color: white;',
-      body
+      body,
     );
   if (data)
     console.info(
       '%c  RESPONSE  ',
       'background-color: #939dba; color: white;',
-      data
+      data,
     );
 };
 
@@ -29,14 +29,14 @@ const fakeRequest = async <T>(
   status = 200,
   error = null,
   latency = randInt(200, 600),
-  headers = {}
+  headers = {},
 ) => {
   logRequest(
     `${import.meta.env.VITE_API_URL || 'API_URL'}${
       url.endsWith('?') ? url.slice(0, -1) : url
     }`,
     body,
-    data
+    data,
   );
   await sleep(latency);
 

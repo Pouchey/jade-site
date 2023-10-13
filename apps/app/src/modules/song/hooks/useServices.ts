@@ -14,7 +14,7 @@ export const useFetchSongs = () => {
     },
     {
       refetchOnWindowFocus: false,
-    }
+    },
   );
 };
 

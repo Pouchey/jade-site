@@ -22,7 +22,9 @@ export const StyledLines = styled.div`
     content: '';
     background-color: ${({ theme }) => theme.color.white};
     border-radius: 8px;
-    transition: transform 0.2s ease-in-out, width 0.2s ease-in-out 0.2s;
+    transition:
+      transform 0.2s ease-in-out,
+      width 0.2s ease-in-out 0.2s;
   }
 
   &::before {
@@ -66,7 +68,9 @@ export const StyledBurger = styled.div<StyledBurgerProps>`
         &::before,
         &::after {
           width: 50%;
-          transition: transform 0.2s ease-in-out 0.2s, width 0.2s ease-in-out;
+          transition:
+            transform 0.2s ease-in-out 0.2s,
+            width 0.2s ease-in-out;
         }
 
         &::before {

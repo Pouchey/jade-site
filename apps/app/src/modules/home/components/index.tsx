@@ -38,9 +38,7 @@ const Home = () => {
         />
       </StyledWrapper>
       <StyledSongItemList>
-        {songs?.map((song) => (
-          <SongItem key={song.id} song={song} />
-        ))}
+        {songs?.map((song) => <SongItem key={song.id} song={song} />)}
       </StyledSongItemList>
     </StyledContainer>
   );
