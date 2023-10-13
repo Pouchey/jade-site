@@ -4,16 +4,19 @@ import { ThemeType } from '_style/theme';
 
 import { StyledSvgWrapper } from './style';
 
-const svgs = import.meta.glob('./svg/*.svg', { eager: true });
+const svgs = import.meta.glob('./svg/*.svg', {
+  eager: true,
+  as: 'react',
+});
 
 const cache = new Map<string, React.FC>();
 
 for (const path in svgs) {
   const name = path.match(/\.\/svg\/(.*)\.svg$/)?.[1];
   if (name) {
-    const Icon = svgs[path] as { ReactComponent: React.FC };
+    const Icon = svgs[path] as { default: React.FC };
 
-    cache.set(name, Icon.ReactComponent);
+    cache.set(name, Icon.default);
   }
 }
 
