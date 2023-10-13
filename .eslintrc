@@ -12,7 +12,8 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -39,7 +40,10 @@
     "react/prop-types": "off",
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
-    "react-refresh/only-export-components": "warn"
+    "react-refresh/only-export-components": "warn",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "plugins": ["@typescript-eslint", "react-refresh"]
 }
