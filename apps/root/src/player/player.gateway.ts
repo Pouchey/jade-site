@@ -30,10 +30,34 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.playerService.handleDisconnect(client);
   }
 
-  @SubscribeMessage('player')
+  @SubscribeMessage('nextSong')
   handleMessage(@ConnectedSocket() client: Socket,
-    @MessageBody() message: string) {
-    this.server.emit('player', message); // Broadcast the message to all connected clients
-    }
+    @MessageBody() songId: number) {
+
+    const player = this.playerService.setNextSong(client.id, songId);
+
+    this.server.emit('playerUpdated',player); 
+  }
+
+  @SubscribeMessage('likeSong')
+  handleLikeSong(@ConnectedSocket() client: Socket,
+    @MessageBody() songId: number) {
+
+    const liked = this.playerService.likeSong(client.id, songId);
+
+    if(!liked)
+      return;
+
+    this.server.emit('songUpdated',liked); 
+  }
+
+  @SubscribeMessage('addSong')
+  handleAddSong(@ConnectedSocket() client: Socket,
+    @MessageBody() songId: number) {
+
+    const song = this.playerService.addSong(client.id, songId);
+
+    this.server.emit('songAdded',song); 
+  }
 
 }

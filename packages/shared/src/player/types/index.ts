@@ -1,6 +1,6 @@
 import { TSong } from '../../song/types';
 
 export type TPlayer = {
-  current: TSong;
+  current: TSong | null;
   songs: TSong[];
 };
