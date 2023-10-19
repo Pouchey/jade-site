@@ -18,7 +18,7 @@ import {
 } from './style';
 
 interface Props {
-  current: TSong;
+  current: TSong | null;
 }
 
 const Player = React.memo(({ current }: Props) => {

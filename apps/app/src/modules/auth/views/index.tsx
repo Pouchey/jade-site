@@ -2,7 +2,8 @@ import Icon from '_components/icon';
 
 import { StyledDarkTitle } from '_style/common';
 
-import AuthForm from './form';
+import AuthForm from '../components/form';
+
 import {
   StyledContainer,
   StyledAuth,

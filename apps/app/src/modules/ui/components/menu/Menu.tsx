@@ -6,12 +6,8 @@ import { useMenuContext } from '_modules/ui/hooks/useContext';
 
 import { StyledTitle } from '_style/common';
 
-import {
-  StyledLink,
-  StyledLogoWrapper,
-  StyledMenu,
-  StyledMenuWrapper,
-} from './style';
+import Link from './Link';
+import { StyledLogoWrapper, StyledMenu, StyledMenuWrapper } from './style';
 
 const MenuContent = React.memo(() => {
   const { state } = useMenuContext();
@@ -21,11 +17,11 @@ const MenuContent = React.memo(() => {
   return (
     <StyledMenuWrapper $isMenuOpened={isMenuOpened}>
       <StyledMenu>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/request">Request</StyledLink>
-        <StyledLink to="/songlist">Songlist</StyledLink>
-        <StyledLink to="/donate">Donation</StyledLink>
-        <StyledLink to="/admin">Admin Panel</StyledLink>
+        <Link label="Home" to="/" />
+        <Link label="Request" to="/request" />
+        <Link label="Songlist" to="/songlist" />
+        <Link label="Donation" to="/donate" />
+        <Link label="Admin Panel" to="/admin" />
         <StyledLogoWrapper>
           <Icon glyph="guitare" size={300} color="white" />
           <StyledTitle>Jade Rowley</StyledTitle>

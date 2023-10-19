@@ -24,7 +24,7 @@ const Topbar = React.memo(() => {
   return (
     <StyledTopBar onClick={handleNavigate}>
       <StyledBurgerWrapper>
-        <Burger onClick={handleMenu} />
+        <Burger onClick={handleMenu} value={state.isMenuOpened} />
       </StyledBurgerWrapper>
       <StyledTitle>Jade Rowley</StyledTitle>
     </StyledTopBar>

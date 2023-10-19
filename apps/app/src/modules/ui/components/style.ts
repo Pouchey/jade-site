@@ -8,6 +8,7 @@ export const StyledMain = styled.main`
     'content';
   height: 100vh;
   max-height: 100vh;
+  background-color: ${({ theme }) => theme.color.beige1};
 `;
 
 export const StyledContent = styled.div`

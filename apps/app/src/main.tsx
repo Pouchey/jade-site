@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import Auth from '_modules/auth/components';
+import Auth from '_modules/auth/views';
 import ErrorBoundary from '_modules/error-boundary';
 
 import App from './App';

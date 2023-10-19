@@ -4,10 +4,11 @@ import Button from '_components/button';
 import Label from '_components/label';
 import Loader from '_components/loader';
 
-import Player from '_modules/player/components';
 import { useFetchPlayer } from '_modules/player/hooks/useServices';
+import Player from '_modules/player/views';
 
-import SongItem from './song-item';
+import SongItem from '../components/song-item';
+
 import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
 
 const Home = () => {
