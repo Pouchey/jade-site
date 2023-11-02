@@ -22,10 +22,10 @@ const logRequest = (url: string, body: unknown, data: unknown) => {
     );
 };
 
-const fakeRequest = async <T>(
-  data: T,
+const fakeRequest = async <R, B = unknown>(
+  data: R,
   url: string,
-  body = null,
+  body: B | null = null,
   status = 200,
   error = null,
   latency = randInt(200, 600),

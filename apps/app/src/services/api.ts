@@ -1,16 +1,20 @@
+import AuthRequestFake from '_modules/auth/services/fake';
+import AuthRequestHttp from '_modules/auth/services/http';
 import PlayerRequestFake from '_modules/player/services/fake';
 import PlayerRequestHttp from '_modules/player/services/http';
 import SongRequestFake from '_modules/song/services/fake';
 import SongRequestHttp from '_modules/song/services/http';
 
 export const fakeAPI = {
-  ...SongRequestFake,
+  ...AuthRequestFake,
   ...PlayerRequestFake,
+  ...SongRequestFake,
 } as const;
 
 export const httpAPI = {
-  ...SongRequestHttp,
+  ...AuthRequestHttp,
   ...PlayerRequestHttp,
+  ...SongRequestHttp,
 } as const;
 
 export default () =>

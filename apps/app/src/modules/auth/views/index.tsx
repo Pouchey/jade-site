@@ -1,8 +1,12 @@
+import React from 'react';
+
 import Icon from '_components/icon';
 
-import { StyledDarkTitle } from '_style/common';
+import AuthForm from '_modules/auth/components/form';
+import { useLogin } from '_modules/auth/hooks/useServices';
+import { TAuthForm } from '_modules/auth/types/form';
 
-import AuthForm from '../components/form';
+import { StyledDarkTitle } from '_style/common';
 
 import {
   StyledContainer,
@@ -11,7 +15,13 @@ import {
   StyledWelcome,
 } from './style';
 
-const Auth = () => {
+const Auth = React.memo(() => {
+  const { mutate } = useLogin();
+
+  const handleSubmit = (formData: TAuthForm) => {
+    mutate(formData);
+  };
+
   return (
     <StyledContainer>
       <StyledPanel>
@@ -20,10 +30,10 @@ const Auth = () => {
       </StyledPanel>
       <StyledAuth>
         <StyledWelcome>Welcome back</StyledWelcome>
-        <AuthForm onSubmit={(data) => console.log(data)} />
+        <AuthForm onSubmit={handleSubmit} />
       </StyledAuth>
     </StyledContainer>
   );
-};
+});
 
 export default Auth;

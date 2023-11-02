@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { MenuActionType, MenuState, DefaultMenuState } from '_modules/ui/types';
+import {
+  MenuActionType,
+  MenuState,
+  DefaultMenuState,
+} from '_modules/ui/types/context';
 
 const initialArgs = DefaultMenuState;
 

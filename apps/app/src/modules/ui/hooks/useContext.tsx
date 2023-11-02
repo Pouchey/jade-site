@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { MenuContextInterface, DefaultMenuContext } from '_modules/ui/types';
+import {
+  MenuContextInterface,
+  DefaultMenuContext,
+} from '_modules/ui/types/context';
 
 import useMenuReducer from './useReducer';
 
