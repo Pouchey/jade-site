@@ -14,7 +14,7 @@ const SelectSong = React.memo(() => {
   if (isFetching) {
     return (
       <StyledContainer>
-        <Loader label="Chargement..." />;
+        <Loader label="Chargement..." />
       </StyledContainer>
     );
   }
