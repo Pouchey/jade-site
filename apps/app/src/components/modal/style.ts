@@ -36,8 +36,28 @@ export const ModalContainer = styled.div`
   animation: ${overlayFadeIn} 0.3s ease-in-out;
 `;
 
+export const ModalInfo = styled.div`
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.color.beige1};
+
+  > span {
+    text-align: center;
+  }
+`;
+
 export const ModalContent = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   width: 250px;
   height: 250px;
   padding: 20px;
