@@ -13,7 +13,7 @@ const Donate = React.memo(() => {
   return (
     <Modal
       onClose={handleClose}
-      info="This feature is still under development. But feel free to use Jade donation box."
+      info="This feature is still under development. But feel free to use Jade's donation box."
     >
       <Button label="Ok" onClick={handleClose} />
     </Modal>
