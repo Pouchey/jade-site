@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-import { resetAccessToken } from '_modules/auth/utils';
+import { isTokenExpiredError, resetAccessToken } from '_modules/auth/utils';
 
 const httpRequest = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api/v1/`,
@@ -24,7 +24,7 @@ export const initHttpRequest = () => {
   httpRequest.interceptors.response.use(
     (response) => response,
     (error: AxiosError) => {
-      if (error?.response?.status === 401) {
+      if (isTokenExpiredError(error)) {
         resetAccessToken();
         window.location.href = '/login';
       }
