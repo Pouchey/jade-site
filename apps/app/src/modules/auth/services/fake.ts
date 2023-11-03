@@ -11,4 +11,6 @@ const login = (formData: TLoginRequest) =>
     formData,
   );
 
-export default { login };
+const logout = () => fakeRequest(null, '/auth/logout');
+
+export default { login, logout };

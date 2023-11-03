@@ -20,7 +20,7 @@ import {
 const Auth = React.memo(() => {
   const { state } = useAuthContext();
 
-  const { from } = useLocation().state as { from: string };
+  const locationState = useLocation().state as { from: string };
 
   const { mutate, isLoading } = useLogin();
 
@@ -28,7 +28,8 @@ const Auth = React.memo(() => {
     mutate(formData);
   };
 
-  if (state.isLogged) return <Navigate to={from || '/'} replace={true} />;
+  if (state.isLogged)
+    return <Navigate to={locationState?.from || '/'} replace={true} />;
 
   return (
     <StyledContainer>

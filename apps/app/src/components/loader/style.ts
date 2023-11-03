@@ -6,6 +6,7 @@ export interface StyledLoaderProps {
   color?: keyof ThemeType['color'];
   size?: number;
   delay?: number;
+  inline?: boolean;
 }
 
 const loaderAnimation = keyframes`
@@ -23,7 +24,7 @@ const loaderAnimation = keyframes`
   }
 `;
 
-export const StyledLoaderWrapper = styled.div`
+export const StyledLoaderWrapper = styled.div<StyledLoaderProps>`
   display: flex;
   flex-direction: column;
   align-items: center;

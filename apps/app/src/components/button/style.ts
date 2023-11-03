@@ -1,22 +1,26 @@
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
+import { StyledLoaderWrapper } from '_components/loader/style';
+
 import { ThemeType } from '_style/theme';
 
 export interface StyledButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  color?: 'primary' | 'secondary';
-  size?: keyof ThemeType['size'];
+  $color?: 'primary' | 'secondary';
+  $size?: keyof ThemeType['size'];
   $disabled?: boolean;
+  $isLoading?: boolean;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: ${({ theme, size }) => theme.size[size || 'normal']};
-  font-size: ${({ theme, size }) => theme.size[size || 'normal']};
+  padding: ${({ theme, $size }) => theme.size[$size || 'normal']};
+  font-size: ${({ theme, $size }) => theme.size[$size || 'normal']};
   font-weight: ${({ theme }) => theme.weight.medium};
   color: #fff;
   cursor: pointer;
@@ -52,10 +56,27 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
     }
   }}
-  ${({ $disabled }) =>
-    $disabled &&
+  ${({ disabled }) =>
+    disabled &&
     css`
       cursor: not-allowed;
       opacity: 0.5;
+    `}
+
+  ${({ $isLoading, theme }) =>
+    $isLoading &&
+    css`
+      cursor: not-allowed;
+      background-color: ${theme.color.green2};
+
+      &:hover {
+        background-color: ${theme.color.green2};
+      }
+
+      ${StyledLoaderWrapper} {
+        position: absolute;
+        right: 16px;
+        width: auto;
+      }
     `}
 `;

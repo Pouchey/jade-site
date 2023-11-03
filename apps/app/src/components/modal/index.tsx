@@ -1,5 +1,7 @@
 import { createPortal } from 'react-dom';
 
+import Loader from '_components/loader';
+
 import { ModalContainer, ModalContent } from './style';
 
 interface Props {
@@ -11,7 +13,7 @@ const Modal = ({ children, isLoading }: Props) =>
   createPortal(
     <ModalContainer className="modal">
       {isLoading ? (
-        <div>Loading...</div>
+        <Loader size={32} />
       ) : (
         <ModalContent>{children}</ModalContent>
       )}

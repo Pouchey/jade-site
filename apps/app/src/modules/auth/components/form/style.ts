@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import { StyledButton } from '_components/button/style';
+
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 16px;
   justify-content: flex-start;
   width: 100%;
   height: 100%;
@@ -10,11 +13,7 @@ export const StyledForm = styled.form`
   border: 1px solid ${({ theme }) => theme.color.black};
   border-radius: 8px;
 
-  * {
-    margin-bottom: 16px;
-  }
-
-  *:last-child {
+  ${StyledButton} {
     margin-top: 64px;
   }
 `;

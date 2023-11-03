@@ -14,7 +14,7 @@ const api = getAPI();
 export const useLogin = () => {
   const { dispatch } = useAuthContext();
 
-  const { from } = useLocation().state as { from: string };
+  const locationState = useLocation().state as { from: string };
   const navigate = useNavigate();
 
   return useMutation(
@@ -26,7 +26,7 @@ export const useLogin = () => {
       onSuccess: (data: TLoginResponse) => {
         setAccessToken(data.accessToken);
         dispatch({ type: 'setIsLogged' });
-        navigate(from || '/', { replace: true });
+        navigate(locationState?.from || '/', { replace: true });
       },
       onError: () => {
         resetAccessToken();

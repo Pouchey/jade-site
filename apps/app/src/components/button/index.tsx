@@ -13,8 +13,23 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-const Button = ({ label, disabled, isLoading, ...props }: Props) => (
-  <StyledButton $disabled={disabled || isLoading} {...props}>
+const Button = ({
+  label,
+  disabled,
+  isLoading,
+  size,
+  color,
+  onClick,
+  ...props
+}: Props) => (
+  <StyledButton
+    {...props}
+    onClick={onClick}
+    $disabled={disabled}
+    $size={size}
+    $color={color}
+    $isLoading={isLoading}
+  >
     {label}
     {isLoading && <Loader size={16} />}
   </StyledButton>
