@@ -4,6 +4,7 @@
   "printWidth": 80,
   "importOrder": [
     "^_components(.*)$",
+    "^_hooks(.*)$",
     "^_modules(.*)$",
     "^_services(.*)$",
     "^_style(.*)$",
