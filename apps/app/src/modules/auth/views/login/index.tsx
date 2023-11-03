@@ -1,8 +1,10 @@
 import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 
 import Icon from '_components/icon';
 
 import AuthForm from '_modules/auth/components/form';
+import { useAuthContext } from '_modules/auth/hooks/useContext';
 import { useLogin } from '_modules/auth/hooks/useServices';
 import { TAuthForm } from '_modules/auth/types/form';
 
@@ -16,11 +18,17 @@ import {
 } from './style';
 
 const Auth = React.memo(() => {
-  const { mutate } = useLogin();
+  const { state } = useAuthContext();
+
+  const { from } = useLocation().state as { from: string };
+
+  const { mutate, isLoading } = useLogin();
 
   const handleSubmit = (formData: TAuthForm) => {
     mutate(formData);
   };
+
+  if (state.isLogged) return <Navigate to={from || '/'} replace={true} />;
 
   return (
     <StyledContainer>
@@ -30,7 +38,7 @@ const Auth = React.memo(() => {
       </StyledPanel>
       <StyledAuth>
         <StyledWelcome>Welcome back</StyledWelcome>
-        <AuthForm onSubmit={handleSubmit} />
+        <AuthForm onSubmit={handleSubmit} isLoading={isLoading} />
       </StyledAuth>
     </StyledContainer>
   );

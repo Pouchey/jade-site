@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { AuthProvider } from '_modules/auth/hooks/useContext';
-import Auth from '_modules/auth/views';
+import Auth from '_modules/auth/views/login';
 import ErrorBoundary from '_modules/error-boundary';
 
 import App from './App';

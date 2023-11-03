@@ -6,6 +6,8 @@ import {
   DefaultAuthState,
 } from '_modules/auth/types/context';
 
+import { getAccessToken } from '../utils';
+
 const initialArgs = DefaultAuthState;
 
 const AuthReducer = (state: AuthState, { type }: AuthActionType) => {
@@ -23,4 +25,8 @@ const AuthReducer = (state: AuthState, { type }: AuthActionType) => {
   }
 };
 
-export default () => React.useReducer(AuthReducer, initialArgs);
+export default () =>
+  React.useReducer(AuthReducer, {
+    ...initialArgs,
+    isLogged: !!getAccessToken(),
+  });

@@ -17,10 +17,11 @@ import {
 } from './style';
 
 interface Props {
+  isLoading: boolean;
   onSubmit: SubmitHandler<TAuthForm>;
 }
 
-const AuthForm = ({ onSubmit }: Props) => {
+const AuthForm = ({ isLoading, onSubmit }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const updateShowPassword = () => {
@@ -50,7 +51,13 @@ const AuthForm = ({ onSubmit }: Props) => {
           />
         </StyledIconButton>
       </StyledPassword>
-      <Button type="submit" color="secondary" size="huge" label="Login" />
+      <Button
+        isLoading={isLoading}
+        type="submit"
+        color="secondary"
+        size="huge"
+        label="Login"
+      />
     </StyledForm>
   );
 };

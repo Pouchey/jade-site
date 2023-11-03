@@ -7,7 +7,7 @@ export interface StyledButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: 'primary' | 'secondary';
   size?: keyof ThemeType['size'];
-  disabled?: boolean;
+  $disabled?: boolean;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -52,8 +52,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
     }
   }}
-  ${({ disabled }) =>
-    disabled &&
+  ${({ $disabled }) =>
+    $disabled &&
     css`
       cursor: not-allowed;
       opacity: 0.5;

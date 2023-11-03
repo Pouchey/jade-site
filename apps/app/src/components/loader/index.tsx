@@ -10,12 +10,12 @@ import {
 const bars = [1, 0.9, 0.8, 0.7, 0.6];
 
 interface Props {
-  label: string;
+  label?: string;
   color?: keyof ThemeType['color'];
   size?: number;
 }
 
-const Label = ({ label, color = 'green2', size = 48 }: Props) => {
+const Loader = ({ label, color = 'green2', size = 48 }: Props) => {
   return (
     <StyledLoaderWrapper>
       <StyledLoader color={color} size={size}>
@@ -23,9 +23,9 @@ const Label = ({ label, color = 'green2', size = 48 }: Props) => {
           <StyledBar key={bar} color={color} size={size} delay={bar} />
         ))}
       </StyledLoader>
-      <StyledLoaderLabel>{label}</StyledLoaderLabel>
+      {label && <StyledLoaderLabel>{label}</StyledLoaderLabel>}
     </StyledLoaderWrapper>
   );
 };
 
-export default Label;
+export default Loader;
