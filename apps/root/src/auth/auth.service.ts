@@ -17,25 +17,50 @@ export class AuthService {
     return bcrypt.hash(data, 10);
   }
 
+  async generateTokens(userId: string, email: string) {
+    const accessTokenPromise = this.jwtService.signAsync(
+      {
+        sub: userId,
+        email,
+      },
+      {
+        secret: process.env.ACCESS_TOKEN_SECRET,
+        expiresIn: '15m',
+      },
+    );
+
+    const refreshTokenPromise = this.jwtService.signAsync(
+      {
+        sub: userId,
+        email,
+      },
+      {
+        secret: process.env.REFRESH_TOKEN_SECRET,
+        expiresIn: '7d',
+      },
+    );
+
+    const [accessToken, refreshToken] = await Promise.all([
+      accessTokenPromise,
+      refreshTokenPromise,
+    ]);
+
+    return { accessToken, refreshToken };
+  }
+
   async login(dto: AuthDto): Promise<ITokens> {
     const { email, password } = dto;
 
-    const user = await this.prismaService.user.findUnique({
-      where: { email },
-    });
-
-    const isPasswordValid = await bcrypt.compare(password, user.hashedPassword);
+    const hashedPassword = await this.hashData(process.env.ADMIN_PASSWORD);
+    const isPasswordValid = await bcrypt.compare(password, hashedPassword);
 
     if (!isPasswordValid) {
       throw new Error('Invalid password');
     }
 
-    // TODO: Generate tokens
+    const tokens = await this.generateTokens(process.env.ADMIN_ID, email);
 
-    // TODO: Save refresh token to database
-    // TODO: Return tokens
-
-    return {} as ITokens;
+    return tokens;
   }
 
   async logout() {}
