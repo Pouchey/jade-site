@@ -1,7 +1,6 @@
 import { AxiosError } from 'axios';
 
-export const ACCESS_TOKEN_KEY = 'access-token';
-export const REFRESH_TOKEN_KEY = 'refresh-token';
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '_shared/auth/types';
 
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
 export const getRefreshToken = () => localStorage.getItem(REFRESH_TOKEN_KEY);

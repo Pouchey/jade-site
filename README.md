@@ -1,5 +1,3 @@
-# TO DO List
+# Root
 
-- Implement BD
-- Image Uploader
-- Song Module (REST)
+After every prisma model change, run `prisma generate` to update the prisma client.
