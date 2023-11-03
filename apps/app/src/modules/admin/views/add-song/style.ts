@@ -7,7 +7,7 @@ export const StyledLogoWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin: 32px 0;
+  padding: 32px 0;
 
   *:last-child {
     margin-top: 16px;

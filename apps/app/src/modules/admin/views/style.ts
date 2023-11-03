@@ -9,7 +9,7 @@ export const StyledContainer = styled.div`
   padding: 25px;
 
   > div {
-    max-width: 350px;
     width: 100%;
+    max-width: 350px;
   }
 `;
