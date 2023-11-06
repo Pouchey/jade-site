@@ -1,23 +1,19 @@
 import { ITokens } from '@jaderowley/shared/src/auth/types';
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { UserService } from 'src/user/user.service';
 
 import { AuthDto } from './dto';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly prismaService: PrismaService,
+    private readonly userService: UserService,
     private readonly jwtService: JwtService,
   ) {}
 
-  hashData(data: string) {
-    return bcrypt.hash(data, 10);
-  }
-
-  async generateTokens(userId: string, email: string) {
+  private async generateTokens(userId: number, email: string) {
     const accessTokenPromise = this.jwtService.signAsync(
       {
         sub: userId,
@@ -48,22 +44,69 @@ export class AuthService {
     return { accessToken, refreshToken };
   }
 
+  private async saveRefreshToken(userId: number, refreshToken: string) {
+    const hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
+
+    const user = await this.userService.findUserById(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    await this.userService.updateUser(userId, {
+      refreshToken: hashedRefreshToken,
+    });
+  }
+
   async login(dto: AuthDto): Promise<ITokens> {
     const { email, password } = dto;
 
-    const hashedPassword = await this.hashData(process.env.ADMIN_PASSWORD);
-    const isPasswordValid = await bcrypt.compare(password, hashedPassword);
+    const user = await this.userService.findUserByEmail(email);
 
-    if (!isPasswordValid) {
-      throw new Error('Invalid password');
+    if (!user) {
+      throw new ForbiddenException('Access denied');
     }
 
-    const tokens = await this.generateTokens(process.env.ADMIN_ID, email);
+    const isPasswordValid = await bcrypt.compare(password, user.hashedPassword);
+
+    if (!isPasswordValid) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    const tokens = await this.generateTokens(user.id, user.email);
+    await this.saveRefreshToken(user.id, tokens.refreshToken);
 
     return tokens;
   }
 
-  async logout() {}
+  async logout(userId: number) {
+    await this.userService.updateUser(userId, {
+      refreshToken: null,
+    });
 
-  async refresh() {}
+    return true;
+  }
+
+  async refresh(userId: number, refreshToken: string) {
+    const user = await this.userService.findUserById(userId);
+
+    if (!user || !user.refreshToken) {
+      throw new Error('Access denied');
+    }
+
+    const isRefreshTokenValid = await bcrypt.compare(
+      refreshToken,
+      user.refreshToken,
+    );
+
+    if (!isRefreshTokenValid) {
+      throw new Error('Access denied');
+    }
+
+    const tokens = await this.generateTokens(user.id, user.email);
+
+    await this.saveRefreshToken(user.id, tokens.refreshToken);
+
+    return tokens;
+  }
 }
