@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '_components/button';
@@ -11,7 +12,7 @@ import SongItem from '../components/song-item';
 
 import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
 
-const Home = () => {
+const Home = React.memo(() => {
   const navigate = useNavigate();
 
   const { isFetching, data: player } = useFetchPlayer();
@@ -52,6 +53,6 @@ const Home = () => {
       </StyledSongItemList>
     </StyledContainer>
   );
-};
+});
 
 export default Home;

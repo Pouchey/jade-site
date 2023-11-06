@@ -18,7 +18,7 @@ const App = React.memo(() => {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/songlist" element={<SongList />} />
-        <Route path="*" element={<Donate />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
     </UIWrapper>
   );
