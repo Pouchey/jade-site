@@ -31,7 +31,7 @@ const SongForm = ({ isLoading, onSubmit }: Props) => {
       <StyledImg src="" alt="Song cover" />
       <StyledIconContainer>
         <Icon glyph="close" size={50} color="white" />
-        <Icon glyph="bin" size={45} color="red1" />
+        <Icon glyph="bin" size={35} color="red1" />
       </StyledIconContainer>
       <StyledLabel>Song</StyledLabel>
       <StyledInput {...register('song')} placeholder="Song title" />
