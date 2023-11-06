@@ -26,7 +26,7 @@ export const refreshTokenInterception = async (error: AxiosError) => {
   try {
     const refreshToken = getRefreshToken();
 
-    if (!refreshToken) {
+    if (!refreshToken || error?.config?.url === '/auth/refresh') {
       return Promise.reject(error);
     }
 
