@@ -20,7 +20,7 @@ export const useFetchSongs = () => {
 
 export const useFetchSong = (id: number) => {
   return useQuery({
-    queryKey: ['song', id],
+    queryKey: ['songs', id],
     queryFn: async () => {
       const { data } = await api.fetchSong(id);
       return data;
