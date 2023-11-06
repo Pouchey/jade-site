@@ -1,6 +1,10 @@
 import { AxiosError } from 'axios';
 
+import httpRequest from '_services/http';
+
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '_shared/auth/types';
+
+import { TRefreshResponse } from './types/request';
 
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
 export const getRefreshToken = () => localStorage.getItem(REFRESH_TOKEN_KEY);
@@ -19,8 +23,39 @@ export const isTokenExpiredError = (error: AxiosError) =>
   error?.response?.status === 401;
 
 export const refreshTokenInterception = async (error: AxiosError) => {
-  const { response } = error;
-  const refreshToken = getRefreshToken();
+  try {
+    const refreshToken = getRefreshToken();
 
-  console.log(response);
+    if (!refreshToken) {
+      return Promise.reject(error);
+    }
+
+    const { data } = await httpRequest.post<TRefreshResponse>('/auth/refresh', {
+      refreshToken,
+    });
+
+    if (!data) {
+      return Promise.reject(error);
+    }
+
+    setAccessToken(data.accessToken);
+    setRefreshToken(data.refreshToken);
+
+    const config = error.config;
+
+    const newHeaders = {
+      ...config?.headers,
+      Authorization: `Bearer ${data.accessToken}`,
+    };
+
+    return httpRequest.request({
+      ...config,
+      headers: newHeaders,
+    });
+  } catch (error) {
+    resetAccessToken();
+    resetRefreshToken();
+    window.location.reload();
+    return Promise.reject(error);
+  }
 };

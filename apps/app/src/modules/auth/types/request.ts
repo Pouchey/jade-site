@@ -5,4 +5,9 @@ export type TLoginResponse = {
   refreshToken: string;
 };
 
+export type TRefreshResponse = {
+  accessToken: string;
+  refreshToken: string;
+};
+
 export type TLoginRequest = TAuthForm;
