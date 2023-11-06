@@ -3,7 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { TAuthForm } from '_modules/auth/types/form';
 import { TLoginResponse } from '_modules/auth/types/request';
-import { setAccessToken, resetAccessToken } from '_modules/auth/utils';
+import {
+  setAccessToken,
+  resetAccessToken,
+  setRefreshToken,
+  resetRefreshToken,
+} from '_modules/auth/utils';
 
 import getAPI from '_services/api';
 
@@ -25,6 +30,7 @@ export const useLogin = () => {
     {
       onSuccess: (data: TLoginResponse) => {
         setAccessToken(data.accessToken);
+        setRefreshToken(data.refreshToken);
         dispatch({ type: 'setIsLogged' });
         navigate(locationState?.from || '/', { replace: true });
       },
@@ -49,6 +55,8 @@ export const useLogout = () => {
       onSettled: () => {
         queryClient.clear();
         resetAccessToken();
+        resetRefreshToken();
+
         dispatch({ type: 'disconnect' });
         navigate('/login', { replace: true });
       },

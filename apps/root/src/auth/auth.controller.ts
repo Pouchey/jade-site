@@ -2,12 +2,12 @@ import { ITokens } from '@jaderowley/shared/src/auth/types';
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { GetMe } from 'src/common/decorators';
 import { AtGuard, RtGuard } from 'src/common/guards';
 
@@ -18,8 +18,15 @@ import { AuthDto } from './dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @UseGuards(AtGuard)
+  @Get('me')
+  @HttpCode(HttpStatus.OK)
+  me(@GetMe('sub') userId: number) {
+    return this.authService.me(userId);
+  }
+
   @Post('login')
-  @HttpCode(HttpStatus.CREATED)
+  @HttpCode(HttpStatus.OK)
   login(@Body() dto: AuthDto): Promise<ITokens> {
     return this.authService.login(dto);
   }

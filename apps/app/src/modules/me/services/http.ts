@@ -1,8 +1,7 @@
-import { TGetMeRequest, TGetMeResponse } from '_modules/me/types/request';
+import { TGetMeResponse } from '_modules/me/types/request';
 
 import httpRequest from '_services/http';
 
-const fetchMe = (formData: TGetMeRequest) =>
-  httpRequest.post<TGetMeResponse>('/me', formData);
+const fetchMe = () => httpRequest.get<TGetMeResponse>('/auth/me');
 
 export default { fetchMe };

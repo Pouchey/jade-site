@@ -34,8 +34,11 @@ const AuthForm = ({ isLoading, onSubmit }: Props) => {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <StyledLabel>Name :</StyledLabel>
-      <StyledInput {...register('name')} placeholder="Entrez un nom" />
+      <StyledLabel>Email :</StyledLabel>
+      <StyledInput
+        {...register('email')}
+        placeholder="Entrez une adresse mail"
+      />
       <StyledLabel>Password :</StyledLabel>
       <StyledPassword>
         <StyledInput

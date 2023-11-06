@@ -17,3 +17,10 @@ export const resetRefreshToken = () =>
 
 export const isTokenExpiredError = (error: AxiosError) =>
   error?.response?.status === 401;
+
+export const refreshTokenInterception = async (error: AxiosError) => {
+  const { response } = error;
+  const refreshToken = getRefreshToken();
+
+  console.log(response);
+};

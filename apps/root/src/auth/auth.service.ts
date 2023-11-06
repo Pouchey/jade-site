@@ -58,6 +58,19 @@ export class AuthService {
     });
   }
 
+  async me(userId: number) {
+    const user = await this.userService.findUserById(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return {
+      id: user.id,
+      email: user.email,
+    };
+  }
+
   async login(dto: AuthDto): Promise<ITokens> {
     const { email, password } = dto;
 

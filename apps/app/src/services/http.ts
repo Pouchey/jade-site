@@ -1,9 +1,13 @@
 import axios, { AxiosError } from 'axios';
 
-import { isTokenExpiredError, resetAccessToken } from '_modules/auth/utils';
+import {
+  getAccessToken,
+  isTokenExpiredError,
+  refreshTokenInterception,
+} from '_modules/auth/utils';
 
 const httpRequest = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/api/v1/`,
+  baseURL: `${import.meta.env.VITE_API_URL}/api/`,
   data: {},
   withCredentials: true,
   headers: {
@@ -14,7 +18,7 @@ const httpRequest = axios.create({
 
 export const initHttpRequest = () => {
   httpRequest.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
+    const token = getAccessToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -25,8 +29,7 @@ export const initHttpRequest = () => {
     (response) => response,
     (error: AxiosError) => {
       if (isTokenExpiredError(error)) {
-        resetAccessToken();
-        window.location.href = '/login';
+        return refreshTokenInterception(error);
       }
       return Promise.reject(error);
     },
