@@ -1,16 +1,10 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
   width: 100%;
   height: 100%;
   padding: 25px;
-  gap: 25px;
-
-  > div {
-    width: 100%;
-    max-width: 400px;
-  }
 `;

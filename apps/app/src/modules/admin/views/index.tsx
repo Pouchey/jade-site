@@ -12,7 +12,7 @@ const Admin = React.memo(() => {
   const { state } = useAuthContext();
   const { pathname } = useLocation();
 
-  if (!state?.isLogged)
+  if (state?.isLogged)
     return <Navigate to="/login" state={{ from: pathname }} />;
 
   return <Content />;
