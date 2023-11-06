@@ -34,9 +34,6 @@ export const useLogin = () => {
       dispatch({ type: 'setIsLogged' });
       navigate(locationState?.from || '/', { replace: true });
     },
-    onError: () => {
-      resetAccessToken();
-    },
   });
 };
 
