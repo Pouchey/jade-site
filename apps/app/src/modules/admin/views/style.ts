@@ -7,9 +7,10 @@ export const StyledContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 25px;
+  gap: 25px;
 
   > div {
-    max-width: 350px;
     width: 100%;
+    max-width: 400px;
   }
 `;

@@ -38,14 +38,14 @@ export const ModalContainer = styled.div`
 
 export const ModalInfo = styled.div`
   display: flex;
-  gap: 20px;
   flex-direction: column;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 16px;
-  border-radius: 4px;
   background-color: ${({ theme }) => theme.color.beige1};
+  border-radius: 4px;
 
   > span {
     text-align: center;
@@ -56,8 +56,8 @@ export const ModalContent = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
+  align-items: center;
   width: 250px;
   height: 250px;
   padding: 20px;
