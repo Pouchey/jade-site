@@ -1,6 +1,5 @@
-import styled from 'styled-components';
 import { rgba } from 'polished';
-
+import styled from 'styled-components';
 
 export const StyledForm = styled.form`
   display: flex;
@@ -23,7 +22,7 @@ export const StyledInput = styled.input`
   border-radius: 8px;
   outline: none;
 
-  &:focus{
+  &:focus {
     box-shadow: 0 2px 4px ${({ theme }) => rgba(theme.color.black, 0.5)} inset;
   }
 `;
@@ -46,8 +45,8 @@ export const StyledIconContainer = styled.div`
   right: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 50px;
+  align-items: center;
 
   > * {
     cursor: pointer;

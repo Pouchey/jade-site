@@ -1,13 +1,17 @@
-import { TSongRequest } from '_modules/admin/types/request';
+import {
+  TSongGetResponse,
+  TSongPostRequest,
+  TSongPostResponse,
+} from '_modules/song/types/request';
 
 import httpRequest from '_services/http';
 
-import { TSong } from '_shared/song/types';
+const fetchSongs = () => httpRequest.get<TSongGetResponse[]>('/songs');
 
-const fetchSongs = () => httpRequest.get<TSong[]>('/songs');
+const fetchSong = (id: number) =>
+  httpRequest.get<TSongGetResponse>(`/songs/${id}`);
 
-const fetchSong = (id: number) => httpRequest.get<TSong>(`/songs/${id}`);
+const createSong = (formData: TSongPostRequest) =>
+  httpRequest.post<TSongPostResponse>(`/songs`, formData);
 
-const addSong = () => httpRequest.post<TSongRequest>(`/song`);
-
-export default { fetchSongs, fetchSong, addSong };
+export default { fetchSongs, fetchSong, createSong };

@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '_components/button';
 import Icon from '_components/icon';
 
-import { TSongForm } from '_modules/admin/types/form';
+import { TSongForm } from '_modules/song/types/form';
 
 import schema from './schema';
 import {

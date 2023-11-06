@@ -1,25 +1,25 @@
 import React from 'react';
 
-import SongForm from '../components/form';
-import { useAdmin } from '../hooks/useServices';
-import { TSongForm } from '../types/form';
+import SongForm from '_modules/song/components/create/form';
+import { useCreateSong } from '_modules/song/hooks/useServices';
+import { TSongForm } from '_modules/song/types/form';
 
 import AddSong from './add-song';
 import SelectSong from './select-song';
 import { StyledContainer } from './style';
 
 const Content = React.memo(() => {
-  const { mutate, isLoading } = useAdmin();
+  const { mutate: createSong, isPending } = useCreateSong();
 
   const handleSubmit = (formData: TSongForm) => {
-    mutate(formData);
+    createSong(formData);
   };
 
   return (
     <StyledContainer>
       <AddSong />
       <SelectSong />
-      <SongForm isLoading={isLoading} onSubmit={handleSubmit} />
+      <SongForm isLoading={isPending} onSubmit={handleSubmit} />
     </StyledContainer>
   );
 });

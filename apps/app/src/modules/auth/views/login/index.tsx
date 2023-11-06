@@ -22,7 +22,7 @@ const Auth = React.memo(() => {
 
   const locationState = useLocation().state as { from: string };
 
-  const { mutate, isLoading } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const handleSubmit = (formData: TAuthForm) => {
     mutate(formData);
@@ -39,7 +39,7 @@ const Auth = React.memo(() => {
       </StyledPanel>
       <StyledAuth>
         <StyledWelcome>Welcome back</StyledWelcome>
-        <AuthForm onSubmit={handleSubmit} isLoading={isLoading} />
+        <AuthForm onSubmit={handleSubmit} isLoading={isPending} />
       </StyledAuth>
     </StyledContainer>
   );

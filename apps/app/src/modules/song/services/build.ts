@@ -1,8 +1,8 @@
-import { TSong } from '_shared/song/types';
-
 import { randInt } from '_utils/random';
 
-export const buildSong = (id = randInt(1, 100000)): TSong => {
+import { TSongGetResponse } from '../types/request';
+
+export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
   return {
     id,
     songName: `Song ${id}`,
@@ -19,7 +19,7 @@ export const buildSong = (id = randInt(1, 100000)): TSong => {
   };
 };
 
-export const buildSongs = (nb = randInt(10, 100)): TSong[] => {
+export const buildSongs = (nb = randInt(10, 100)): TSongGetResponse[] => {
   const songs = [];
   for (let i = 0; i < nb; i++) {
     songs.push(buildSong());

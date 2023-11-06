@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { TAuthForm } from '_modules/auth/types/form';
@@ -22,23 +22,22 @@ export const useLogin = () => {
   const locationState = useLocation().state as { from: string };
   const navigate = useNavigate();
 
-  return useMutation(
-    async (formData: TAuthForm) => {
+  return useMutation({
+    mutationFn: async (formData: TAuthForm) => {
       const { data } = await api.login(formData);
       return data;
     },
-    {
-      onSuccess: (data: TLoginResponse) => {
-        setAccessToken(data.accessToken);
-        setRefreshToken(data.refreshToken);
-        dispatch({ type: 'setIsLogged' });
-        navigate(locationState?.from || '/', { replace: true });
-      },
-      onError: () => {
-        resetAccessToken();
-      },
+
+    onSuccess: (data: TLoginResponse) => {
+      setAccessToken(data.accessToken);
+      setRefreshToken(data.refreshToken);
+      dispatch({ type: 'setIsLogged' });
+      navigate(locationState?.from || '/', { replace: true });
     },
-  );
+    onError: () => {
+      resetAccessToken();
+    },
+  });
 };
 
 export const useLogout = () => {
@@ -47,19 +46,18 @@ export const useLogout = () => {
 
   const navigate = useNavigate();
 
-  return useMutation(
-    async () => {
+  return useMutation({
+    mutationFn: async () => {
       await api.logout();
     },
-    {
-      onSettled: () => {
-        queryClient.clear();
-        resetAccessToken();
-        resetRefreshToken();
 
-        dispatch({ type: 'disconnect' });
-        navigate('/login', { replace: true });
-      },
+    onSettled: () => {
+      queryClient.clear();
+      resetAccessToken();
+      resetRefreshToken();
+
+      dispatch({ type: 'disconnect' });
+      navigate('/login', { replace: true });
     },
-  );
+  });
 };

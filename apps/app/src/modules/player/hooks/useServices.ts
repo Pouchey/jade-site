@@ -1,5 +1,5 @@
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { useQuery, useQueryClient } from 'react-query';
 
 import onPlayerUpdate from '_modules/player/services/socket';
 
@@ -12,19 +12,17 @@ export const useFetchPlayer = () => {
 
   useEffect(() => {
     onPlayerUpdate((data) => {
-      queryClient.setQueryData('player', data);
+      queryClient.setQueryData(['player'], data);
     });
   }, []);
 
-  return useQuery(
-    'player',
-    async () => {
+  return useQuery({
+    queryKey: ['player'],
+    queryFn: async () => {
       const { data } = await api.fetchPlayer();
 
       return data;
     },
-    {
-      refetchOnWindowFocus: false,
-    },
-  );
+    refetchOnWindowFocus: false,
+  });
 };

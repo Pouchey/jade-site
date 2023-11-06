@@ -4,12 +4,12 @@ import Label from '_components/label';
 import Loader from '_components/loader';
 
 import SongItem from '_modules/home/components/song-item';
-import { useFetchPlayer } from '_modules/player/hooks/useServices';
+import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import { StyledContainer, StyledSongItemList } from './style';
 
 const SelectSong = React.memo(() => {
-  const { isFetching, data: player } = useFetchPlayer();
+  const { isFetching, data: songs } = useFetchSongs();
 
   if (isFetching) {
     return (
@@ -19,7 +19,7 @@ const SelectSong = React.memo(() => {
     );
   }
 
-  if (!player) {
+  if (!songs) {
     return (
       <StyledContainer>
         <Label content="Rien pour le moment" />
@@ -30,7 +30,7 @@ const SelectSong = React.memo(() => {
   return (
     <StyledContainer>
       <StyledSongItemList>
-        {player.songs?.map((song) => <SongItem key={song.id} song={song} />)}
+        {songs?.map((song) => <SongItem key={song.id} song={song} />)}
       </StyledSongItemList>
     </StyledContainer>
   );

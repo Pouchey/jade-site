@@ -1,4 +1,3 @@
-import AdminRequestFake from '_modules/admin/services/fake';
 import AuthRequestFake from '_modules/auth/services/fake';
 import AuthRequestHttp from '_modules/auth/services/http';
 import MeRequestFake from '_modules/me/services/fake';
@@ -17,7 +16,6 @@ export const fakeAPI = {
   ...MeRequestFake,
   ...PlayerRequestFake,
   ...SongRequestFake,
-  ...AdminRequestFake,
 } as const;
 
 export const httpAPI = {

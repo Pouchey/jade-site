@@ -1,5 +1,5 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { useQueryClient } from 'react-query';
 
 export default () => {
   const queryClient = useQueryClient();
