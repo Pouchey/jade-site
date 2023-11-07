@@ -2,6 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 import {
   getAccessToken,
+  getRefreshToken,
   isTokenExpiredError,
   refreshTokenInterception,
 } from '_modules/auth/utils';
@@ -18,10 +19,17 @@ const httpRequest = axios.create({
 
 export const initHttpRequest = () => {
   httpRequest.interceptors.request.use((config) => {
-    const token = getAccessToken();
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    const accessToken = getAccessToken();
+    const refreshToken = getRefreshToken();
+
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
+
+    if (!accessToken && refreshToken) {
+      config.headers.Authorization = `Bearer ${refreshToken}`;
+    }
+
     return config;
   });
 
