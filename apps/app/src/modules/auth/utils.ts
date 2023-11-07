@@ -24,15 +24,15 @@ export const isTokenExpiredError = (error: AxiosError) =>
 
 export const refreshTokenInterception = async (error: AxiosError) => {
   try {
+    resetAccessToken();
+
     const refreshToken = getRefreshToken();
 
     if (!refreshToken || error?.config?.url === '/auth/refresh') {
       return Promise.reject(error);
     }
 
-    const { data } = await httpRequest.post<TRefreshResponse>('/auth/refresh', {
-      refreshToken,
-    });
+    const { data } = await httpRequest.post<TRefreshResponse>('/auth/refresh');
 
     if (!data) {
       return Promise.reject(error);
@@ -40,7 +40,6 @@ export const refreshTokenInterception = async (error: AxiosError) => {
 
     setAccessToken(data.accessToken);
     setRefreshToken(data.refreshToken);
-
     const config = error.config;
 
     const newHeaders = {
