@@ -1,5 +1,5 @@
 export type TSongForm = {
   song: string;
   artist: string;
-  image?: string;
+  image: { url?: string; alt?: string };
 };

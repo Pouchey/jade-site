@@ -14,4 +14,7 @@ const fetchSong = (id: number) =>
 const createSong = (formData: TSongPostRequest) =>
   httpRequest.post<TSongPostResponse>(`/songs`, formData);
 
-export default { fetchSongs, fetchSong, createSong };
+const updateSong = (formData: TSongPostRequest) =>
+  httpRequest.put<TSongPostResponse>(`/song`, formData);
+
+export default { fetchSongs, fetchSong, createSong, updateSong };

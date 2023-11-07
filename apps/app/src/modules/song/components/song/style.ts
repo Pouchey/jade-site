@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-
 export const StyledSongItemWrapper = styled.div`
   display: flex;
   gap: 16px;
   width: 100%;
   padding: 12px 20px;
+  cursor: pointer;
   background-color: ${({ theme }) => theme.color.white};
   border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 `;
@@ -21,11 +21,10 @@ export const StyledImageWrapper = styled.div`
 export const StyledDesc = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   gap: 4px;
+  justify-content: space-evenly;
   width: 100%;
   overflow: hidden;
-
 `;
 
 export const StyledSongName = styled.div`
@@ -42,5 +41,4 @@ export const StyledArtist = styled.div`
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
-
 `;
