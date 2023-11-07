@@ -53,18 +53,3 @@ export const StyledIconContainer = styled.div`
     cursor: pointer;
   }
 `;
-
-export const StyledIconDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  max-height: 150px;
-  background-color: ${({ theme }) => theme.color.beige1};
-  border-radius: 8px;
-
-  > * {
-    cursor: pointer;
-  }
-`;

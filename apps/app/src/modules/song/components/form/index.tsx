@@ -3,6 +3,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 
 import Button from '_components/button';
 import Icon from '_components/icon';
+import InputFile from '_components/input-file';
 
 import { TSongForm } from '_modules/song/types/form';
 
@@ -13,7 +14,6 @@ import {
   StyledInput,
   StyledImg,
   StyledIconContainer,
-  StyledIconDiv,
 } from './style';
 
 interface Props {
@@ -53,9 +53,7 @@ const SongForm = ({ isLoading, onSubmit, onClose, defaultValues }: Props) => {
         <StyledLabel>Artist</StyledLabel>
         <StyledInput {...register('artist')} placeholder="Artist name" />
         <StyledLabel>Image</StyledLabel>
-        <StyledIconDiv>
-          <Icon glyph="image" size={60} color="grey75" />
-        </StyledIconDiv>
+        <InputFile />
         <Button
           isLoading={isLoading}
           type="submit"
