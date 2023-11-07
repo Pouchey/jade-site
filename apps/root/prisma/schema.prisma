@@ -21,3 +21,12 @@ model User {
   refreshToken String?
 
 }
+
+model File {
+  id          Int      @id @default(autoincrement())
+  
+  createdAt   DateTime @default(now())
+
+  name        String
+  pathname    String
+}

@@ -8,8 +8,8 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { GetMe } from 'src/common/decorators';
-import { AtGuard, RtGuard } from 'src/common/guards';
+import { GetMe } from 'src/core/decorators';
+import { AtGuard, RtGuard } from 'src/core/guards';
 
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';

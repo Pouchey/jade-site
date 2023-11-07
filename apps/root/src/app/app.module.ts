@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from 'src/auth/auth.module';
+import { FileModule } from 'src/file/file.module';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { UserModule } from 'src/user/user.module';
 
@@ -15,9 +16,10 @@ import { AppService } from './app.service';
       isGlobal: true,
     }),
     AuthModule,
+    FileModule,
+    PlayerModule,
     PrismaModule,
     UserModule,
-    PlayerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
