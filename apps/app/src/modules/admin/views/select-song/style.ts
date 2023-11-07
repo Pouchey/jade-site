@@ -17,6 +17,7 @@ export const StyledSongItemList = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-height: 82vh;
   overflow-y: scroll;
   border-top: 1px solid ${({ theme }) => theme.color.green1};
 `;
