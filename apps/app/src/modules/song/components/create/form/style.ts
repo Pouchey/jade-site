@@ -2,6 +2,7 @@ import { rgba } from 'polished';
 import styled from 'styled-components';
 
 export const StyledForm = styled.form`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -42,7 +43,7 @@ export const StyledImg = styled.img`
 
 export const StyledIconContainer = styled.div`
   position: absolute;
-  right: 40px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 50px;
