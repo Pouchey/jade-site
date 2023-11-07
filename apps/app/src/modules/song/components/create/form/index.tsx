@@ -19,9 +19,10 @@ import {
 interface Props {
   isLoading: boolean;
   onSubmit: SubmitHandler<TSongForm>;
+  onClose: () => void;
 }
 
-const SongForm = ({ isLoading, onSubmit }: Props) => {
+const SongForm = ({ isLoading, onSubmit, onClose }: Props) => {
   const { register, handleSubmit } = useForm<TSongForm>({
     resolver: yupResolver(schema),
   });
@@ -30,7 +31,9 @@ const SongForm = ({ isLoading, onSubmit }: Props) => {
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledImg src="" alt="Song cover" />
       <StyledIconContainer>
-        <Icon glyph="close" size={50} color="white" />
+        <div onClick={onClose}>
+          <Icon glyph="close" size={50} color="white" />
+        </div>
         <Icon glyph="delete" size={45} color="red1" />
       </StyledIconContainer>
       <StyledLabel>Song</StyledLabel>

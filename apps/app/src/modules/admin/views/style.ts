@@ -6,6 +6,6 @@ export const StyledContainer = styled.div`
   gap: 25px;
   width: 100%;
   height: 100%;
-  overflow-y: hidden;
   padding: 25px;
+  overflow-y: hidden;
 `;
