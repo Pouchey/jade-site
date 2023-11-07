@@ -3,10 +3,10 @@ import React from 'react';
 import Label from '_components/label';
 import Loader from '_components/loader';
 
-import SongItem from '_modules/home/components/song-item';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import { StyledContainer, StyledSongItemList } from './style';
+import Song from '_modules/song/components/song';
 
 const SelectSong = React.memo(() => {
   const { isFetching, data: songs } = useFetchSongs();
@@ -30,7 +30,7 @@ const SelectSong = React.memo(() => {
   return (
     <StyledContainer>
       <StyledSongItemList>
-        {songs?.map((song) => <SongItem key={song.id} song={song} />)}
+        {songs?.map((song) => <Song key={song.id} song={song} />)}
       </StyledSongItemList>
     </StyledContainer>
   );
