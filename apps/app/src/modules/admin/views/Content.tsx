@@ -6,8 +6,8 @@ import UpdateForm from '_modules/song/views/update';
 
 import { TSong } from '_shared/song/types';
 
-import AddSong from './add-song';
-import SelectSong from './select-song';
+import AddSong from '../components/common/add-song';
+import SelectSong from '../components/common/select-song';
 import { StyledContainer } from './style';
 
 const Content = React.memo(() => {
