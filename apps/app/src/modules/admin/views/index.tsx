@@ -3,6 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 import { useAuthContext } from '_modules/auth/hooks/useContext';
 import { useFetchMe } from '_modules/me/hooks/useServices';
+import { SongProvider } from '_modules/song/hooks/useContext';
 
 import Content from './Content';
 
@@ -19,7 +20,11 @@ const Admin = React.memo(() => {
   if (!state?.isLogged)
     return <Navigate to="/login" state={{ from: pathname }} />;
 
-  return <Content />;
+  return (
+    <SongProvider>
+      <Content />;
+    </SongProvider>
+  );
 });
 
 export default Admin;

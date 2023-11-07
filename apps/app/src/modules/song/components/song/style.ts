@@ -5,6 +5,7 @@ export const StyledSongItemWrapper = styled.div`
   gap: 16px;
   width: 100%;
   padding: 12px 20px;
+  cursor: pointer;
   background-color: ${({ theme }) => theme.color.white};
   border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 `;

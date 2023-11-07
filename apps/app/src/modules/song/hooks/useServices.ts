@@ -41,3 +41,17 @@ export const useCreateSong = () => {
     },
   });
 };
+
+export const useUpdateSong = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (formData: TSongForm) => {
+      const { data } = await api.updateSong(formData);
+      return data;
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['songs'] });
+    },
+  });
+};

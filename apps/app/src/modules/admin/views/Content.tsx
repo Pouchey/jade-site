@@ -1,40 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import SongForm from '_modules/song/components/create/form';
-import { useCreateSong } from '_modules/song/hooks/useServices';
-import { TSongForm } from '_modules/song/types/form';
+import { useSongContext } from '_modules/song/hooks/useContext';
+import CreateForm from '_modules/song/views/create';
+import UpdateForm from '_modules/song/views/update';
+
+import { TSong } from '_shared/song/types';
 
 import AddSong from './add-song';
 import SelectSong from './select-song';
 import { StyledContainer } from './style';
 
 const Content = React.memo(() => {
-  const { mutate: createSong, isPending } = useCreateSong();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleSubmit = (formData: TSongForm) => {
-    createSong(formData);
-  };
+  const { state, dispatch } = useSongContext();
 
   const handleCreateSong = () => {
-    setIsOpen(true);
+    dispatch({
+      type: { value: 'setCreateOpen' },
+      payload: { isCreateOpen: true },
+    });
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
+  const handleUpdateSong = (song: TSong) => {
+    dispatch({
+      type: { value: 'setUpdateOpen' },
+      payload: {
+        isUpdateOpen: true,
+        song: song,
+      },
+    });
   };
 
   return (
     <StyledContainer>
       <AddSong handleClick={handleCreateSong} />
-      <SelectSong />
-      {isOpen && (
-        <SongForm
-          isLoading={isPending}
-          onSubmit={handleSubmit}
-          onClose={handleClose}
-        />
-      )}
+      <SelectSong handleClick={handleUpdateSong} />
+      {state.isCreateOpen && <CreateForm />}
+      {state.isUpdateOpen && <UpdateForm />}
     </StyledContainer>
   );
 });

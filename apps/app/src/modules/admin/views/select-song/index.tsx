@@ -6,9 +6,15 @@ import Loader from '_components/loader';
 import Song from '_modules/song/components/song';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
+import { TSong } from '_shared/song/types';
+
 import { StyledContainer, StyledSongItemList } from './style';
 
-const SelectSong = React.memo(() => {
+interface Props {
+  handleClick: (song: TSong) => void;
+}
+
+const SelectSong = React.memo(({ handleClick }: Props) => {
   const { isFetching, data: songs } = useFetchSongs();
 
   if (isFetching) {
@@ -30,7 +36,11 @@ const SelectSong = React.memo(() => {
   return (
     <StyledContainer>
       <StyledSongItemList>
-        {songs?.map((song) => <Song key={song.id} song={song} />)}
+        {songs?.map((song) => (
+          <div key={song.id} onClick={() => handleClick(song)}>
+            <Song key={song.id} song={song} />
+          </div>
+        ))}
       </StyledSongItemList>
     </StyledContainer>
   );
