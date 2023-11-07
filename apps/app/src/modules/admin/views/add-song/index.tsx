@@ -7,10 +7,19 @@ import { StyledDarkTitle } from '_style/common';
 
 import { StyledLogoWrapper } from './style';
 
-const AddSong = React.memo(() => {
+interface Props {
+  handleClick: () => void;
+}
+
+const AddSong = React.memo(({ handleClick }: Props) => {
   return (
     <div>
-      <Button label="ADD A SONG" size="grizzly" color="primary" />
+      <Button
+        label="ADD A SONG"
+        size="grizzly"
+        color="primary"
+        onClick={handleClick}
+      />
       <StyledLogoWrapper>
         <Icon glyph="guitare" size={400} color="white" />
         <StyledDarkTitle>Jade Rowley</StyledDarkTitle>
