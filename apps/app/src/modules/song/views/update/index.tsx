@@ -7,7 +7,7 @@ import { TSongForm } from '_modules/song/types/form';
 
 const UpdateForm = React.memo(() => {
   const { state, dispatch } = useSongContext();
-  const { mutate: updateSong, isPending } = useUpdateSong(state.song?.id);
+  const { mutate: updateSong, isPending } = useUpdateSong();
 
   const deleteSong = useDeleteSong();
 

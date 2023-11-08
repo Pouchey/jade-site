@@ -42,7 +42,7 @@ export const useCreateSong = () => {
   });
 };
 
-export const useUpdateSong = (id?: number ) => {
+export const useUpdateSong = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
