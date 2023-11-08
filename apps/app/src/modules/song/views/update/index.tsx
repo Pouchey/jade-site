@@ -12,7 +12,7 @@ const UpdateForm = React.memo(() => {
 
   const deleteSong = useDeleteSong();
 
-  let defaultValues = undefined;
+  let defaultValues;
 
   if (state.song) {
     defaultValues = {
