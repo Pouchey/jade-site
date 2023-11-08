@@ -18,7 +18,6 @@ const UpdateForm = React.memo(() => {
       id: state.song.id,
       song: state.song.title,
       artist: state.song.artist,
-      icon: state.song.icon,
     };
   }
 

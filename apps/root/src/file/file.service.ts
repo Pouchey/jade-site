@@ -1,3 +1,4 @@
+import { TFile } from '@jaderowley/shared/src/file/types';
 import { GoneException, Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -6,7 +7,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class FileService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async uploadFile(file: Express.Multer.File) {
+  async uploadFile(file: Express.Multer.File): Promise<TFile> {
     const uploadedFile = await this.prismaService.file.create({
       data: {
         name: file.filename,
@@ -17,7 +18,7 @@ export class FileService {
     return uploadedFile;
   }
 
-  async deleteFile(id: number) {
+  async deleteFile(id: number): Promise<TFile> {
     const deletedFile = await this.prismaService.file.delete({
       where: {
         id,
@@ -33,7 +34,7 @@ export class FileService {
     return deletedFile;
   }
 
-  async getFile(id: number) {
+  async getFile(id: number): Promise<TFile> {
     const file = await this.prismaService.file.findUnique({
       where: {
         id,

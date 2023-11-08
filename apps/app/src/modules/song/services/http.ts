@@ -4,7 +4,7 @@ import {
   TSongPostResponse,
   TSongPutResponse,
   TSongPutRequest,
-  TSongDeleteResponse
+  TSongDeleteResponse,
 } from '_modules/song/types/request';
 
 import httpRequest from '_services/http';
@@ -15,7 +15,11 @@ const fetchSong = (id: number) =>
   httpRequest.get<TSongGetResponse>(`/songs/${id}`);
 
 const createSong = (formData: TSongPostRequest) =>
-  httpRequest.post<TSongPostResponse>(`/songs`, formData);
+  httpRequest.post<TSongPostResponse>(`/songs`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 
 const updateSong = (formData: TSongPutRequest) =>
   httpRequest.put<TSongPutResponse>(`/songs/${formData.id}`, formData);

@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,32 +7,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id        Int      @id @default(autoincrement())
-  
+  id Int @id @default(autoincrement())
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
-  email     String   @unique
-  role      String   @default("user")
-  hashedPassword String
-  refreshToken String?
 
+  email          String  @unique
+  role           String  @default("user")
+  hashedPassword String
+  refreshToken   String?
 }
 
 model File {
-  id          Int      @id @default(autoincrement())
-  
-  createdAt   DateTime @default(now())
+  id Int @id @default(autoincrement())
 
-  name        String
-  pathname    String
+  createdAt DateTime @default(now())
+
+  name     String
+  pathname String
+  Song     Song[]
 }
 
 model Song {
-  id          Int       @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  title    String
-  artist      String
+  title  String
+  artist String
+
+  createdAt DateTime @default(now())
+
+  icon   File? @relation(fields: [iconId], references: [id])
+  iconId Int?
 }

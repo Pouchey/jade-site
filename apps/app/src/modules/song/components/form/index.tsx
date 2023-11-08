@@ -4,6 +4,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import Button from '_components/button';
 import Icon from '_components/icon';
 
+import FileImage from '_modules/file/components/image';
 import { TSongForm } from '_modules/song/types/form';
 
 import schema from './schema';
@@ -32,33 +33,32 @@ const SongForm = ({
   const methods = useForm<TSongForm>({
     resolver: yupResolver(schema),
     defaultValues: defaultValues || {
-      id: 0,
       song: '',
       artist: '',
     },
   });
 
-  const { register, handleSubmit, watch } = methods;
+  const { register, handleSubmit, watch, setValue } = methods;
 
   const id = watch('id');
 
+  const handleImageChange = (file: File | null) => {
+    if (!file) return;
+    setValue('file', file);
+  };
+
   const handleDelete = () => {
-    if (onDelete) onDelete(id);
+    if (!onDelete) return;
+    onDelete(id);
   };
 
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledIconContainer>
-          <div onClick={onClose}>
-            <Icon glyph="close" size={50} color="white" />
-          </div>
-          {onDelete && (
-            <div onClick={handleDelete}>
-              <Icon glyph="delete" size={45} color="red1" />
-            </div>
-          )}
+        <StyledIconContainer onClick={onClose}>
+          <Icon glyph="close" size={50} color="white" />
         </StyledIconContainer>
+        <FileImage onChange={handleImageChange} />
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />
         <StyledLabel>Artist</StyledLabel>
@@ -70,6 +70,7 @@ const SongForm = ({
           size="huge"
           label={defaultValues ? 'UPDATE' : 'ADD'}
         />
+        <span onClick={handleDelete}>Delete song</span>
       </StyledForm>
     </FormProvider>
   );

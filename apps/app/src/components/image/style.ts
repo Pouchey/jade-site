@@ -19,5 +19,6 @@ export const StyledImageWrapper = styled.div.attrs<
   img {
     width: ${({ $iconSize }) => $iconSize};
     height: ${({ $iconSize }) => $iconSize};
+    object-fit: cover;
   }
 `;

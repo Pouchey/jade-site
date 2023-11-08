@@ -8,5 +8,6 @@ export const FileParser = new ParseFilePipeBuilder()
     fileType: new RegExp('image/*'),
   })
   .build({
+    fileIsRequired: false,
     errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
   });

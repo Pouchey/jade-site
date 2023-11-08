@@ -1,3 +1,4 @@
+import { TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
@@ -8,44 +9,61 @@ import { UpdateSongDto } from './dto/update-song.dto';
 export class SongService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async create(createSongDto: CreateSongDto) {
+  async create(createSongDto: CreateSongDto, iconId?: number): Promise<TSong> {
     const newSong = await this.prismaService.song.create({
       data: {
         title: createSongDto.song,
         artist: createSongDto.artist,
+        iconId: iconId,
+      },
+      include: {
+        icon: true,
       },
     });
     return newSong;
   }
 
-  async findAll() {
-    const songList = await this.prismaService.song.findMany();
+  async findAll(): Promise<TSong[]> {
+    const songList = await this.prismaService.song.findMany({
+      include: {
+        icon: true,
+      },
+    });
     return songList;
   }
 
-  async findOne(id: number) {
+  async findOne(id: number): Promise<TSong> {
     const song = await this.prismaService.song.findUnique({
       where: {
         id: id,
+      },
+      include: {
+        icon: true,
       },
     });
     return song;
   }
 
-  async update(id: number, updateSongDto: UpdateSongDto) {
+  async update(id: number, updateSongDto: UpdateSongDto): Promise<TSong> {
     const updatedSong = await this.prismaService.song.update({
       where: { id: id },
       data: {
         title: updateSongDto.song,
         artist: updateSongDto.artist,
       },
+      include: {
+        icon: true,
+      },
     });
     return updatedSong;
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<TSong> {
     const song = await this.prismaService.song.delete({
       where: { id: id },
+      include: {
+        icon: true,
+      },
     });
     return song;
   }

@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AtGuard } from 'src/core/guards';
+import { storage } from 'src/utils/file';
 
 import { FileParser } from './file.parser';
 import { FileService } from './file.service';
@@ -20,7 +21,7 @@ export class FileController {
 
   @UseGuards(AtGuard)
   @Post()
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', { storage: storage }))
   uploadFile(
     @UploadedFile(FileParser)
     file: Express.Multer.File,

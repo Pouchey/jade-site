@@ -1,36 +1,22 @@
 import styled from 'styled-components';
 
-import { StyledImageWrapper as ImageWrapper } from '_components/image/style';
-
 export const StyledImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+  background-color: ${(props) => props.theme.color.grey90};
 
-  ${ImageWrapper} {
+  > img {
     width: 100%;
     height: 100%;
-
-    > img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    object-fit: cover;
   }
-`;
-
-export const StyledDelete = styled.div`
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  right: 0;
 `;
 
 export const StyledPlus = styled.div`
   position: absolute;
-  z-index: 1;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 `;

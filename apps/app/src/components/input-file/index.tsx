@@ -6,13 +6,12 @@ import Icon from '_components/icon';
 import { StyledInputFile } from './style';
 
 interface Props {
-  name: string;
   children: React.ReactNode;
   onChange: (file: File | null) => void;
 }
 
 const InputFile = React.forwardRef<HTMLInputElement, Props>(
-  ({ name, children, onChange }, ref) => {
+  ({ children, onChange }, ref) => {
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
       if (file) {
@@ -23,7 +22,7 @@ const InputFile = React.forwardRef<HTMLInputElement, Props>(
     return (
       <StyledInputFile>
         <span>{children}</span>
-        <input name={name} type="file" ref={ref} onChange={handleFileChange} />
+        <input type="file" ref={ref} onChange={handleFileChange} />
         <Icon glyph="image" size={60} color="grey75" />
       </StyledInputFile>
     );

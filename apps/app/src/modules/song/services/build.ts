@@ -1,3 +1,5 @@
+import { buildFile } from '_modules/file/services/build';
+
 import { randInt } from '_utils/random';
 
 import { TSongGetResponse } from '../types/request';
@@ -7,11 +9,10 @@ export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
     id,
     title: `Song ${id}`,
     artist: `Artist ${id}`,
-    icon: {
-      url: `https://picsum.photos/seed/${id}/200/200`,
-      alt: `Song ${id}`,
-    },
+    iconId: randInt(1, 100000),
+    icon: buildFile(),
     count: randInt(1, 10),
+    createdAt: new Date(),
     requester: {
       id: randInt(1, 100000),
       name: `User ${randInt(1, 100000)}`,

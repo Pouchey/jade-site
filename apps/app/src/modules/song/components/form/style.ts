@@ -36,10 +36,6 @@ export const StyledLabel = styled.label`
 export const StyledIconContainer = styled.div`
   position: absolute;
   right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  align-items: center;
 
   > * {
     cursor: pointer;
