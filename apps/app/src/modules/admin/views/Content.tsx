@@ -29,8 +29,6 @@ const Content = React.memo(() => {
         song: song,
       },
     });
-
-    console.log(state.song);
   };
 
   return (
