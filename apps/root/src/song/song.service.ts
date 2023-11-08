@@ -11,7 +11,7 @@ export class SongService {
   async create(createSongDto: CreateSongDto) {
     const newSong = await this.prismaService.song.create({
       data: {
-        title: createSongDto.title,
+        title: createSongDto.song,
         artist: createSongDto.artist,
       },
     });
@@ -36,7 +36,7 @@ export class SongService {
     const updatedSong = await this.prismaService.song.update({
       where: { id: id },
       data: {
-        title: updateSongDto.title,
+        title: updateSongDto.song,
         artist: updateSongDto.artist,
       },
     });

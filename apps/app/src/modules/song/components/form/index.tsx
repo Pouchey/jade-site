@@ -38,14 +38,16 @@ const SongForm = ({ isLoading, onSubmit, onClose, defaultValues }: Props) => {
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <StyledImg
-          src={defaultValues?.image.url}
-          alt={defaultValues?.image.alt}
+          src={defaultValues?.image?.url}
+          alt={defaultValues?.image?.alt}
         />
         <StyledIconContainer>
           <div onClick={onClose}>
             <Icon glyph="close" size={50} color="white" />
           </div>
-          <Icon glyph="delete" size={45} color="red1" />
+          <div>
+            <Icon glyph="delete" size={45} color="red1" />
+          </div>
         </StyledIconContainer>
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />

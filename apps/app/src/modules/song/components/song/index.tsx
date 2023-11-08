@@ -18,10 +18,11 @@ const Song = ({ song }: Props) => {
   return (
     <StyledSongItemWrapper>
       <StyledImageWrapper>
-        <Image url={song.icon.url} alt={song.icon.alt} size={64} />
+       {/*  <Image url={song.icon.url} alt={song.icon.alt} size={64} /> */}
+       <Image url="" alt="" size={64} />
       </StyledImageWrapper>
       <StyledDesc>
-        <StyledSongName>{song.songName}</StyledSongName>
+        <StyledSongName>{song.title}</StyledSongName>
         <StyledArtist>{song.artist}</StyledArtist>
       </StyledDesc>
     </StyledSongItemWrapper>

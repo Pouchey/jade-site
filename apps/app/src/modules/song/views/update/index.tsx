@@ -4,6 +4,7 @@ import SongForm from '_modules/song/components/form';
 import { useSongContext } from '_modules/song/hooks/useContext';
 import { useUpdateSong } from '_modules/song/hooks/useServices';
 import { TSongForm } from '_modules/song/types/form';
+import { TSong } from '_shared/song/types';
 
 const UpdateForm = React.memo(() => {
   const { mutate: updateSong, isPending } = useUpdateSong();
@@ -13,7 +14,7 @@ const UpdateForm = React.memo(() => {
 
   if (state.song) {
     defaultValues = {
-      song: state.song.songName,
+      song: state.song.title,
       artist: state.song.artist,
       image: state.song.icon,
     };
@@ -22,6 +23,7 @@ const UpdateForm = React.memo(() => {
   const handleSubmit = (formData: TSongForm) => {
     updateSong(formData);
   };
+
 
   const handleClose = () => {
     dispatch({

@@ -25,8 +25,11 @@ const createSong = (formData: TSongPostRequest) =>
 const updateSong = (formData: TSongPostRequest) =>
   fakeRequest<TSongPutResponse, TSongPutRequest>(
     buildSong(),
-    `/song`,
+    `/songs`,
     formData,
   );
+
+
+
 
 export default { fetchSongs, fetchSong, createSong, updateSong };

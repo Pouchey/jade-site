@@ -28,7 +28,7 @@ const SongItem = ({ song }: Props) => {
       </StyledImageWrapper>
       <StyledInformationWrapper>
         <StyledDesc>
-          <StyledSongName>{song.songName}</StyledSongName>
+          <StyledSongName>{song.title}</StyledSongName>
           <StyledArtist>{song.artist}</StyledArtist>
         </StyledDesc>
         {song.requester && (

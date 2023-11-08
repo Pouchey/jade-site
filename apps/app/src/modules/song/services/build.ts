@@ -5,7 +5,7 @@ import { TSongGetResponse } from '../types/request';
 export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
   return {
     id,
-    songName: `Song ${id}`,
+    title: `Song ${id}`,
     artist: `Artist ${id}`,
     icon: {
       url: `https://picsum.photos/seed/${id}/200/200`,
