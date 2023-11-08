@@ -3,6 +3,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 
 import Button from '_components/button';
 import Icon from '_components/icon';
+import Switch from '_components/switch';
 
 import { TSongForm } from '_modules/song/types/form';
 
@@ -13,9 +14,9 @@ import {
   StyledInput,
   StyledImg,
   StyledIconContainer,
-  StyledSwitchContainer
+  StyledSwitchContainer,
+  StyledDeleteText,
 } from './style';
-import Switch from '_components/switch';
 
 interface Props {
   isLoading: boolean;
@@ -25,7 +26,13 @@ interface Props {
   defaultValues?: TSongForm;
 }
 
-const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Props) => {
+const SongForm = ({
+  isLoading,
+  onSubmit,
+  onClose,
+  onDelete,
+  defaultValues,
+}: Props) => {
   const methods = useForm<TSongForm>({
     resolver: yupResolver(schema),
     defaultValues: defaultValues || {
@@ -40,10 +47,9 @@ const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Pro
 
   let isVisible = true;
 
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-    isVisible = !isVisible;
-    
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    isVisible = e.target.checked;
+  };
 
   return (
     <FormProvider {...methods}>
@@ -56,9 +62,6 @@ const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Pro
           <div onClick={onClose}>
             <Icon glyph="close" size={50} color="white" />
           </div>
-          { onDelete && <div onClick={() => onDelete(defaultValues?.id)}>
-            <Icon glyph="delete" size={45} color="red1" />
-          </div>}
         </StyledIconContainer>
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />
@@ -66,9 +69,9 @@ const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Pro
         <StyledInput {...register('artist')} placeholder="Artist name" />
         <StyledSwitchContainer>
           <StyledLabel>Visible</StyledLabel>
-          <Switch value={isVisible} onChange={handleChange}/>
+          <Switch value={isVisible} onChange={handleChange} />
         </StyledSwitchContainer>
-        
+
         <Button
           isLoading={isLoading}
           type="submit"
@@ -76,6 +79,11 @@ const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Pro
           size="huge"
           label={defaultValues ? 'UPDATE' : 'ADD'}
         />
+        {onDelete && (
+          <StyledDeleteText onClick={() => onDelete(defaultValues?.id)}>
+            Delete the song
+          </StyledDeleteText>
+        )}
       </StyledForm>
     </FormProvider>
   );

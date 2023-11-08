@@ -57,7 +57,6 @@ export const useUpdateSong = () => {
 };
 
 export const useDeleteSong = () => {
-
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -67,6 +66,6 @@ export const useDeleteSong = () => {
     },
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['songs'] });
-    }
-  })
-}
+    },
+  });
+};

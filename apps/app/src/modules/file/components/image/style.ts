@@ -23,9 +23,9 @@ export const StyledImageWrapper = styled.div`
 
 export const StyledDelete = styled.div`
   position: absolute;
-  z-index: 1;
   top: 0;
   right: 0;
+  z-index: 1;
 `;
 
 export const StyledPlus = styled.div`

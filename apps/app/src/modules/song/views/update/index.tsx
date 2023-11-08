@@ -24,7 +24,7 @@ const UpdateForm = React.memo(() => {
 
   const handleSubmit = (formData: TSongForm) => {
     updateSong(formData);
-    handleClose()
+    handleClose();
   };
 
   const handleClose = () => {
@@ -35,10 +35,9 @@ const UpdateForm = React.memo(() => {
   };
 
   const handleDelete = (id?: number) => {
-    if(id != undefined)
-      deleteSong.mutate(id);
-      handleClose()
-  }
+    if (id != undefined) deleteSong.mutate(id);
+    handleClose();
+  };
 
   return (
     <SongForm

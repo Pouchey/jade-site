@@ -4,7 +4,7 @@ import {
   TSongPostResponse,
   TSongPutResponse,
   TSongPutRequest,
-  TSongDeleteResponse
+  TSongDeleteResponse,
 } from '_modules/song/types/request';
 
 import httpRequest from '_services/http';

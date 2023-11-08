@@ -11,7 +11,7 @@ const CreateForm = React.memo(() => {
 
   const handleSubmit = (formData: TSongForm) => {
     createSong(formData);
-    handleClose()
+    handleClose();
   };
 
   const handleClose = () => {

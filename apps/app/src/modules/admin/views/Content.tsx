@@ -25,6 +25,14 @@ const Content = React.memo(() => {
     dispatch({
       type: { value: 'setUpdateOpen' },
       payload: {
+        isUpdateOpen: false,
+        song: null,
+      },
+    });
+
+    dispatch({
+      type: { value: 'setUpdateOpen' },
+      payload: {
         isUpdateOpen: true,
         song: song,
       },
