@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from 'src/auth/auth.module';
 import { FileModule } from 'src/file/file.module';
 import { PrismaModule } from 'src/prisma/prisma.module';
+import { SongModule } from 'src/song/song.module';
 import { UserModule } from 'src/user/user.module';
 
 import { PlayerModule } from '../player/player.module';
@@ -19,6 +20,7 @@ import { AppService } from './app.service';
     FileModule,
     PlayerModule,
     PrismaModule,
+    SongModule,
     UserModule,
   ],
   controllers: [AppController],

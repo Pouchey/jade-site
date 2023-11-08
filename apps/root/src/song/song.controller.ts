@@ -12,7 +12,7 @@ import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 import { SongService } from './song.service';
 
-@Controller('song')
+@Controller('songs')
 export class SongController {
   constructor(private readonly songService: SongService) {}
 
