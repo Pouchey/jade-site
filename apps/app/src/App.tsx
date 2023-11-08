@@ -6,7 +6,7 @@ import useInitReactQueryClient from '_hooks/useInitReactQueryClient';
 import Admin from '_modules/admin/views';
 import Donate from '_modules/donate/views';
 import Home from '_modules/home/views';
-import SongList from '_modules/song-list/views';
+import SongList from '_modules/song-list/views/detail';
 import UIWrapper from '_modules/ui/components';
 
 const App = React.memo(() => {
