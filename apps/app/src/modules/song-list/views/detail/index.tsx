@@ -8,11 +8,19 @@ import TabsContainer from '_modules/tabs/components/container';
 import TabsFooter from '_modules/tabs/components/footer';
 import TabLink from '_modules/tabs/components/link';
 
+import { StyledSearchWrapper } from './style';
+
 const SongList = React.memo(() => {
+  const handleSearch = (searchValue: string) => {
+    console.log(searchValue);
+  };
+
   return (
     <TabsContainer defaultTab={TABS[1]}>
       <Tabs />
-      <Search />
+      <StyledSearchWrapper>
+        <Search placeholder="Find a song..." search={handleSearch} />
+      </StyledSearchWrapper>
       <TabsFooter tabs={TABS}>
         <TabLink glyph="star" value={TABS[0]} />
         <TabLink glyph="flamme" value={TABS[1]} />

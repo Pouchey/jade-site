@@ -5,7 +5,7 @@ export const StyledFooter = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 64px;
+  height: 74px;
   background-color: ${({ theme }) => theme.color.white};
 
   > div:first-child {
@@ -14,6 +14,7 @@ export const StyledFooter = styled.div`
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    height: 64px;
   }
 `;
 
