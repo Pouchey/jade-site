@@ -10,17 +10,17 @@ import { StyledSearch } from './style';
 interface SearchProps {
   placeholder?: string;
   isLoading?: boolean;
-  search: (searchValue: string) => void;
+  onSearch: (searchValue: string) => void;
 }
 
 const Search = ({
   placeholder = 'Rechercher...',
   isLoading = false,
-  search,
+  onSearch,
 }: SearchProps) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const debounceHandle = debounce(search, 200);
+  const debounceHandle = debounce(onSearch, 200);
 
   const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -29,7 +29,7 @@ const Search = ({
 
   const callSearchFunction = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      search(searchValue);
+      onSearch(searchValue);
     }
   };
 

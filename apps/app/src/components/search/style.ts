@@ -7,7 +7,7 @@ export const StyledSearch = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 40px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 4px;
 

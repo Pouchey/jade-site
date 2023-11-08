@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -15,7 +14,6 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledSongItemList = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100%;

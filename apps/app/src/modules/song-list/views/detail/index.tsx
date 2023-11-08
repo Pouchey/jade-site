@@ -19,7 +19,7 @@ const SongList = React.memo(() => {
     <TabsContainer defaultTab={TABS[1]}>
       <Tabs />
       <StyledSearchWrapper>
-        <Search placeholder="Find a song..." search={handleSearch} />
+        <Search placeholder="Find a song..." onSearch={handleSearch} />
       </StyledSearchWrapper>
       <TabsFooter tabs={TABS}>
         <TabLink glyph="star" value={TABS[0]} />
