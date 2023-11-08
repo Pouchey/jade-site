@@ -42,7 +42,6 @@ const SongForm = ({
       image: { url: '', alt: '' },
     },
   });
-
   const { register, handleSubmit } = methods;
 
   let isVisible = true;
