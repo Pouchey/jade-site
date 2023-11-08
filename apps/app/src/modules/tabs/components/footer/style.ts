@@ -9,8 +9,8 @@ export const StyledFooter = styled.div`
   background-color: ${({ theme }) => theme.color.white};
 
   > div:first-child {
-    flex: 1;
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: space-around;
     width: 100%;
@@ -35,7 +35,6 @@ export const StyledActive = styled.span<IStyledActiveProps>`
   height: 10px;
   background-color: ${({ theme }) => theme.color.green1};
   border-radius: 4px;
-
   transition: left 0.2s ease-in-out;
 
   ${({ $activeIndex, $total }) => `

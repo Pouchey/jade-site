@@ -8,6 +8,7 @@ import { TSong } from '_shared/song/types';
 
 import AddSong from '../components/common/add-song';
 import SelectSong from '../components/common/select-song';
+
 import { StyledContainer } from './style';
 
 const Content = React.memo(() => {

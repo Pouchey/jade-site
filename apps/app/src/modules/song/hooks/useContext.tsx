@@ -12,6 +12,7 @@ const SongContext =
 
 SongContext.displayName = 'Song';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSongContext = () => React.useContext(SongContext);
 
 type ProviderProps = {
