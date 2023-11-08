@@ -13,7 +13,9 @@ import {
   StyledInput,
   StyledImg,
   StyledIconContainer,
+  StyledSwitchContainer
 } from './style';
+import Switch from '_components/switch';
 
 interface Props {
   isLoading: boolean;
@@ -36,6 +38,13 @@ const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Pro
 
   const { register, handleSubmit } = methods;
 
+  let isVisible = true;
+
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    isVisible = !isVisible;
+    
+  }
+
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -55,6 +64,11 @@ const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Pro
         <StyledInput {...register('song')} placeholder="Song title" />
         <StyledLabel>Artist</StyledLabel>
         <StyledInput {...register('artist')} placeholder="Artist name" />
+        <StyledSwitchContainer>
+          <StyledLabel>Visible</StyledLabel>
+          <Switch value={isVisible} onChange={handleChange}/>
+        </StyledSwitchContainer>
+        
         <Button
           isLoading={isLoading}
           type="submit"
