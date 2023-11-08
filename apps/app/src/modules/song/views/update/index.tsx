@@ -7,13 +7,15 @@ import { TSongForm } from '_modules/song/types/form';
 import { TSong } from '_shared/song/types';
 
 const UpdateForm = React.memo(() => {
-  const { mutate: updateSong, isPending } = useUpdateSong();
   const { state, dispatch } = useSongContext();
+  const { mutate: updateSong, isPending } = useUpdateSong();
+
 
   let defaultValues = undefined;
 
   if (state.song) {
     defaultValues = {
+      id: state.song.id,
       song: state.song.title,
       artist: state.song.artist,
       image: state.song.icon,

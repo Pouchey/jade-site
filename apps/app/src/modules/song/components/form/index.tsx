@@ -26,6 +26,7 @@ const SongForm = ({ isLoading, onSubmit, onClose, defaultValues }: Props) => {
   const methods = useForm<TSongForm>({
     resolver: yupResolver(schema),
     defaultValues: defaultValues || {
+      id: 0,
       song: '',
       artist: '',
       image: { url: '', alt: '' },

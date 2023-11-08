@@ -15,6 +15,6 @@ const createSong = (formData: TSongPostRequest) =>
   httpRequest.post<TSongPostResponse>(`/songs`, formData);
 
 const updateSong = (formData: TSongPostRequest) =>
-  httpRequest.patch<TSongPostResponse>(`/songs`, formData);
+  httpRequest.put<TSongPostResponse>(`/songs/${formData.id}`, formData);
 
 export default { fetchSongs, fetchSong, createSong, updateSong };
