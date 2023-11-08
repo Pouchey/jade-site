@@ -20,6 +20,10 @@ export const StyledForm = styled.form`
   }
 `;
 
+export const StyledImageContainer = styled.div`
+  align-self: center;
+`;
+
 export const StyledInput = styled.input`
   width: 100%;
   height: 40px;
