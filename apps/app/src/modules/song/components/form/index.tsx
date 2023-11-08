@@ -19,10 +19,11 @@ interface Props {
   isLoading: boolean;
   onSubmit: SubmitHandler<TSongForm>;
   onClose: () => void;
+  onDelete?: (id?: number) => void;
   defaultValues?: TSongForm;
 }
 
-const SongForm = ({ isLoading, onSubmit, onClose, defaultValues }: Props) => {
+const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Props) => {
   const methods = useForm<TSongForm>({
     resolver: yupResolver(schema),
     defaultValues: defaultValues || {
@@ -46,9 +47,9 @@ const SongForm = ({ isLoading, onSubmit, onClose, defaultValues }: Props) => {
           <div onClick={onClose}>
             <Icon glyph="close" size={50} color="white" />
           </div>
-          <div>
+          { onDelete && <div onClick={() => onDelete(defaultValues?.id)}>
             <Icon glyph="delete" size={45} color="red1" />
-          </div>
+          </div>}
         </StyledIconContainer>
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />
