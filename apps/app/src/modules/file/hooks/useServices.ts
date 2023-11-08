@@ -13,9 +13,6 @@ export const useUploadfile = () => {
       const { data } = await api.uploadFile(file);
       return data as TUploadFileResponse;
     },
-    onSuccess: (data) => {
-      console.log(data);
-    },
   });
 };
 

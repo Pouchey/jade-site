@@ -7,7 +7,12 @@ import { getImageUrl } from '_modules/file/utils';
 
 import { TFile } from '_shared/file/types';
 
-import { StyledImageWrapper } from './style';
+import {
+  StyledDelete,
+  StyledImageWrapper,
+  StyledInputFileWrapper,
+  StyledPlus,
+} from './style';
 
 interface Props {
   image: TFile | null;
@@ -36,13 +41,23 @@ const FileImage = ({ image, onChange }: Props) => {
   };
 
   return (
-    <InputFile name="image" onChange={handleUpload}>
-      <StyledImageWrapper>
-        {image && <Image url={imageUrl} alt={image.name} />}
-        <Icon glyph="plus" />
-        <button onClick={handleDelete}>Delete</button>
-      </StyledImageWrapper>
-    </InputFile>
+    <StyledInputFileWrapper>
+      <InputFile name="image" onChange={handleUpload}>
+        <StyledImageWrapper>
+          {image && (
+            <>
+              <Image url={imageUrl} alt={image.name} />
+              <StyledDelete onClick={handleDelete}>
+                <Icon glyph="close" color="white" />
+              </StyledDelete>
+              <StyledPlus>
+                <Icon glyph="plus" size={64} color="white" />
+              </StyledPlus>
+            </>
+          )}
+        </StyledImageWrapper>
+      </InputFile>
+    </StyledInputFileWrapper>
   );
 };
 

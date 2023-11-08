@@ -27,9 +27,4 @@ export const StyledInputFile = styled.div`
     opacity: 0;
     cursor: pointer;
   }
-
-  &:hover,
-  &:focus {
-    box-shadow: 0 2px 4px ${({ theme }) => rgba(theme.color.black, 0.5)} inset;
-  }
 `;
