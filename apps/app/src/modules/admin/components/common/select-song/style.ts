@@ -6,18 +6,21 @@ export const StyledContainer = styled.div`
   gap: 10px;
   align-items: center;
   width: 100%;
+  max-height: 95vh;
   height: 100%;
-  padding: 20px;
+  padding: 10px;
   background: ${({ theme }) => theme.color.green1};
   border-radius: 8px;
+  box-sizing: border-box;
 `;
 
 export const StyledSongItemList = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-height: 82vh;
+  max-height: 100%;
   overflow-y: scroll;
   border-top: 1px solid ${({ theme }) => theme.color.green1};
+  border-radius: 8px;
+  box-sizing: border-box;
 `;
