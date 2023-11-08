@@ -1,6 +1,8 @@
 import { rgba } from 'polished';
 import styled from 'styled-components';
 
+import { StyledButton } from '_components/button/style';
+
 export const StyledForm = styled.form`
   position: relative;
   display: flex;
@@ -12,6 +14,10 @@ export const StyledForm = styled.form`
   padding: 20px;
   background: ${({ theme }) => theme.color.green1};
   border-radius: 8px;
+
+  ${StyledButton} {
+    margin-top: 24px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -40,4 +46,16 @@ export const StyledIconContainer = styled.div`
   > * {
     cursor: pointer;
   }
+`;
+
+export const StyledSwitchContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const StyledDeleteText = styled.p`
+  align-self: center;
+  font-size: ${({ theme }) => theme.size.tall};
+  cursor: pointer;
 `;

@@ -4,10 +4,10 @@ import styled from 'styled-components';
 export const StyledInputFile = styled.div`
   position: relative;
   display: inline-block;
-  overflow: hidden;
   padding: 16px;
-  border-radius: 4px;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.color.grey30};
+  border-radius: 4px;
 
   > span {
     position: absolute;
@@ -24,7 +24,7 @@ export const StyledInputFile = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
     cursor: pointer;
+    opacity: 0;
   }
 `;

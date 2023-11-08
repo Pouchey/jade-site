@@ -7,7 +7,7 @@ export interface SongState {
 }
 
 export const DefaultSongState = {
-  songId: null,
+  song: null,
   isCreateOpen: false,
   isUpdateOpen: false,
 };
