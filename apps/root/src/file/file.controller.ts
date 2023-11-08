@@ -5,9 +5,11 @@ import {
   Param,
   Post,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { AtGuard } from 'src/core/guards';
 
 import { FileParser } from './file.parser';
 import { FileService } from './file.service';
@@ -16,6 +18,7 @@ import { FileService } from './file.service';
 export class FileController {
   constructor(private readonly fileService: FileService) {}
 
+  @UseGuards(AtGuard)
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(
@@ -25,13 +28,14 @@ export class FileController {
     return this.fileService.uploadFile(file);
   }
 
+  @UseGuards(AtGuard)
   @Delete(':id')
-  deleteFile(@Param('id') id: number) {
-    return this.fileService.deleteFile(id);
+  deleteFile(@Param('id') id: string) {
+    return this.fileService.deleteFile(+id);
   }
 
   @Get(':id')
-  getFile(@Param('id') id: number) {
-    return this.fileService.getFile(id);
+  getFile(@Param('id') id: string) {
+    return this.fileService.getFile(+id);
   }
 }

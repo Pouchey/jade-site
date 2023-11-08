@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import NotFound from '_components/not-found';
+
 import useInitReactQueryClient from '_hooks/useInitReactQueryClient';
 
 import Admin from '_modules/admin/views';
@@ -19,6 +21,7 @@ const App = React.memo(() => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/songlist" element={<SongList />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </UIWrapper>
   );

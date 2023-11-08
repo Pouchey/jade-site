@@ -1,5 +1,5 @@
 import { GoneException, Injectable } from '@nestjs/common';
-import fs from 'fs';
+import * as fs from 'fs';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()

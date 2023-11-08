@@ -18,7 +18,6 @@ const MenuContent = React.memo(() => {
     <StyledMenuWrapper $isMenuOpened={isMenuOpened}>
       <StyledMenu>
         <Link label="Home" to="/" />
-        <Link label="Request" to="/request" />
         <Link label="Songlist" to="/songlist" />
         <Link label="Donation" to="/donate" />
         <Link label="Admin Panel" to="/admin" />
