@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
   gap: 10px;
   align-items: center;
   width: 100%;
-  max-height: 95vh;
+  max-height: 88vh;
   height: 100%;
   padding: 10px;
   background: ${({ theme }) => theme.color.green1};
