@@ -56,7 +56,7 @@ const SongForm = ({ isLoading, onSubmit, onClose, defaultValues }: Props) => {
           type="submit"
           color="secondary"
           size="huge"
-          label="ADD"
+          label={defaultValues ? "UPDATE" : "ADD"}
         />
       </StyledForm>
     </FormProvider>
