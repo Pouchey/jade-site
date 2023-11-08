@@ -1,6 +1,6 @@
 export type TSong = {
   id: number;
-  songName: string;
+  title: string;
   artist: string;
   icon: {
     url: string;

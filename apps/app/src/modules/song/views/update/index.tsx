@@ -2,18 +2,21 @@ import React from 'react';
 
 import SongForm from '_modules/song/components/form';
 import { useSongContext } from '_modules/song/hooks/useContext';
-import { useUpdateSong } from '_modules/song/hooks/useServices';
+import { useDeleteSong, useUpdateSong } from '_modules/song/hooks/useServices';
 import { TSongForm } from '_modules/song/types/form';
 
 const UpdateForm = React.memo(() => {
-  const { mutate: updateSong, isPending } = useUpdateSong();
   const { state, dispatch } = useSongContext();
+  const { mutate: updateSong, isPending } = useUpdateSong();
+
+  const deleteSong = useDeleteSong();
 
   let defaultValues = undefined;
 
   if (state.song) {
     defaultValues = {
-      song: state.song.songName,
+      id: state.song.id,
+      song: state.song.title,
       artist: state.song.artist,
       image: state.song.icon,
     };
@@ -21,6 +24,7 @@ const UpdateForm = React.memo(() => {
 
   const handleSubmit = (formData: TSongForm) => {
     updateSong(formData);
+    handleClose()
   };
 
   const handleClose = () => {
@@ -30,11 +34,18 @@ const UpdateForm = React.memo(() => {
     });
   };
 
+  const handleDelete = (id?: number) => {
+    if(id != undefined)
+      deleteSong.mutate(id);
+      handleClose()
+  }
+
   return (
     <SongForm
-      isLoading={isPending}
+      isLoading={isPending || deleteSong.isPending}
       onSubmit={handleSubmit}
       onClose={handleClose}
+      onDelete={handleDelete}
       defaultValues={defaultValues}
     />
   );

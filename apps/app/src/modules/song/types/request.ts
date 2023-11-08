@@ -9,3 +9,5 @@ export type TSongGetResponse = TSong;
 
 export type TSongPutRequest = TSongForm;
 export type TSongPutResponse = TSong;
+
+export type TSongDeleteResponse = TSong;

@@ -4,6 +4,7 @@ import {
   TSongPostRequest,
   TSongPutRequest,
   TSongPutResponse,
+  TSongDeleteResponse
 } from '_modules/song/types/request';
 
 import fakeRequest from '_services/fake';
@@ -25,8 +26,15 @@ const createSong = (formData: TSongPostRequest) =>
 const updateSong = (formData: TSongPostRequest) =>
   fakeRequest<TSongPutResponse, TSongPutRequest>(
     buildSong(),
-    `/song`,
+    `/songs`,
     formData,
   );
 
-export default { fetchSongs, fetchSong, createSong, updateSong };
+const deleteSong = (id: number) =>
+  fakeRequest<TSongDeleteResponse, number>(
+    buildSong(),
+    `/songs/${id}`,
+  );
+
+
+export default { fetchSongs, fetchSong, createSong, updateSong, deleteSong };

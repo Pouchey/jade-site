@@ -18,7 +18,6 @@ export const StyledSearch = styled.div`
     font-size: 16px;
     border: none;
     border-radius: 4px;
-
     outline: none;
   }
 

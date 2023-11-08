@@ -55,3 +55,18 @@ export const useUpdateSong = () => {
     },
   });
 };
+
+export const useDeleteSong = () => {
+
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (id: number) => {
+      const { data } = await api.deleteSong(id);
+      return data;
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['songs'] });
+    }
+  })
+}
