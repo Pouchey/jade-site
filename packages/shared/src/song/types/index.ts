@@ -1,11 +1,10 @@
+import { TFile } from '../../file/types';
+
 export type TSong = {
   id: number;
   title: string;
   artist: string;
-  icon: {
-    url: string;
-    alt: string;
-  };
+  icon: TFile;
   count: number;
   requester: {
     id: number;

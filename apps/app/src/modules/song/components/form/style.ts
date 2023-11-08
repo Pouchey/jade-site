@@ -33,14 +33,6 @@ export const StyledLabel = styled.label`
   font-weight: ${({ theme }) => theme.weight.medium};
 `;
 
-export const StyledImg = styled.img`
-  align-self: center;
-  width: 150px;
-  height: 150px;
-  background-color: ${({ theme }) => theme.color.beige1};
-  border-radius: 8px;
-`;
-
 export const StyledIconContainer = styled.div`
   position: absolute;
   right: 20px;

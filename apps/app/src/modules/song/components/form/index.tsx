@@ -11,7 +11,6 @@ import {
   StyledForm,
   StyledLabel,
   StyledInput,
-  StyledImg,
   StyledIconContainer,
 } from './style';
 
@@ -23,33 +22,42 @@ interface Props {
   defaultValues?: TSongForm;
 }
 
-const SongForm = ({ isLoading, onSubmit, onClose, onDelete, defaultValues }: Props) => {
+const SongForm = ({
+  isLoading,
+  onSubmit,
+  onClose,
+  onDelete,
+  defaultValues,
+}: Props) => {
   const methods = useForm<TSongForm>({
     resolver: yupResolver(schema),
     defaultValues: defaultValues || {
       id: 0,
       song: '',
       artist: '',
-      image: { url: '', alt: '' },
     },
   });
 
-  const { register, handleSubmit } = methods;
+  const { register, handleSubmit, watch } = methods;
+
+  const id = watch('id');
+
+  const handleDelete = () => {
+    if (onDelete) onDelete(id);
+  };
 
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledImg
-          src={defaultValues?.image?.url}
-          alt={defaultValues?.image?.alt}
-        />
         <StyledIconContainer>
           <div onClick={onClose}>
             <Icon glyph="close" size={50} color="white" />
           </div>
-          { onDelete && <div onClick={() => onDelete(defaultValues?.id)}>
-            <Icon glyph="delete" size={45} color="red1" />
-          </div>}
+          {onDelete && (
+            <div onClick={handleDelete}>
+              <Icon glyph="delete" size={45} color="red1" />
+            </div>
+          )}
         </StyledIconContainer>
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />
