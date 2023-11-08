@@ -22,7 +22,7 @@ const Admin = React.memo(() => {
 
   return (
     <SongProvider>
-      <Content />;
+      <Content />
     </SongProvider>
   );
 });

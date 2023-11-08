@@ -8,8 +8,8 @@ export const StyledContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  max-height: 88vh;
   padding: 10px;
+  overflow: scroll;
   background: ${({ theme }) => theme.color.green1};
   border-radius: 8px;
 `;
