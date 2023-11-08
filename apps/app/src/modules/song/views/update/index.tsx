@@ -12,16 +12,15 @@ const UpdateForm = React.memo(() => {
 
   const deleteSong = useDeleteSong();
 
-  let defaultValues = undefined;
+  if (!state.song) throw new Error('Song is undefined');
 
-  if (state.song) {
-    defaultValues = {
-      id: state.song.id,
-      song: state.song.title,
-      artist: state.song.artist,
-      icon: state.song.icon,
-    };
-  }
+  const defaultValues = {
+    id: state.song.id,
+    song: state.song.title,
+    artist: state.song.artist,
+    icon: state.song.icon,
+  };
+
   const { mutate: deleteFile } = useDeleteFile();
 
   const handleSubmit = (formData: TSongForm) => {

@@ -15,7 +15,11 @@ import {
   StyledLabel,
   StyledInput,
   StyledIconContainer,
+  StyledImageContainer,
+  StyledDeleteText,
+  StyledSwitchContainer,
 } from './style';
+import Switch from '_components/switch';
 
 interface Props {
   isLoading: boolean;
@@ -54,20 +58,32 @@ const SongForm = ({
     onDelete(id);
   };
 
+  let isVisible = true;
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    isVisible = e.target.checked;
+    
+  }
+
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <StyledIconContainer onClick={onClose}>
           <Icon glyph="close" size={50} color="white" />
         </StyledIconContainer>
-        <FileImage
-          defaultValue={defaultValues?.icon}
-          onChange={handleImageChange}
-        />
+        <StyledImageContainer>
+          <FileImage
+            defaultValue={defaultValues?.icon}
+            onChange={handleImageChange}
+          />
+        </StyledImageContainer>
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />
         <StyledLabel>Artist</StyledLabel>
         <StyledInput {...register('artist')} placeholder="Artist name" />
+        <StyledSwitchContainer>
+          <StyledLabel>Visible</StyledLabel>
+          <Switch onChange={handleChange} />
+        </StyledSwitchContainer>
         <Button
           isLoading={isLoading}
           type="submit"
@@ -75,7 +91,7 @@ const SongForm = ({
           size="huge"
           label={defaultValues ? 'UPDATE' : 'ADD'}
         />
-        <span onClick={handleDelete}>Delete song</span>
+        <StyledDeleteText onClick={handleDelete}>Delete song</StyledDeleteText>
       </StyledForm>
     </FormProvider>
   );
