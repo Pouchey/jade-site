@@ -4,7 +4,7 @@ export const StyledContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   align-items: center;
   width: 100%;
   height: 100%;
