@@ -3,6 +3,10 @@ import { useState } from 'react';
 import Icon from '_components/icon';
 import InputFile from '_components/input-file';
 
+import { getImageUrl } from '_modules/file/utils';
+
+import { TFile } from '_shared/file/types';
+
 import {
   StyledImageWrapper,
   StyledInputFileWrapper,
@@ -10,11 +14,13 @@ import {
 } from './style';
 
 interface Props {
+  defaultValue?: TFile;
   onChange: (file: File | null) => void;
 }
 
-const FileImage = ({ onChange }: Props) => {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+const FileImage = ({ defaultValue, onChange }: Props) => {
+  const defaultValueUrl = getImageUrl(defaultValue);
+  const [imageUrl, setImageUrl] = useState<string | null>(defaultValueUrl);
 
   const handleUpload = (file: File | null) => {
     if (!file || !file.type.includes('image')) return;

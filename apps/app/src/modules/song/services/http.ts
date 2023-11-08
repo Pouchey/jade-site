@@ -22,7 +22,11 @@ const createSong = (formData: TSongPostRequest) =>
   });
 
 const updateSong = (formData: TSongPutRequest) =>
-  httpRequest.put<TSongPutResponse>(`/songs/${formData.id}`, formData);
+  httpRequest.put<TSongPutResponse>(`/songs/${formData.id}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 
 const deleteSong = (id: number) =>
   httpRequest.delete<TSongDeleteResponse>(`/songs/${id}`);

@@ -7,6 +7,8 @@ import Icon from '_components/icon';
 import FileImage from '_modules/file/components/image';
 import { TSongForm } from '_modules/song/types/form';
 
+import { TFile } from '_shared/file/types';
+
 import schema from './schema';
 import {
   StyledForm,
@@ -20,7 +22,7 @@ interface Props {
   onSubmit: SubmitHandler<TSongForm>;
   onClose: () => void;
   onDelete?: (id?: number) => void;
-  defaultValues?: TSongForm;
+  defaultValues?: TSongForm & { icon?: TFile };
 }
 
 const SongForm = ({
@@ -58,7 +60,10 @@ const SongForm = ({
         <StyledIconContainer onClick={onClose}>
           <Icon glyph="close" size={50} color="white" />
         </StyledIconContainer>
-        <FileImage onChange={handleImageChange} />
+        <FileImage
+          defaultValue={defaultValues?.icon}
+          onChange={handleImageChange}
+        />
         <StyledLabel>Song</StyledLabel>
         <StyledInput {...register('song')} placeholder="Song title" />
         <StyledLabel>Artist</StyledLabel>

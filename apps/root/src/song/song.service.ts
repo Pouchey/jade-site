@@ -44,12 +44,17 @@ export class SongService {
     return song;
   }
 
-  async update(id: number, updateSongDto: UpdateSongDto): Promise<TSong> {
+  async update(
+    id: number,
+    updateSongDto: UpdateSongDto,
+    iconId?: number,
+  ): Promise<TSong> {
     const updatedSong = await this.prismaService.song.update({
       where: { id: id },
       data: {
         title: updateSongDto.song,
         artist: updateSongDto.artist,
+        iconId: iconId,
       },
       include: {
         icon: true,

@@ -37,7 +37,7 @@ export class SongController {
     createSongDto: CreateSongDto,
   ) {
     if (!file) {
-      return this.songService.create(createSongDto, null);
+      return this.songService.create(createSongDto);
     }
     const icon = await this.fileService.uploadFile(file);
     return this.songService.create(createSongDto, icon.id);
@@ -56,8 +56,18 @@ export class SongController {
 
   @UseGuards(AtGuard)
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateSongDto: UpdateSongDto) {
-    return this.songService.update(+id, updateSongDto);
+  @UseInterceptors(FileInterceptor('file', { storage: storage }))
+  async update(
+    @Param('id') id: string,
+    @UploadedFile(FileParser)
+    file: Express.Multer.File,
+    @Body() updateSongDto: UpdateSongDto,
+  ) {
+    if (!file) {
+      return this.songService.update(+id, updateSongDto);
+    }
+    const icon = await this.fileService.uploadFile(file);
+    return this.songService.update(+id, updateSongDto, icon.id);
   }
 
   @UseGuards(AtGuard)
