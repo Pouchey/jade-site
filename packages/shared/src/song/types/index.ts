@@ -13,3 +13,9 @@ export type TSong = {
     name: string;
   };
 };
+
+export enum ESongListType {
+  STARS = 'stars',
+  HOTS = 'hots',
+  FAVORITES = 'favorites',
+}

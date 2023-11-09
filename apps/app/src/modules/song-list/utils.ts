@@ -1,1 +1,7 @@
-export const TABS = ['STARS', 'HOTS', 'FAVORITES'];
+import { ESongListType } from '_shared/song/types';
+
+export const TABS: ESongListType[] = [
+  ESongListType.STARS,
+  ESongListType.HOTS,
+  ESongListType.FAVORITES,
+];

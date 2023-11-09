@@ -1,16 +1,31 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
+import { useSongListContext } from '_modules/song-list/hooks/useContext';
 import { TSongForm } from '_modules/song/types/form';
 
 import getAPI from '_services/api';
 
+import { generateQueryParams } from '_utils/queryParams';
+
 const api = getAPI();
 
 export const useFetchSongs = () => {
+  const { state } = useSongListContext();
+
+  const { q, pagination, type } = state;
+
+  const params = {
+    q,
+    pagination,
+    type,
+  };
+
+  const queryParams = generateQueryParams(params);
+
   return useQuery({
     queryKey: ['songs'],
     queryFn: async () => {
-      const { data } = await api.fetchSongs();
+      const { data } = await api.fetchSongs(queryParams);
 
       return data;
     },

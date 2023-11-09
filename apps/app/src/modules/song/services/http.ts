@@ -9,7 +9,8 @@ import {
 
 import httpRequest from '_services/http';
 
-const fetchSongs = () => httpRequest.get<TSongGetResponse[]>('/songs');
+const fetchSongs = (queryParams: string) =>
+  httpRequest.get<TSongGetResponse[]>(`/songs?${queryParams}`);
 
 const fetchSong = (id: number) =>
   httpRequest.get<TSongGetResponse>(`/songs/${id}`);

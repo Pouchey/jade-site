@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { SongListProvider } from '_modules/song-list/hooks/useContext';
 import { useSongContext } from '_modules/song/hooks/useContext';
 import CreateForm from '_modules/song/views/create';
 import UpdateForm from '_modules/song/views/update';
@@ -32,12 +33,14 @@ const Content = React.memo(() => {
   };
 
   return (
-    <StyledContainer>
-      <AddSong handleClick={handleCreateSong} />
-      <SelectSong handleClick={handleUpdateSong} />
-      {state.isCreateOpen && <CreateForm />}
-      {state.isUpdateOpen && <UpdateForm />}
-    </StyledContainer>
+    <SongListProvider>
+      <StyledContainer>
+        <AddSong handleClick={handleCreateSong} />
+        <SelectSong handleClick={handleUpdateSong} />
+        {state.isCreateOpen && <CreateForm />}
+        {state.isUpdateOpen && <UpdateForm />}
+      </StyledContainer>
+    </SongListProvider>
   );
 });
 

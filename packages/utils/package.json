@@ -7,5 +7,7 @@
     "build": "rm -rf dist && tsc"
   },
   "author": "Rouchet Théophile",
-  "dependencies": {}
+  "dependencies": {
+    "query-string": "^8.1.0"
+  }
 }
