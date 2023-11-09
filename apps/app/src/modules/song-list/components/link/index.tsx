@@ -2,22 +2,26 @@ import React from 'react';
 
 import Icon from '_components/icon';
 
-import { useTabsContext } from '_modules/tabs/hooks/useContext';
+import { useSongListContext } from '_modules/song-list/hooks/useContext';
+
+import { ESongListType } from '_shared/song/types';
 
 import { StyledLink } from './style';
 
 interface Props {
   glyph: string;
-  value: string;
+  value: ESongListType;
 }
 
 const TabLink = React.memo(({ glyph, value }: Props) => {
-  const { dispatch } = useTabsContext();
+  const { dispatch } = useSongListContext();
 
   const handleClick = () => {
     dispatch({
-      type: 'setTab',
-      payload: value,
+      type: 'setType',
+      payload: {
+        type: value,
+      },
     });
   };
 

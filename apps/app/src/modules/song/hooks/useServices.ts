@@ -29,12 +29,11 @@ export const useFetchSongs = () => {
   const queryParams = generateQueryParams(params);
 
   return useQuery({
-    queryKey: ['songs', page, perPage],
+    queryKey: ['songs', page, perPage, q, type],
     queryFn: async () => {
       const { data } = await api.fetchSongs(queryParams);
       return data;
     },
-    refetchOnWindowFocus: false,
     placeholderData: keepPreviousData,
   });
 };

@@ -1,18 +1,20 @@
 import React from 'react';
 
-import { useTabsContext } from '_modules/tabs/hooks/useContext';
+import { useSongListContext } from '_modules/song-list/hooks/useContext';
+
+import { ESongListType } from '_shared/song/types';
 
 import { StyledActive, StyledBar, StyledFooter } from './style';
 
 interface Props {
   children: React.ReactNode;
-  tabs: string[];
+  tabs: ESongListType[];
 }
 
 const TabsFooter = ({ children, tabs }: Props) => {
-  const { state } = useTabsContext();
+  const { state } = useSongListContext();
   const total = tabs.length;
-  const activeIndex = tabs.findIndex((tab) => tab === state.active);
+  const activeIndex = tabs.findIndex((tab) => tab === state.type);
 
   return (
     <StyledFooter>

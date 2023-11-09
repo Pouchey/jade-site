@@ -42,7 +42,7 @@ const Search = ({
         type="text"
         placeholder={placeholder}
       />
-      {isLoading ? <Loader size={24} /> : <Icon glyph="search" size={24} />}
+      {isLoading ? <Loader size={16} /> : <Icon glyph="search" size={24} />}
     </StyledSearch>
   );
 };

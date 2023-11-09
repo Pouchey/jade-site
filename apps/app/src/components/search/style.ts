@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { StyledSvgWrapper } from '_components/icon/style';
+import { StyledLoaderWrapper } from '_components/loader/style';
 
 export const StyledSearch = styled.div`
   position: relative;
@@ -14,7 +15,7 @@ export const StyledSearch = styled.div`
   > input {
     width: 100%;
     height: 40px;
-    padding: 8px 24px;
+    padding: 8px 64px 8px 16px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
@@ -26,5 +27,11 @@ export const StyledSearch = styled.div`
     top: 8px;
     right: 16px;
     cursor: pointer;
+  }
+
+  ${StyledLoaderWrapper} {
+    position: absolute;
+    right: 16px;
+    width: auto;
   }
 `;

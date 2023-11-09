@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+import {
+  StyledCountWrapper,
+  StyledSongItemWrapper,
+} from '_modules/song/components/song/style';
+
 export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,6 +16,14 @@ export const StyledContainer = styled.div`
   overflow: scroll;
   background: ${({ theme }) => theme.color.green1};
   border-radius: 8px;
+
+  ${StyledSongItemWrapper} {
+    cursor: pointer;
+  }
+
+  ${StyledCountWrapper} {
+    display: none;
+  }
 `;
 
 export const StyledSongItemList = styled.div`

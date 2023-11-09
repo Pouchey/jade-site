@@ -2,9 +2,9 @@ import React from 'react';
 
 import Loader from '_components/loader';
 
-import { TSong } from '_shared/song/types';
+import Song from '_modules/song/components/song';
 
-import SongItem from '../song-item';
+import { TSong } from '_shared/song/types';
 
 import Fake from './fake';
 import { StyledSongItemList } from './style';
@@ -21,7 +21,7 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
 
   return (
     <StyledSongItemList>
-      {songs?.map((song) => <SongItem key={song.id} song={song} />)}
+      {songs?.map((song) => <Song key={song.id} song={song} />)}
     </StyledSongItemList>
   );
 };

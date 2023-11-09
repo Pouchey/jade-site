@@ -4,6 +4,7 @@ import Label from '_components/label';
 import Loader from '_components/loader';
 import Search from '_components/search';
 
+import { useSongListContext } from '_modules/song-list/hooks/useContext';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import { TSong } from '_shared/song/types';
@@ -16,36 +17,30 @@ interface Props {
 }
 
 const SelectSong = React.memo(({ handleClick }: Props) => {
-  const { isFetching, data: songs } = useFetchSongs();
+  const { isFetching, isRefetching, data: songs } = useFetchSongs();
+
+  const { dispatch } = useSongListContext();
 
   const handleSearch = (value: string) => {
-    console.log(value);
+    dispatch({ type: 'setQ', payload: { q: value } });
   };
-
-  if (isFetching) {
-    return (
-      <StyledContainer>
-        <Loader label="Chargement..." />
-      </StyledContainer>
-    );
-  }
-
-  if (!songs) {
-    return (
-      <StyledContainer>
-        <Label content="Rien pour le moment" />
-      </StyledContainer>
-    );
-  }
 
   return (
     <StyledContainer>
-      <Search placeholder="Find a song..." onSearch={handleSearch} />
+      <Search
+        placeholder="Find a song..."
+        onSearch={handleSearch}
+        isLoading={isRefetching}
+      />
+      {isFetching && !songs?.items?.length && (
+        <Loader label="Loading songs..." />
+      )}
       <StyledSongItemList>
         {songs?.items?.map((song) => (
           <Item key={song.id} song={song} onClick={handleClick} />
         ))}
       </StyledSongItemList>
+      {!songs?.items?.length && <Label content="No songs found" />}
     </StyledContainer>
   );
 });

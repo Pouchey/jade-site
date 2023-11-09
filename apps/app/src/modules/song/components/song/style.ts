@@ -5,7 +5,6 @@ export const StyledSongItemWrapper = styled.div`
   gap: 16px;
   width: 100%;
   padding: 12px 20px;
-  cursor: pointer;
   background-color: ${({ theme }) => theme.color.white};
   border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 `;
@@ -16,6 +15,14 @@ export const StyledImageWrapper = styled.div`
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.grey30};
   border-radius: 8px;
+`;
+
+export const StyledInformationWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 16px;
+  overflow: hidden;
 `;
 
 export const StyledDesc = styled.div`
@@ -41,4 +48,10 @@ export const StyledArtist = styled.div`
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
+`;
+
+export const StyledCountWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
