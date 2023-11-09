@@ -8,4 +8,11 @@ export const StyledContainer = styled.div`
   height: 100%;
   padding: 24px;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  
+    overflow: scroll;
+ }
 `;
