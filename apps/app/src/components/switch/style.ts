@@ -1,31 +1,29 @@
 import styled from 'styled-components';
 
 export interface StyledSwitchProps {
-  $checked: boolean;
+  checked: boolean;
 }
 
-export const StyledSwitchContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  align-items: center;
-`;
-
-export const StyledSwitch = styled.div`
+export const StyledSwitch = styled.div<StyledSwitchProps>`
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 48px;
   height: 24px;
-`;
-
-export const StyledSlider = styled.span<StyledSwitchProps>`
-  position: absolute;
-  inset: 0;
+  appearance: none;
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.beige1};
-  border-radius: 24px;
-  transition: 0.4s;
+  border-radius: 12px;
+  outline: none;
+  transition: all 200ms;
 
-  &::before {
+  input {
+    width: 0;
+    height: 0;
+    cursor: pointer;
+  }
+
+  ::after {
     position: absolute;
     bottom: 2px;
     left: 2px;
@@ -34,30 +32,16 @@ export const StyledSlider = styled.span<StyledSwitchProps>`
     content: '';
     background-color: ${({ theme }) => theme.color.green1};
     border-radius: 50%;
-    transition: 0.4s;
-
-    ${({ $checked }) =>
-      $checked &&
-      `
-                -webkit-transform: translateX(22px);
-                -ms-transform: translateX(22px);
-                transform: translateX(22px);
-            `};
+    transition: all 0.4s;
   }
 
-  ${({ $checked, theme }) =>
-    $checked &&
+  ${({ checked, theme }) =>
+    checked &&
     `
-            background-color: ${theme.color.green2};
-        `};
+        background-color: ${theme.color.green2};
 
-  &:focus {
-    box-shadow: 0 0 1px ${({ theme }) => theme.color.green2};
-  }
-`;
-
-export const StyledCheckbox = styled.input`
-  width: 0;
-  height: 0;
-  opacity: 0;
+        ::after{
+          left:25px;
+        }
+    `};
 `;

@@ -3,4 +3,5 @@ export type TSongForm = {
   song: string;
   artist: string;
   file?: File;
+  isVisible: boolean;
 };

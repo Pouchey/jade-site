@@ -13,6 +13,7 @@ export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
     icon: buildFile(),
     count: randInt(1, 10),
     createdAt: new Date(),
+    isVisible: true,
     requester: {
       id: randInt(1, 100000),
       name: `User ${randInt(1, 100000)}`,

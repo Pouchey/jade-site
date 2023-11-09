@@ -15,6 +15,7 @@ export class SongService {
         title: createSongDto.song,
         artist: createSongDto.artist,
         iconId: iconId,
+        isVisible: createSongDto.isVisible,
       },
       include: {
         icon: true,
@@ -44,6 +45,19 @@ export class SongService {
     return song;
   }
 
+  async findVisible(): Promise<TSong[]> {
+    const songList = await this.prismaService.song.findMany({
+      where: {
+        isVisible: true,
+      },
+      include: {
+        icon: true,
+      },
+    });
+
+    return songList;
+  }
+
   async update(
     id: number,
     updateSongDto: UpdateSongDto,
@@ -55,6 +69,7 @@ export class SongService {
         title: updateSongDto.song,
         artist: updateSongDto.artist,
         iconId: iconId,
+        isVisible: updateSongDto.isVisible,
       },
       include: {
         icon: true,
