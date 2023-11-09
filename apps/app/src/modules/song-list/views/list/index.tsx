@@ -22,7 +22,7 @@ const SongList = React.memo(() => {
         <SongSearch />
         <TabsFooter tabs={TABS}>
           <TabLink glyph="star" value={TABS[0]} />
-          <TabLink glyph="flamme" value={TABS[1]} />
+          <TabLink glyph="flame" value={TABS[1]} />
           <TabLink glyph="heart" value={TABS[2]} />
         </TabsFooter>
       </StyledSongList>

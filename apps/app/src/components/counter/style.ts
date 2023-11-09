@@ -36,7 +36,7 @@ export const StyledReadOnyCounter = styled.div<StyledCounterProps>`
 export const StyledCounter = styled(StyledReadOnyCounter)`
   justify-content: center;
   cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.color.black};
+  border: 1px solid ${({ theme }) => theme.color.grey50};
   border-radius: 32px;
 
   ${StyledCounterText} {
