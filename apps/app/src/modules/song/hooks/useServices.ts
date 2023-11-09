@@ -1,4 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 
 import { useSongListContext } from '_modules/song-list/hooks/useContext';
 import { TSongForm } from '_modules/song/types/form';
@@ -24,12 +29,13 @@ export const useFetchSongs = () => {
   const queryParams = generateQueryParams(params);
 
   return useQuery({
-    queryKey: ['songs'],
+    queryKey: ['songs', page, perPage],
     queryFn: async () => {
       const { data } = await api.fetchSongs(queryParams);
       return data;
     },
     refetchOnWindowFocus: false,
+    placeholderData: keepPreviousData,
   });
 };
 
