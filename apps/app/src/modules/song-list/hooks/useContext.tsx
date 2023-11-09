@@ -5,6 +5,8 @@ import {
   DefaultSongListContext,
 } from '_modules/song-list/types/context';
 
+import { ESongListType } from '_shared/song/types';
+
 import useSongListReducer from './useReducer';
 
 const SongListContext = React.createContext<SongListContextInterface>(
@@ -18,10 +20,11 @@ export const useSongListContext = () => React.useContext(SongListContext);
 
 type ProviderProps = {
   children: React.ReactNode;
+  defaultType?: ESongListType;
 };
 
-export const SongListProvider = ({ children }: ProviderProps) => {
-  const [state, dispatch] = useSongListReducer();
+export const SongListProvider = ({ children, defaultType }: ProviderProps) => {
+  const [state, dispatch] = useSongListReducer(defaultType);
   const value = { state, dispatch };
 
   return (

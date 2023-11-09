@@ -11,7 +11,6 @@ export const DefaultSongListState = {
   q: '',
   page: 1,
   perPage: 10,
-  type: ESongListType.HOTS,
 };
 
 export type SongListActionType =

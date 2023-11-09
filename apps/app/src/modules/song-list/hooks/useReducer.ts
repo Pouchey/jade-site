@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ESongListType } from '_shared/song/types';
+
 import {
   DefaultSongListState,
   SongListActionType,
@@ -35,4 +37,5 @@ const SongListReducer = (
   }
 };
 
-export default () => React.useReducer(SongListReducer, { ...initialArgs });
+export default (defaultType?: ESongListType) =>
+  React.useReducer(SongListReducer, { ...initialArgs, type: defaultType });

@@ -10,7 +10,7 @@ import TabLink from '_modules/tabs/components/link';
 
 const SongList = React.memo(() => {
   return (
-    <SongListProvider>
+    <SongListProvider defaultType={TABS[1]}>
       <TabsContainer defaultTab={TABS[1]}>
         <Tabs />
         <SongSearch />
