@@ -28,6 +28,7 @@ export const StyledImageWrapper = styled.div`
 export const StyledDesc = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   margin-left: 16px;
   overflow: hidden;
 `;
@@ -52,7 +53,7 @@ export const StyledArtist = styled.h2`
 
 export const StyledPlayerInfos = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   margin-top: 24px;

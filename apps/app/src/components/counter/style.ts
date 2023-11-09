@@ -19,6 +19,10 @@ export const StyledReadOnyCounter = styled.div<StyledCounterProps>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  width: 80px;
+  min-width: 80px;
+  height: 40px;
+  min-height: 40px;
 
   ${StyledLike} {
     margin-right: 8px;
@@ -31,10 +35,7 @@ export const StyledReadOnyCounter = styled.div<StyledCounterProps>`
 
 export const StyledCounter = styled(StyledReadOnyCounter)`
   justify-content: center;
-  width: 80px;
-  min-width: 80px;
-  height: 40px;
-  min-height: 40px;
+
   cursor: pointer;
   border: 1px solid ${({ theme }) => theme.color.black};
   border-radius: 32px;

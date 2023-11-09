@@ -6,6 +6,7 @@ import svgr from 'vite-plugin-svgr';
 // https://vitejs.dev/config/
 
 const aliases = {
+  _assets: path.resolve(__dirname, 'src/assets'),
   _classes: path.resolve(__dirname, 'src/classes'),
   _components: path.resolve(__dirname, 'src/components'),
   _hooks: path.resolve(__dirname, 'src/hooks'),

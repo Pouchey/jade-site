@@ -5,6 +5,7 @@
     "rootDir": "../..",
     "jsx": "react-jsx",
     "paths": {
+      "_assets/*": ["./src/assets/*"],
       "_components/*": ["./src/components/*"],
       "_hooks/*": ["./src/hooks/*"],
       "_modules/*": ["./src/modules/*"],

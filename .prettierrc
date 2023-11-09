@@ -3,6 +3,7 @@
   "singleQuote": true,
   "printWidth": 80,
   "importOrder": [
+    "^_assets(.*)$",
     "^_components(.*)$",
     "^_hooks(.*)$",
     "^_modules(.*)$",

@@ -2,15 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '_components/button';
-import Label from '_components/label';
-import Loader from '_components/loader';
 
+import Player from '_modules/player/components/common/player';
+import RequestedSongs from '_modules/player/components/common/requested-songs';
 import { useFetchPlayer } from '_modules/player/hooks/useServices';
-import Player from '_modules/player/views';
 
-import SongItem from '../components/song-item';
-
-import { StyledContainer, StyledSongItemList, StyledWrapper } from './style';
+import { StyledContainer, StyledWrapper } from './style';
 
 const Home = React.memo(() => {
   const navigate = useNavigate();
@@ -21,26 +18,10 @@ const Home = React.memo(() => {
     navigate('/songlist');
   };
 
-  if (isFetching) {
-    return (
-      <StyledContainer>
-        <Loader label="Chargement..." />;
-      </StyledContainer>
-    );
-  }
-
-  if (!player) {
-    return (
-      <StyledContainer>
-        <Label content="Rien pour le moment" />
-      </StyledContainer>
-    );
-  }
-
   return (
     <StyledContainer>
       <StyledWrapper>
-        <Player current={player.current} />
+        <Player current={player?.current} isLoading={isFetching} />
         <Button
           label="ADD A SONG"
           color="primary"
@@ -48,9 +29,7 @@ const Home = React.memo(() => {
           onClick={handleAddSong}
         />
       </StyledWrapper>
-      <StyledSongItemList>
-        {player.songs?.map((song) => <SongItem key={song.id} song={song} />)}
-      </StyledSongItemList>
+      <RequestedSongs songs={player?.songs} isLoading={isFetching} />
     </StyledContainer>
   );
 });

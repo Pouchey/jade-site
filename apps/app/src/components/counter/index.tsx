@@ -8,7 +8,7 @@ import {
 } from './style';
 
 interface Props {
-  count: number;
+  count?: number;
   requested?: boolean;
   readonly?: boolean;
   disabled?: boolean;

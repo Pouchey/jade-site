@@ -15,12 +15,3 @@ export const StyledWrapper = styled.div`
   width: 100%;
   padding: 20px;
 `;
-
-export const StyledSongItemList = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow-y: scroll;
-  border-top: 1px solid ${({ theme }) => theme.color.green1};
-`;
