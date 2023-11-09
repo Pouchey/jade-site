@@ -1,8 +1,11 @@
+import { IPaginatedResult } from '@jaderowley/shared/src/pagination/types';
 import { TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { paginate, getPagination } from 'src/utils/paginatior';
 
 import { CreateSongDto } from './dto/create-song.dto';
+import { GetSongsDto } from './dto/get-songs.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 
 @Injectable()
@@ -24,13 +27,41 @@ export class SongService {
     return newSong;
   }
 
-  async findAll(): Promise<TSong[]> {
+  async findAll({
+    page,
+    perPage,
+    q = '',
+  }: GetSongsDto): Promise<IPaginatedResult<TSong>> {
+    const where = {
+      OR: [
+        {
+          title: {
+            contains: q,
+          },
+        },
+        {
+          artist: {
+            contains: q,
+          },
+        },
+      ],
+    };
+
+    const total = await this.prismaService.song.count({
+      where: where,
+    });
+    const { skip, take } = getPagination(page, perPage);
+
     const songList = await this.prismaService.song.findMany({
+      skip,
+      take,
+      where: where,
       include: {
         icon: true,
       },
     });
-    return songList;
+
+    return paginate(songList, skip, take, total);
   }
 
   async findOne(id: number): Promise<TSong> {

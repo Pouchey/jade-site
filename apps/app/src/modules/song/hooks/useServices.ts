@@ -12,11 +12,12 @@ const api = getAPI();
 export const useFetchSongs = () => {
   const { state } = useSongListContext();
 
-  const { q, pagination, type } = state;
+  const { q, page, perPage, type } = state;
 
   const params = {
     q,
-    pagination,
+    page,
+    perPage,
     type,
   };
 
@@ -26,7 +27,6 @@ export const useFetchSongs = () => {
     queryKey: ['songs'],
     queryFn: async () => {
       const { data } = await api.fetchSongs(queryParams);
-
       return data;
     },
     refetchOnWindowFocus: false,

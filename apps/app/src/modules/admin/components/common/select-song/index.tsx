@@ -42,7 +42,7 @@ const SelectSong = React.memo(({ handleClick }: Props) => {
     <StyledContainer>
       <Search placeholder="Find a song..." onSearch={handleSearch} />
       <StyledSongItemList>
-        {songs?.map((song) => (
+        {songs?.items?.map((song) => (
           <Item key={song.id} song={song} onClick={handleClick} />
         ))}
       </StyledSongItemList>

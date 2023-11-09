@@ -2,7 +2,7 @@ import { buildFile } from '_modules/file/services/build';
 
 import { randInt } from '_utils/random';
 
-import { TSongGetResponse } from '../types/request';
+import { TSongGetResponse, TSongListGetResponse } from '../types/request';
 
 export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
   return {
@@ -21,10 +21,20 @@ export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
   };
 };
 
-export const buildSongs = (nb = randInt(10, 100)): TSongGetResponse[] => {
+export const buildSongs = (nb = randInt(10, 100)): TSongListGetResponse => {
   const songs = [];
   for (let i = 0; i < nb; i++) {
     songs.push(buildSong());
   }
-  return songs;
+  return {
+    items: songs,
+    meta: {
+      currentPage: 1,
+      lastPage: 1,
+      perPage: 10,
+      total: songs.length,
+      prev: null,
+      next: null,
+    },
+  };
 };

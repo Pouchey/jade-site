@@ -1,5 +1,6 @@
 import {
   TSongGetResponse,
+  TSongListGetResponse,
   TSongPostRequest,
   TSongPostResponse,
   TSongPutResponse,
@@ -10,7 +11,7 @@ import {
 import httpRequest from '_services/http';
 
 const fetchSongs = (queryParams: string) =>
-  httpRequest.get<TSongGetResponse[]>(`/songs?${queryParams}`);
+  httpRequest.get<TSongListGetResponse>(`/songs?${queryParams}`);
 
 const fetchSong = (id: number) =>
   httpRequest.get<TSongGetResponse>(`/songs/${id}`);

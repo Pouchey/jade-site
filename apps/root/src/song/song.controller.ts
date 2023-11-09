@@ -11,6 +11,7 @@ import {
   UploadedFile,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AtGuard } from 'src/core/guards';
@@ -19,6 +20,7 @@ import { FileService } from 'src/file/file.service';
 import { storage } from 'src/utils/file';
 
 import { CreateSongDto } from './dto/create-song.dto';
+import { GetSongsDto } from './dto/get-songs.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 import { SongService } from './song.service';
 
@@ -47,8 +49,9 @@ export class SongController {
   }
 
   @Get()
-  findAll() {
-    return this.songService.findAll();
+  @UsePipes(new ValidationPipe({ transform: true }))
+  findAll(@Query() getSongsDto: GetSongsDto) {
+    return this.songService.findAll(getSongsDto);
   }
 
   @UseGuards(AtGuard)
