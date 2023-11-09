@@ -3,6 +3,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 
 import Button from '_components/button';
 import Icon from '_components/icon';
+import Switch from '_components/switch';
 
 import FileImage from '_modules/file/components/image';
 import { TSongForm } from '_modules/song/types/form';
@@ -19,7 +20,6 @@ import {
   StyledDeleteText,
   StyledSwitchContainer,
 } from './style';
-import Switch from '_components/switch';
 
 interface Props {
   isLoading: boolean;
@@ -41,12 +41,14 @@ const SongForm = ({
     defaultValues: defaultValues || {
       song: '',
       artist: '',
+      isVisible: true,
     },
   });
 
   const { register, handleSubmit, watch, setValue } = methods;
 
   const id = watch('id');
+  const isVisible = watch('isVisible');
 
   const handleImageChange = (file: File | null) => {
     if (!file) return;
@@ -57,12 +59,6 @@ const SongForm = ({
     if (!onDelete) return;
     onDelete(id);
   };
-
-  let isVisible = true;
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-    isVisible = e.target.checked;
-    
-  }
 
   return (
     <FormProvider {...methods}>
@@ -82,7 +78,12 @@ const SongForm = ({
         <StyledInput {...register('artist')} placeholder="Artist name" />
         <StyledSwitchContainer>
           <StyledLabel>Visible</StyledLabel>
-          <Switch onChange={handleChange} />
+          <Switch
+            key={id}
+            {...register('isVisible')}
+            value={isVisible}
+            onChange={(val) => setValue('isVisible', val)}
+          />
         </StyledSwitchContainer>
         <Button
           isLoading={isLoading}

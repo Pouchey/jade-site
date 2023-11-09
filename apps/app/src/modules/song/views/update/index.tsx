@@ -19,6 +19,7 @@ const UpdateForm = React.memo(() => {
     song: state.song.title,
     artist: state.song.artist,
     icon: state.song.icon,
+    isVisible: state.song.isVisible,
   };
 
   const { mutate: deleteFile } = useDeleteFile();

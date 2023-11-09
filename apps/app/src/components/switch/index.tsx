@@ -1,35 +1,23 @@
-import { useState } from 'react';
+import React from 'react';
 
-import Label from '_components/label';
-
-import {
-  StyledSwitchContainer,
-  StyledSwitch,
-  StyledCheckbox,
-  StyledSlider,
-} from './style';
+import { StyledSwitch } from './style';
 
 interface Props {
-  label?: string;
+  name: string;
   value?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (val: boolean) => void;
 }
 
-const Switch = ({ label, value = false, onChange }: Props) => {
-  const [checked, setChecked] = useState(value);
+const Switch = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const { name, value, onChange } = props;
+
+  const onClick = () => onChange(!value);
 
   return (
-    <StyledSwitchContainer>
-      {label && <Label content={label} />}
-      <StyledSwitch>
-        <StyledCheckbox type="checkbox" checked={value} onChange={onChange} />
-        <StyledSlider
-          $checked={checked}
-          onClick={() => setChecked(!checked)}
-        ></StyledSlider>
-      </StyledSwitch>
-    </StyledSwitchContainer>
+    <StyledSwitch onClick={onClick} checked={!!value}>
+      <input ref={ref} type="checkbox" id={name} name={name} />
+    </StyledSwitch>
   );
-};
+});
 
 export default Switch;

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const StyledDescContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
+  align-items: center;
   width: 100%;
 `;
 
@@ -23,6 +23,6 @@ export const StyledText = styled.div`
   font-size: ${({ theme }) => theme.size.huge};
   font-weight: ${({ theme }) => theme.weight.medium};
   line-height: 1.2;
-  text-transform: uppercase;
   text-align: center;
+  text-transform: uppercase;
 `;

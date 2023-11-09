@@ -9,6 +9,8 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AtGuard } from 'src/core/guards';
@@ -29,6 +31,7 @@ export class SongController {
 
   @UseGuards(AtGuard)
   @Post()
+  @UsePipes(new ValidationPipe({ transform: true }))
   @UseInterceptors(FileInterceptor('file', { storage: storage }))
   async create(
     @UploadedFile(FileParser)
@@ -54,8 +57,14 @@ export class SongController {
     return this.songService.findOne(+id);
   }
 
+  @Get('/visible')
+  findVisible() {
+    return this.songService.findVisible();
+  }
+
   @UseGuards(AtGuard)
   @Put(':id')
+  @UsePipes(new ValidationPipe({ transform: true }))
   @UseInterceptors(FileInterceptor('file', { storage: storage }))
   async update(
     @Param('id') id: string,

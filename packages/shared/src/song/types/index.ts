@@ -5,6 +5,7 @@ export type TSong = {
   title: string;
   artist: string;
   createdAt: Date;
+  isVisible: boolean;
   icon: TFile;
   iconId: number;
   count?: number;

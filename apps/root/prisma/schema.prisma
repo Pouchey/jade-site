@@ -36,6 +36,7 @@ model Song {
   artist String
 
   createdAt DateTime @default(now())
+  isVisible Boolean
 
   icon   File? @relation(fields: [iconId], references: [id])
   iconId Int?
