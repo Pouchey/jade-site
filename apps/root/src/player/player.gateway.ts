@@ -30,6 +30,13 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.playerService.handleDisconnect(client);
   }
 
+  @SubscribeMessage('fetchPlayer')
+  handleFetchPlayer() {
+    const player = this.playerService.fetchPlayer();
+
+    this.server.emit('playerUpdated', player);
+  }
+
   @SubscribeMessage('nextSong')
   handleMessage(
     @ConnectedSocket() client: Socket,
@@ -53,11 +60,11 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('addSong')
-  handleAddSong(
+  async handleAddSong(
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const song = this.playerService.addSong(client.id, songId);
+    const song = await this.playerService.addSong(client.id, songId);
 
     this.server.emit('songAdded', song);
   }

@@ -1,7 +1,12 @@
+import { TPlayer } from '../player/types';
 import { TSong } from '../song/types';
 
 export interface IServerToClient {
-  player: (data: TSong) => void;
+  playerUpdated: (data: TPlayer) => void;
+  songAdded: (data: TSong) => void;
 }
 
-export interface IClientToServer {}
+export interface IClientToServer {
+  fetchPlayer: () => void;
+  addSong: (songId: number) => void;
+}

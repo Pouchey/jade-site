@@ -17,11 +17,16 @@ import {
 
 interface Props {
   song: TSong;
+  onClick: (id: number) => void;
 }
 
-const Song = ({ song }: Props) => {
+const Song = ({ song, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
   const isRequested = song.requester?.id === 1;
+
+  const handleClick = () => {
+    onClick(song.id);
+  };
 
   return (
     <StyledSongItemWrapper>
@@ -34,7 +39,11 @@ const Song = ({ song }: Props) => {
           <StyledArtist>{song.artist}</StyledArtist>
         </StyledDesc>
         <StyledCountWrapper>
-          <Counter count={song.count} requested={isRequested} />
+          <Counter
+            onClick={handleClick}
+            count={song.count}
+            requested={isRequested}
+          />
         </StyledCountWrapper>
       </StyledInformationWrapper>
     </StyledSongItemWrapper>

@@ -1,12 +1,14 @@
 import { TPlayer } from '@jaderowley/shared/src/player/types';
-import { TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { Socket } from 'socket.io';
+import { SongService } from 'src/song/song.service';
 
 import { initPlayer } from './player.entity';
 
 @Injectable()
 export class PlayerService {
+  constructor(private readonly songService: SongService) {}
+
   private readonly connectedUser: Map<string, Socket> = new Map<
     string,
     Socket
@@ -20,6 +22,10 @@ export class PlayerService {
 
   handleDisconnect(client: Socket) {
     this.connectedUser.delete(client.id);
+  }
+
+  fetchPlayer() {
+    return this.player;
   }
 
   setNextSong(clientId: string, songId: number) {
@@ -48,22 +54,22 @@ export class PlayerService {
     };
   }
 
-  addSong(clientId: string, songId: number) {
+  async addSong(clientId: string, songId: number) {
     if (
-      this.player.current.id === songId ||
+      this.player.current?.id === songId ||
       this.player.songs.find((song) => song.id === songId)
     )
       return;
 
-    // TODO: implement bd
-    // const song = bd.getSong(songId);
-    // TODO : set song requester
-    const song = null as TSong;
+    const song = await this.songService.findOne(songId);
 
-    if (!song) return;
+    song.requester = {
+      id: clientId,
+      name: 'Jade',
+    };
 
     this.player.songs.push(song);
 
-    return this.player;
+    return song;
   }
 }

@@ -10,7 +10,7 @@ export type TSong = {
   iconId: number;
   count?: number;
   requester?: {
-    id: number;
+    id: string;
     name: string;
   };
 };

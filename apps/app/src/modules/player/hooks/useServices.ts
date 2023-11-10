@@ -1,28 +1,30 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import onPlayerUpdate from '_modules/player/services/socket';
+import {
+  onPlayerUpdate,
+  fetchPlayer,
+  onSongAdded,
+} from '_modules/player/services/socket';
 
-import getAPI from '_services/api';
-
-const api = getAPI();
+import { TPlayer } from '_shared/player/types';
 
 export const useFetchPlayer = () => {
-  const queryClient = useQueryClient();
+  const [player, setPlayer] = useState<TPlayer | null>(null);
 
   useEffect(() => {
+    fetchPlayer();
+
     onPlayerUpdate((data) => {
-      queryClient.setQueryData(['player'], data);
+      setPlayer(data);
+    });
+    onSongAdded((data) => {
+      if (!player) return;
+      setPlayer({
+        ...player,
+        songs: [...player.songs, data],
+      });
     });
   }, []);
 
-  return useQuery({
-    queryKey: ['player'],
-    queryFn: async () => {
-      const { data } = await api.fetchPlayer();
-
-      return data;
-    },
-    refetchOnWindowFocus: false,
-  });
+  return player;
 };

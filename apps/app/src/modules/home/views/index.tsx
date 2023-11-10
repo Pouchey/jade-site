@@ -12,7 +12,9 @@ import { StyledContainer, StyledWrapper } from './style';
 const Home = React.memo(() => {
   const navigate = useNavigate();
 
-  const { isFetching, data: player } = useFetchPlayer();
+  const player = useFetchPlayer();
+  console.log(player);
+  const isLoading = !player;
 
   const handleAddSong = () => {
     navigate('/songlist');
@@ -21,7 +23,7 @@ const Home = React.memo(() => {
   return (
     <StyledContainer>
       <StyledWrapper>
-        <Player current={player?.current} isLoading={isFetching} />
+        <Player current={player?.current} isLoading={isLoading} />
         <Button
           label="ADD A SONG"
           color="primary"
@@ -29,7 +31,7 @@ const Home = React.memo(() => {
           onClick={handleAddSong}
         />
       </StyledWrapper>
-      <RequestedSongs songs={player?.songs} isLoading={isFetching} />
+      <RequestedSongs songs={player?.songs} isLoading={isLoading} />
     </StyledContainer>
   );
 });
