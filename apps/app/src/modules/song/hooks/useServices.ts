@@ -27,8 +27,6 @@ export const useFetchSongs = () => {
     type,
   };
 
-  console.log(state);
-
   return useInfiniteQuery({
     queryKey: ['songs', q, type],
     queryFn: async ({ pageParam }) => {
