@@ -20,13 +20,6 @@ const SongListReducer = (
         ...state,
         q: payload.q,
       };
-
-    case 'setPagination':
-      return {
-        ...state,
-        page: payload.page,
-        perPage: payload.perPage,
-      };
     case 'setType':
       return {
         ...state,

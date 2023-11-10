@@ -13,5 +13,4 @@ export const StyledSongItemList = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 `;

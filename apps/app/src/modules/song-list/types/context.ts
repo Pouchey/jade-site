@@ -2,15 +2,11 @@ import { ESongListType } from '_shared/song/types';
 
 export interface SongListState {
   q?: string;
-  page?: number;
-  perPage?: number;
   type?: ESongListType;
 }
 
 export const DefaultSongListState = {
   q: '',
-  page: 1,
-  perPage: 10,
 };
 
 export type SongListActionType =
@@ -18,13 +14,6 @@ export type SongListActionType =
       type: 'setQ';
       payload: {
         q: string;
-      };
-    }
-  | {
-      type: 'setPagination';
-      payload: {
-        page: number;
-        perPage: number;
       };
     }
   | {

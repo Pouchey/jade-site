@@ -1,5 +1,5 @@
 import {
-  keepPreviousData,
+  useInfiniteQuery,
   useMutation,
   useQuery,
   useQueryClient,
@@ -14,27 +14,40 @@ import { generateQueryParams } from '_utils/queryParams';
 
 const api = getAPI();
 
+const DEFAULT_PAGE_SIZE = 10;
+
 export const useFetchSongs = () => {
   const { state } = useSongListContext();
 
-  const { q, page, perPage, type } = state;
+  const { q, type } = state;
 
   const params = {
     q,
-    page,
-    perPage,
+    perPage: DEFAULT_PAGE_SIZE,
     type,
   };
 
-  const queryParams = generateQueryParams(params);
+  return useInfiniteQuery({
+    queryKey: ['songs', q, type],
+    queryFn: async ({ pageParam }) => {
+      const queryParams = generateQueryParams({
+        ...params,
+        page: pageParam,
+      });
 
-  return useQuery({
-    queryKey: ['songs', page, perPage, q, type],
-    queryFn: async () => {
       const { data } = await api.fetchSongs(queryParams);
       return data;
     },
-    placeholderData: keepPreviousData,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { next } = lastPage.meta;
+
+      if (!next) {
+        return undefined;
+      }
+
+      return next;
+    },
   });
 };
 
