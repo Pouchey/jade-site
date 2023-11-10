@@ -27,6 +27,8 @@ export const useFetchSongs = () => {
     type,
   };
 
+  console.log(state);
+
   return useInfiniteQuery({
     queryKey: ['songs', q, type],
     queryFn: async ({ pageParam }) => {
@@ -36,6 +38,7 @@ export const useFetchSongs = () => {
       });
 
       const { data } = await api.fetchSongs(queryParams);
+
       return data;
     },
     initialPageParam: 1,

@@ -10,9 +10,8 @@ export const StyledContainer = styled.div`
   overflow: hidden;
 
   @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
-    grid-template-columns: 1fr;
     grid-template-rows: auto;
-  
+    grid-template-columns: 1fr;
     overflow: scroll;
  }
 `;
