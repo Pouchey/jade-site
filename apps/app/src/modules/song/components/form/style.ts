@@ -18,6 +18,7 @@ export const StyledForm = styled.form`
   ${StyledButton} {
     margin-top: 24px;
   }
+
 `;
 
 export const StyledImageContainer = styled.div`

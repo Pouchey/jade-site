@@ -24,7 +24,13 @@ export const StyledContainer = styled.div`
   ${StyledCountWrapper} {
     display: none;
   }
-`;
+
+  @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
+    grid-row: 1;
+    overflow: scroll
+  }
+
+`;  
 
 export const StyledSongItemList = styled.div`
   display: flex;

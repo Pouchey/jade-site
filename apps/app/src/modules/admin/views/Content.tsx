@@ -10,7 +10,7 @@ import { TSong } from '_shared/song/types';
 import AddSong from '../components/common/add-song';
 import SelectSong from '../components/common/select-song';
 
-import { StyledContainer } from './style';
+import { StyledContainer, StyledComponentContainer } from './style';
 
 const Content = React.memo(() => {
   const { state, dispatch } = useSongContext();
@@ -36,7 +36,9 @@ const Content = React.memo(() => {
     <SongListProvider>
       <StyledContainer>
         <AddSong handleClick={handleCreateSong} />
-        <SelectSong handleClick={handleUpdateSong} />
+        <StyledComponentContainer hide={state.isCreateOpen || state.isUpdateOpen}>
+          <SelectSong handleClick={handleUpdateSong} />
+        </StyledComponentContainer>
         {state.isCreateOpen && <CreateForm />}
         {state.isUpdateOpen && <UpdateForm />}
       </StyledContainer>

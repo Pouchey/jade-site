@@ -17,9 +17,9 @@ interface Props {
 }
 
 const SelectSong = React.memo(({ handleClick }: Props) => {
-  const { isFetching, isRefetching, data: songs } = useFetchSongs();
+  const { isFetching, isRefetching, data } = useFetchSongs();
 
-  const { dispatch } = useSongListContext();
+  const { state, dispatch } = useSongListContext();
 
   const handleSearch = (value: string) => {
     dispatch({ type: 'setQ', payload: { q: value } });
@@ -32,15 +32,16 @@ const SelectSong = React.memo(({ handleClick }: Props) => {
         onSearch={handleSearch}
         isLoading={isRefetching}
       />
-      {isFetching && !songs?.items?.length && (
+      {isFetching && !data?.pages[0].items?.length && (
         <Loader label="Loading songs..." />
       )}
       <StyledSongItemList>
-        {songs?.items?.map((song) => (
+        {data?.pages?.map((page) => (
+          page.items.map((song) => 
           <Item key={song.id} song={song} onClick={handleClick} />
-        ))}
+        )))}
       </StyledSongItemList>
-      {!songs?.items?.length && <Label content="No songs found" />}
+      {!data?.pages[0].items?.length && <Label content="No songs found" />}
     </StyledContainer>
   );
 });

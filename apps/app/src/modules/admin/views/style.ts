@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export interface StyledProps{
+  hide: boolean | undefined
+}
 
 export const StyledContainer = styled.div`
   display: grid;
@@ -10,8 +14,20 @@ export const StyledContainer = styled.div`
   overflow: hidden;
 
   @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
-    grid-template-rows: auto;
+    grid-template-rows: max-content 1fr;
     grid-template-columns: 1fr;
     overflow: scroll;
  }
+`;
+
+export const StyledComponentContainer = styled.div<StyledProps>`
+  @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
+
+    ${({ hide }) =>
+    hide &&
+    css`
+      display: none;
+    `}
+
+  }
 `;
