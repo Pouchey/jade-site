@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export interface StyledProps{
-  hide: boolean | undefined
+  $hide?: boolean;
 }
 
 export const StyledContainer = styled.div`
@@ -23,8 +23,8 @@ export const StyledContainer = styled.div`
 export const StyledComponentContainer = styled.div<StyledProps>`
   @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
 
-    ${({ hide }) =>
-    hide &&
+    ${({ $hide }) =>
+    $hide &&
     css`
       display: none;
     `}
