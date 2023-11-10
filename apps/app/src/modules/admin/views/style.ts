@@ -21,6 +21,10 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledComponentContainer = styled.div<StyledProps>`
+
+  height: 100%;
+  overflow: hidden;
+
   @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
 
     ${({ $hide }) =>
