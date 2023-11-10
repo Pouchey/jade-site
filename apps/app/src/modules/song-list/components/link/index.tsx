@@ -6,7 +6,7 @@ import { useSongListContext } from '_modules/song-list/hooks/useContext';
 
 import { ESongListType } from '_shared/song/types';
 
-import { StyledLink } from './style';
+import { StyledLink, StyledLinkContainer } from './style';
 
 interface Props {
   glyph: string;
@@ -26,9 +26,11 @@ const TabLink = React.memo(({ glyph, value }: Props) => {
   };
 
   return (
-    <StyledLink onClick={handleClick}>
-      <Icon glyph={glyph} size={28} color="white" />
-    </StyledLink>
+    <StyledLinkContainer onClick={handleClick}>
+      <StyledLink >
+        <Icon glyph={glyph} size={28} color="white" />
+      </StyledLink>
+    </StyledLinkContainer>
   );
 });
 
