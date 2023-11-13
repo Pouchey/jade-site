@@ -56,7 +56,7 @@ export const StyledSongName = styled.div`
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    width: 100%;
+    padding: 0 8px;
     font-size: ${({ theme }) => theme.size.tall};
     font-weight: ${({ theme }) => theme.weight.medium};
     text-transform: uppercase;
