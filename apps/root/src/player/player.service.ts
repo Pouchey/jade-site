@@ -17,6 +17,12 @@ export class PlayerService {
 
   private readonly player: TPlayer = initPlayer();
 
+  getListenerBySocketId(socketId: string) {
+    return [...this.connectedUser.values()].find(
+      (listener) => listener.socket?.id === socketId,
+    );
+  }
+
   handleConnection(client: Socket, token: string) {
     const listener = this.connectedUser.get(token);
 
@@ -34,11 +40,12 @@ export class PlayerService {
   }
 
   handleDisconnect(client: Socket) {
-    // get listener by token
-    const listener = [...this.connectedUser.values()].find(
-      (listener) => listener.socket.id === client.id,
-    );
-    this.connectedUser.delete(listener.socket.id);
+    const listener = this.getListenerBySocketId(client.id);
+
+    this.connectedUser.set(listener.id, {
+      ...listener,
+      socket: null,
+    });
   }
 
   fetchPlayer() {
@@ -77,8 +84,11 @@ export class PlayerService {
 
     const song = await this.songService.findOne(songId);
 
-    const listener = this.connectedUser.get(clientId);
-    song.requester = listener;
+    const listener = this.getListenerBySocketId(clientId);
+    song.requester = {
+      id: listener.id,
+      name: listener.name,
+    };
 
     song.count = 1;
 

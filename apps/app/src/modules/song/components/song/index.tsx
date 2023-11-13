@@ -1,9 +1,8 @@
 import Counter from '_components/counter';
 import Image from '_components/image';
 
+import { getSocketToken } from '_modules/auth/utils';
 import { getImageUrl } from '_modules/file/utils';
-
-import socket from '_services/socket';
 
 import { TSong } from '_shared/song/types';
 
@@ -19,15 +18,15 @@ import {
 
 interface Props {
   song: TSong;
-  onClick: (song: TSong) => void;
+  onClick: (id: number) => void;
 }
 
 const Song = ({ song, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
-  const isRequested = song.requester && song.requester?.id === socket.id;
+  const isRequested = song.requester && song.requester?.id === getSocketToken();
 
   const handleClick = () => {
-    onClick(song);
+    onClick(song.id);
   };
 
   return (
