@@ -70,5 +70,6 @@ export const StyledLogoWrapper = styled.div`
 
   *:last-child {
     margin-top: 16px;
+    white-space: nowrap;
   }
 `;

@@ -18,7 +18,7 @@ const Admin = React.memo(() => {
   const { pathname } = useLocation();
 
   if (!state?.isLogged)
-    return <Navigate to="/login" state={{ from: pathname }} />;
+    return <Navigate to="/login" state={{ from: pathname }} replace={true} />;
 
   return (
     <SongProvider>

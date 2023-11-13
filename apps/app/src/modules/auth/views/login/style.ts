@@ -30,6 +30,7 @@ export const StyledAuth = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 32px;
   width: 100%;
   height: 100%;
   padding: 32px;
@@ -37,7 +38,6 @@ export const StyledAuth = styled.div`
 `;
 
 export const StyledWelcome = styled.div`
-  margin: 32px;
   font-size: ${({ theme }) => theme.size.diplodocus};
   font-weight: ${({ theme }) => theme.weight.medium};
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
+import Button from '_components/button';
 import Icon from '_components/icon';
 
 import AuthForm from '_modules/auth/components/form';
@@ -19,6 +20,7 @@ import {
 
 const Auth = React.memo(() => {
   const { state } = useAuthContext();
+  const navigate = useNavigate();
 
   const locationState = useLocation().state as { from: string };
 
@@ -26,6 +28,10 @@ const Auth = React.memo(() => {
 
   const handleSubmit = (formData: TAuthForm) => {
     mutate(formData);
+  };
+
+  const handleClick = () => {
+    navigate('/');
   };
 
   if (state.isLogged)
@@ -40,6 +46,7 @@ const Auth = React.memo(() => {
       <StyledAuth>
         <StyledWelcome>Welcome back</StyledWelcome>
         <AuthForm onSubmit={handleSubmit} isLoading={isPending} />
+        <Button color="primary" label="Go to home" onClick={handleClick} />
       </StyledAuth>
     </StyledContainer>
   );

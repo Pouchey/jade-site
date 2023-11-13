@@ -12,6 +12,7 @@
   "scripts": {
     "build": "nx run-many --target=build",
     "dev:app": "nx dev app",
+    "dev:app:host": "nx dev:host app",
     "dev:root": "nx dev root",
     "graph": "nx graph",
     "lint:scripts": "eslint --fix --ext ./**/*.{ts,tsx}",
