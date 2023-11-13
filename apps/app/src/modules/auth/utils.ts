@@ -2,12 +2,17 @@ import { AxiosError } from 'axios';
 
 import httpRequest from '_services/http';
 
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '_shared/auth/types';
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+  SOCKET_TOKEN_KEY,
+} from '_shared/auth/types';
 
 import { TRefreshResponse } from './types/request';
 
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
 export const getRefreshToken = () => localStorage.getItem(REFRESH_TOKEN_KEY);
+export const getSocketToken = () => localStorage.getItem(SOCKET_TOKEN_KEY);
 
 export const setAccessToken = (token: string) =>
   localStorage.setItem(ACCESS_TOKEN_KEY, token);
@@ -15,9 +20,13 @@ export const setAccessToken = (token: string) =>
 export const setRefreshToken = (token: string) =>
   localStorage.setItem(REFRESH_TOKEN_KEY, token);
 
+export const setSocketToken = (token: string) =>
+  localStorage.setItem(SOCKET_TOKEN_KEY, token);
+
 export const resetAccessToken = () => localStorage.removeItem(ACCESS_TOKEN_KEY);
 export const resetRefreshToken = () =>
   localStorage.removeItem(REFRESH_TOKEN_KEY);
+export const resetSocketToken = () => localStorage.removeItem(SOCKET_TOKEN_KEY);
 
 export const isTokenExpiredError = (error: AxiosError) =>
   error?.response?.status === 401;

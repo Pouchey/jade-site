@@ -1,4 +1,5 @@
 import { TFile } from '../../file/types';
+import { TListener } from '../../listener/types';
 
 export type TSong = {
   id: number;
@@ -9,10 +10,7 @@ export type TSong = {
   icon: TFile;
   iconId: number;
   count?: number;
-  requester?: {
-    id: string;
-    name: string;
-  };
+  requester?: TListener;
 };
 
 export enum ESongListType {
