@@ -4,6 +4,7 @@ import { useDeleteFile } from '_modules/file/hooks/useServices';
 import SongForm from '_modules/song/components/form';
 import { useSongContext } from '_modules/song/hooks/useContext';
 import { useDeleteSong, useUpdateSong } from '_modules/song/hooks/useServices';
+import { useFetchSong } from '_modules/song/hooks/useServices';
 import { TSongForm } from '_modules/song/types/form';
 
 const UpdateForm = React.memo(() => {
@@ -13,19 +14,21 @@ const UpdateForm = React.memo(() => {
   const deleteSong = useDeleteSong();
 
   if (!state.song) throw new Error('Song is undefined');
+  const { data: song } = useFetchSong(state.song);
 
+  if (!song) throw new Error('Song is undefined');
   const defaultValues = {
-    id: state.song.id,
-    song: state.song.title,
-    artist: state.song.artist,
-    icon: state.song.icon,
-    isVisible: state.song.isVisible,
+    id: song.id,
+    song: song.title,
+    artist: song.artist,
+    icon: song.icon,
+    isVisible: song.isVisible,
   };
 
   const { mutate: deleteFile } = useDeleteFile();
 
   const handleSubmit = (formData: TSongForm) => {
-    if (state.song?.icon && formData?.file) deleteFile(state.song?.icon.id);
+    if (song?.icon && formData?.file) deleteFile(song?.icon.id);
 
     updateSong(formData);
     handleClose();
@@ -45,7 +48,7 @@ const UpdateForm = React.memo(() => {
 
   return (
     <SongForm
-      key={state.song.id}
+      key={song?.id}
       isLoading={isPending || deleteSong.isPending}
       onSubmit={handleSubmit}
       onClose={handleClose}

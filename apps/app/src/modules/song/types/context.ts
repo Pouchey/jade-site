@@ -1,7 +1,5 @@
-import { TSong } from '_shared/song/types';
-
 export interface SongState {
-  song?: TSong | null;
+  song?: number | null;
   isCreateOpen?: boolean;
   isUpdateOpen?: boolean;
 }

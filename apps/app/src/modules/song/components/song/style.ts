@@ -5,6 +5,8 @@ const marquee = keyframes`
     100% { transform: translate3d(-100%, 0, 0); }
 `;
 
+import { StyledButton } from '_components/button/style';
+
 export const StyledSongItemWrapper = styled.div`
   display: flex;
   gap: 16px;
@@ -73,6 +75,7 @@ export const StyledArtist = styled.div`
 
 export const StyledCountWrapper = styled.div`
   display: flex;
+  gap: 16px;
   align-items: center;
   justify-content: center;
 `;

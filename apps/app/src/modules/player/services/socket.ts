@@ -20,7 +20,7 @@ const onSongRemoved = (callback: (data: number) => void) => {
 };
 
 const onSongUpdated = (
-  callback: (data: { songId: number; count: number, likes: string[] }) => void,
+  callback: (data: { songId: number; count: number; likes: string[] }) => void,
 ) => {
   socket.on('songUpdated', callback);
 };
@@ -41,6 +41,10 @@ const dislikeSong = (songId: number) => {
   socket.emit('dislikeSong', songId);
 };
 
+const nextSong = (songId: number) => {
+  socket.emit('nextSong', songId);
+};
+
 export {
   onTokenUpdated,
   onPlayerUpdate,
@@ -50,5 +54,6 @@ export {
   fetchPlayer,
   addSongToQueue,
   likeSong,
-  dislikeSong
+  dislikeSong,
+  nextSong,
 };

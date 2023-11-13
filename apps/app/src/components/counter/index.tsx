@@ -33,11 +33,7 @@ const Counter = ({
     );
 
   return (
-    <StyledCounter
-      onClick={onClick}
-      $disabled={disabled}
-      $liked={liked}
-    >
+    <StyledCounter onClick={onClick} $disabled={disabled} $liked={liked}>
       <StyledCounterText>{count}</StyledCounterText>
       <StyledLike>
         <Icon glyph="heart" size={24} color={liked ? 'red1' : 'black'} />

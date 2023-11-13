@@ -5,8 +5,6 @@ import { useSongContext } from '_modules/song/hooks/useContext';
 import CreateForm from '_modules/song/views/create';
 import UpdateForm from '_modules/song/views/update';
 
-import { TSong } from '_shared/song/types';
-
 import AddSong from '../components/common/add-song';
 import SelectSong from '../components/common/select-song';
 
@@ -22,7 +20,7 @@ const Content = React.memo(() => {
     });
   };
 
-  const handleUpdateSong = (song: TSong) => {
+  const handleUpdateSong = (song: number) => {
     dispatch({
       type: { value: 'setUpdateOpen' },
       payload: {

@@ -14,5 +14,4 @@ export const StyledSongItemList = styled.div`
       border-bottom: none;
     }
   }
-
 `;

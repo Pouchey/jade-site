@@ -101,7 +101,7 @@ export class PlayerService {
     return {
       songId: song.id,
       count: song.count,
-      likes: song.likes
+      likes: song.likes,
     };
   }
 
@@ -126,7 +126,7 @@ export class PlayerService {
       dislike: {
         songId: song.id,
         count: song.count,
-        likes: song.likes
+        likes: song.likes,
       },
       remove: {
         songId: song.id,
