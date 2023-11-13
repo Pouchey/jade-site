@@ -46,7 +46,10 @@ const Song = ({ song, onClick, onPlay }: Props) => {
       </StyledImageWrapper>
       <StyledInformationWrapper>
         <StyledDesc>
-          <StyledSongName>{song.title}</StyledSongName>
+          <StyledSongName>
+            <span>{song.title}</span>
+            <span>{song.title}</span>
+          </StyledSongName>
           <StyledArtist>{song.artist}</StyledArtist>
         </StyledDesc>
         <StyledCountWrapper>
