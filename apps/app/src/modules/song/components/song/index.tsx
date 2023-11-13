@@ -3,6 +3,8 @@ import Image from '_components/image';
 
 import { getImageUrl } from '_modules/file/utils';
 
+import socket from '_services/socket';
+
 import { TSong } from '_shared/song/types';
 
 import {
@@ -22,7 +24,7 @@ interface Props {
 
 const Song = ({ song, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
-  const isRequested = song.requester?.id === 1;
+  const isRequested = song.requester && song.requester?.id === socket.id;
 
   const handleClick = () => {
     onClick(song.id);

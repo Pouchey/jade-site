@@ -68,6 +68,8 @@ export class PlayerService {
       name: 'Jade',
     };
 
+    song.count = 1;
+
     this.player.songs.push(song);
 
     return song;

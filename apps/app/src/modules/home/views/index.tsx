@@ -13,7 +13,8 @@ const Home = React.memo(() => {
   const navigate = useNavigate();
 
   const player = useFetchPlayer();
-  console.log(player);
+  console.log('player', player);
+
   const isLoading = !player;
 
   const handleAddSong = () => {
