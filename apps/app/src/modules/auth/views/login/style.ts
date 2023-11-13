@@ -28,9 +28,9 @@ export const StyledPanel = styled.div`
 export const StyledAuth = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 32px;
   align-items: center;
   justify-content: flex-start;
-  gap: 32px;
   width: 100%;
   height: 100%;
   padding: 32px;

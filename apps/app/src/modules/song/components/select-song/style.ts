@@ -10,9 +10,9 @@ export const StyledSongItemWrapper = styled.div<StyledSongProps>`
   gap: 16px;
   width: 100%;
   padding: 12px 20px;
+  cursor: pointer;
   background-color: ${({ theme }) => theme.color.white};
   border-bottom: 1px solid ${({ theme }) => theme.color.green1};
-  cursor: pointer;
 
   ${({ $requested, theme }) =>
     $requested &&
@@ -79,6 +79,6 @@ export const StyledRequester = styled.div`
   align-items: center;
 
   p {
-    color: ${({theme}) => theme.color.red1}
+    color: ${({ theme }) => theme.color.red1};
   }
 `;

@@ -37,7 +37,11 @@ const Player = React.memo(({ current, isLoading = false }: Props) => {
     <StyledPlayer>
       <StyledPlayerSection>
         <StyledImageWrapper>
-          <Image size={100} url={imageUrl} alt={current.icon.name} />
+          <Image
+            size={100}
+            url={imageUrl}
+            alt={current.icon ? current.icon.name : 'no icon'}
+          />
         </StyledImageWrapper>
         <StyledDesc>
           <StyledSongName>{current.title}</StyledSongName>

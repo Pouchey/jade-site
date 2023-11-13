@@ -9,13 +9,11 @@ import { useSongListContext } from '_modules/song-list/hooks/useContext';
 import { formatSongPages } from '_modules/song-list/utils';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
-import { TSong } from '_shared/song/types';
-
 import Item from './Item';
 import { StyledContainer, StyledSongItemList } from './style';
 
 interface Props {
-  handleClick: (song: TSong) => void;
+  handleClick: (song: number) => void;
 }
 
 const SelectSong = React.memo(({ handleClick }: Props) => {
