@@ -14,8 +14,8 @@ const Item = ({ song, onClick }: Props) => {
     onClick(song);
   };
   return (
-    <div onClick={() => handleClick(song)}>
-      <Song key={song.id} song={song} />
+    <div>
+      <Song key={song.id} song={song} onClick={handleClick} />
     </div>
   );
 };

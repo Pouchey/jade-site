@@ -19,12 +19,12 @@ interface Props {
 const SelectSong = React.memo(({ handleClick }: Props) => {
   const { isFetching, isRefetching, data } = useFetchSongs();
 
-  const { state, dispatch } = useSongListContext();
+  const { dispatch } = useSongListContext();
 
   const handleSearch = (value: string) => {
     dispatch({ type: 'setQ', payload: { q: value } });
   };
-
+  
   return (
     <StyledContainer>
       <Search

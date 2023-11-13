@@ -36,7 +36,7 @@ export const useFetchSongs = () => {
       });
 
       const { data } = await api.fetchSongs(queryParams);
-
+      
       return data;
     },
     initialPageParam: 1,

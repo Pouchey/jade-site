@@ -9,6 +9,8 @@ import Song from '_modules/song/components/song';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import { StyledSongItemList } from './style';
+import { TSong } from '_shared/song/types';
+import SelectSong from '_modules/song/components/select-song';
 
 const Songs = React.memo(() => {
   const {
@@ -26,18 +28,18 @@ const Songs = React.memo(() => {
     }
   }, [fetchNextPage, hasNextPage]);
 
-  const handleAddSong = (id: number) => {
-    addSongToQueue(id);
+  const handleAddSong = (song: TSong) => {
+    addSongToQueue(song.id);
   };
 
   return (
     <StyledSongItemList>
       {items?.map((song) => (
-        <Song key={song.id} song={song} onClick={handleAddSong} />
+        <SelectSong key={song.id} song={song} onClick={handleAddSong} />
       ))}
       {lastItem && (
         <LastItem fetchNext={handleFetchNextPage}>
-          <Song key={lastItem.id} song={lastItem} onClick={handleAddSong} />
+          <SelectSong key={lastItem.id} song={lastItem} onClick={handleAddSong} />
         </LastItem>
       )}
       {isFetchingNextPage && <Loader label="Loading songs..." size={32} />}
