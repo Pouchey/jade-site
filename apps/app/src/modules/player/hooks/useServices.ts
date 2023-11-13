@@ -12,8 +12,6 @@ import usePlayerStore from './useStore';
 export const useFetchPlayer = () => {
   const { player, setPlayer, addSong, updateSong } = usePlayerStore();
 
-  console.log(player);
-
   useEffect(() => {
     fetchPlayer();
 
