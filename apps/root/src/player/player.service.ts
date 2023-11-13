@@ -31,13 +31,14 @@ export class PlayerService {
   setNextSong(clientId: string, songId: number) {
     this.player.current =
       this.player.songs.find((song) => song.id === songId) || null;
+
     this.player.songs = this.player.songs.filter((song) => song.id !== songId);
     return this.player;
   }
 
   likeSong(clientId: string, songId: number) {
     if (
-      this.player.current.id === songId ||
+      this.player.current?.id === songId ||
       this.player.songs.find((song) => song.id !== songId)
     )
       return;

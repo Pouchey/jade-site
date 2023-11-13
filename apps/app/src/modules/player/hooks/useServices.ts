@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import {
   onPlayerUpdate,
   fetchPlayer,
   onSongAdded,
+  onSongUpdated,
 } from '_modules/player/services/socket';
 
-import { TPlayer } from '_shared/player/types';
+import usePlayerStore from './useStore';
 
 export const useFetchPlayer = () => {
-  const [player, setPlayer] = useState<TPlayer | null>(null);
+  const { player, setPlayer, addSong, updateSong } = usePlayerStore();
+
+  console.log(player);
 
   useEffect(() => {
     fetchPlayer();
@@ -17,13 +20,18 @@ export const useFetchPlayer = () => {
     onPlayerUpdate((data) => {
       setPlayer(data);
     });
+
     onSongAdded((data) => {
-      if (!player) return;
-      setPlayer({
-        ...player,
-        songs: [...player.songs, data],
-      });
+      addSong(data);
     });
+
+    onSongUpdated((data) => {
+      updateSong(data);
+    });
+
+    return () => {
+      setPlayer(null);
+    };
   }, []);
 
   return player;

@@ -11,6 +11,12 @@ const onSongAdded = (callback: (data: TSong) => void) => {
   socket.on('songAdded', callback);
 };
 
+const onSongUpdated = (
+  callback: (data: { songId: number; count: number }) => void,
+) => {
+  socket.on('songUpdated', callback);
+};
+
 const fetchPlayer = () => {
   socket.emit('fetchPlayer');
 };
@@ -19,4 +25,15 @@ const addSongToQueue = (songId: number) => {
   socket.emit('addSong', songId);
 };
 
-export { onPlayerUpdate, onSongAdded, fetchPlayer, addSongToQueue };
+const likeSong = (songId: number) => {
+  socket.emit('likeSong', songId);
+};
+
+export {
+  onPlayerUpdate,
+  onSongAdded,
+  onSongUpdated,
+  fetchPlayer,
+  addSongToQueue,
+  likeSong,
+};
