@@ -116,9 +116,6 @@ export class PlayerService {
     song.count = song.count - 1;
     song.likes = song.likes.filter((like) => like !== listener.token);
 
-    return {
-      songId: song.id,
-      count: song.count,
-    };
+    return song;
   }
 }
