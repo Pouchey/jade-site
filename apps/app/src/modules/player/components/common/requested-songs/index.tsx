@@ -20,8 +20,8 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
 
   if (!songs?.length) return <Fake />;
 
-  const handleClick = (id: number) => {
-    likeSong(id);
+  const handleClick = (song: TSong) => {
+    likeSong(song.id);
   };
 
   return (
