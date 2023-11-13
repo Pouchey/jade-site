@@ -12,15 +12,18 @@ export const StyledSongItemWrapper = styled.div<StyledSongProps>`
   padding: 12px 20px;
   background-color: ${({ theme }) => theme.color.white};
   border-bottom: 1px solid ${({ theme }) => theme.color.green1};
+  cursor: pointer;
 
   ${({ $requested, theme }) =>
     $requested &&
     `
-    background: repeating-linear-gradient(
-      45deg,
-      ${theme.color.white} 0 12px,
-      ${rgba(theme.color.green1, 0.5)} 12px 16px
-    );
+      background: repeating-linear-gradient(
+        45deg,
+        ${theme.color.white} 0 12px,
+        ${rgba(theme.color.green1, 0.5)} 12px 16px
+      );
+      cursor: auto;
+
     `};
 `;
 
