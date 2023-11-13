@@ -32,7 +32,7 @@ const SelectSong = ({ song, onClick }: Props) => {
   };
 
   return (
-    <StyledSongItemWrapper onClick={handleClick} $requested={!!requestedSong}>
+    <StyledSongItemWrapper onClick={requestedSong? undefined : handleClick} $requested={!!requestedSong}>
       <StyledImageWrapper>
         <Image url={imageUrl} alt={song.title} size={64} />
       </StyledImageWrapper>
