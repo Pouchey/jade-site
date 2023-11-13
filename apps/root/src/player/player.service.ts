@@ -1,27 +1,44 @@
+import { TListener } from '@jaderowley/shared/src/listener/types';
 import { TPlayer } from '@jaderowley/shared/src/player/types';
 import { Injectable } from '@nestjs/common';
 import { Socket } from 'socket.io';
 import { SongService } from 'src/song/song.service';
 
-import { initPlayer } from './player.entity';
+import { createListener, initPlayer } from './player.entity';
 
 @Injectable()
 export class PlayerService {
   constructor(private readonly songService: SongService) {}
 
-  private readonly connectedUser: Map<string, Socket> = new Map<
+  private readonly connectedUser: Map<string, TListener> = new Map<
     string,
-    Socket
+    TListener
   >();
 
   private readonly player: TPlayer = initPlayer();
 
-  handleConnection(client: Socket) {
-    this.connectedUser.set(client.id, client);
+  handleConnection(client: Socket, token: string) {
+    const listener = this.connectedUser.get(token);
+
+    if (!token || !listener) {
+      const newListener = createListener(client);
+      this.connectedUser.set(newListener.id, newListener);
+
+      client.emit('tokenUpdated', newListener.id);
+    }
+
+    if (listener) {
+      listener.socket = client;
+      return;
+    }
   }
 
   handleDisconnect(client: Socket) {
-    this.connectedUser.delete(client.id);
+    // get listener by token
+    const listener = [...this.connectedUser.values()].find(
+      (listener) => listener.socket.id === client.id,
+    );
+    this.connectedUser.delete(listener.socket.id);
   }
 
   fetchPlayer() {
@@ -37,11 +54,7 @@ export class PlayerService {
   }
 
   likeSong(clientId: string, songId: number) {
-    if (
-      this.player.current?.id === songId ||
-      this.player.songs.find((song) => song.id !== songId)
-    )
-      return;
+    if (this.player.current?.id === songId) return;
 
     const song = this.player.songs.find((song) => song.id === songId);
 
@@ -64,10 +77,8 @@ export class PlayerService {
 
     const song = await this.songService.findOne(songId);
 
-    song.requester = {
-      id: clientId,
-      name: 'Jade',
-    };
+    const listener = this.connectedUser.get(clientId);
+    song.requester = listener;
 
     song.count = 1;
 

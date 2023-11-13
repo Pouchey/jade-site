@@ -3,6 +3,10 @@ import socket from '_services/socket';
 import { TPlayer } from '_shared/player/types';
 import { TSong } from '_shared/song/types';
 
+const onTokenUpdated = (callback: (data: string) => void) => {
+  socket.on('tokenUpdated', callback);
+};
+
 const onPlayerUpdate = (callback: (data: TPlayer) => void) => {
   socket.on('playerUpdated', callback);
 };
@@ -30,6 +34,7 @@ const likeSong = (songId: number) => {
 };
 
 export {
+  onTokenUpdated,
   onPlayerUpdate,
   onSongAdded,
   onSongUpdated,

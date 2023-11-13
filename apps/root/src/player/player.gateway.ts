@@ -23,7 +23,8 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   constructor(private readonly playerService: PlayerService) {}
 
   handleConnection(client: Socket) {
-    this.playerService.handleConnection(client);
+    const token = client.handshake.auth.token as string;
+    this.playerService.handleConnection(client, token);
   }
 
   handleDisconnect(client: Socket) {
@@ -53,7 +54,6 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @MessageBody() songId: number,
   ) {
     const liked = this.playerService.likeSong(client.id, songId);
-
     if (!liked) return;
 
     this.server.emit('songUpdated', liked);
