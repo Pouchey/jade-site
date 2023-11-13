@@ -1,5 +1,4 @@
 import { TFile } from '../../file/types';
-import { TListener } from '../../listener/types';
 
 export type TSong = {
   id: number;
