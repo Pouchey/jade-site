@@ -1,13 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
 const marquee = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
+    0% { transform: translate3d(0%, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
 `;
 
 export const StyledSongItemWrapper = styled.div`
@@ -47,19 +42,23 @@ export const StyledDesc = styled.div`
 
 export const StyledSongName = styled.div`
   display: flex;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  align-items: center;
   min-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 
   span {
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    width: 100%;
+    padding: 0 8px;
+    width: max-content;
+    min-width: 100%;
     font-size: ${({ theme }) => theme.size.tall};
     font-weight: ${({ theme }) => theme.weight.medium};
     text-transform: uppercase;
+    white-space: nowrap;
+
+    transform: translateX(0);
     animation: ${marquee} 10s linear infinite;
   }
 `;
