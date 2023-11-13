@@ -10,7 +10,11 @@ export type TSong = {
   icon: TFile;
   iconId: number;
   count?: number;
-  requester?: Omit<TListener, 'socket'>;
+  requester?: {
+    id: string;
+    name: string;
+  };
+  likes?: string[];
 };
 
 export enum ESongListType {

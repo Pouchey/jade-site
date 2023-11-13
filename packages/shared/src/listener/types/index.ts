@@ -1,7 +1,5 @@
-import { Socket } from 'socket.io';
-
 export type TListener = {
-  id: string;
+  token: string;
   name: string;
-  socket: Socket | null;
+  socketId: string | null;
 };

@@ -10,6 +10,7 @@ import { createListener, initPlayer } from './player.entity';
 export class PlayerService {
   constructor(private readonly songService: SongService) {}
 
+  // mapped by socketId
   private readonly connectedUser: Map<string, TListener> = new Map<
     string,
     TListener
@@ -17,34 +18,37 @@ export class PlayerService {
 
   private readonly player: TPlayer = initPlayer();
 
-  getListenerBySocketId(socketId: string) {
+  getListenerByToken(token: string) {
     return [...this.connectedUser.values()].find(
-      (listener) => listener.socket?.id === socketId,
+      (listener) => listener.token === token,
     );
   }
 
   handleConnection(client: Socket, token: string) {
-    const listener = this.connectedUser.get(token);
-
-    if (!token || !listener) {
-      const newListener = createListener(client);
-      this.connectedUser.set(newListener.id, newListener);
-
-      client.emit('tokenUpdated', newListener.id);
-    }
+    const listener = this.getListenerByToken(token);
 
     if (listener) {
-      listener.socket = client;
+      this.connectedUser.delete(listener.socketId);
+      this.connectedUser.set(client.id, {
+        ...listener,
+        socketId: client.id,
+      });
       return;
     }
+
+    const newListener = createListener(client);
+
+    this.connectedUser.set(newListener.socketId, newListener);
+
+    client.emit('tokenUpdated', newListener.token);
   }
 
   handleDisconnect(client: Socket) {
-    const listener = this.getListenerBySocketId(client.id);
+    const listener = this.connectedUser.get(client.id);
 
-    this.connectedUser.set(listener.id, {
+    this.connectedUser.set(listener.socketId, {
       ...listener,
-      socket: null,
+      socketId: null,
     });
   }
 
@@ -64,10 +68,12 @@ export class PlayerService {
     if (this.player.current?.id === songId) return;
 
     const song = this.player.songs.find((song) => song.id === songId);
+    const listener = this.connectedUser.get(clientId);
 
-    if (!song) return;
+    if (!song || song.likes.includes(listener.token)) return;
 
     song.count = song.count + 1;
+    song.likes.push(listener.token);
 
     return {
       songId: song.id,
@@ -84,13 +90,15 @@ export class PlayerService {
 
     const song = await this.songService.findOne(songId);
 
-    const listener = this.getListenerBySocketId(clientId);
+    const listener = this.connectedUser.get(clientId);
+
     song.requester = {
-      id: listener.id,
+      id: listener.token,
       name: listener.name,
     };
 
     song.count = 1;
+    song.likes = [listener.token];
 
     this.player.songs.push(song);
 

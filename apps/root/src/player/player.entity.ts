@@ -8,10 +8,10 @@ export const initPlayer = (): TPlayer => ({
   songs: [],
 });
 
-export const createListener = (Socket: Socket): TListener => {
+export const createListener = (socket: Socket): TListener => {
   return {
-    id: uuidv4(),
+    token: uuidv4(),
     name: '',
-    socket: Socket,
+    socketId: socket.id,
   };
 };
