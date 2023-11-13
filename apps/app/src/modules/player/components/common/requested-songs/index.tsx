@@ -2,8 +2,9 @@ import React from 'react';
 
 import Loader from '_components/loader';
 
-import { likeSong } from '_modules/player/services/socket';
+import { dislikeSong, likeSong } from '_modules/player/services/socket';
 import Song from '_modules/song/components/song';
+import { getSocketToken } from '_modules/auth/utils';
 
 import { TSong } from '_shared/song/types';
 
@@ -21,7 +22,14 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
   if (!songs?.length) return <Fake />;
 
   const handleClick = (song: number) => {
-    likeSong(song);
+    const s = songs.find(s => s.id === song);
+    if(s?.requester && s.requester?.id === getSocketToken()){
+      dislikeSong(song);
+    }
+    else{
+      likeSong(song);
+
+    }
   };
 
   return (

@@ -39,9 +39,16 @@ const usePlayerStore = create<PlayerState>((set) => ({
   updateSong: ({ songId, count }) =>
     set((state) => {
       if (!state.player) return state;
-      const newSongs = state.player.songs.map((song) =>
-        song.id === songId ? { ...song, count } : song,
-      );
+      let newSongs;
+      if(count > 0){
+        newSongs = state.player.songs.map((song) =>
+          song.id === songId ? { ...song, count } : song,
+        );
+      }
+      else{
+        newSongs = state.player.songs.filter(song => song.id !== songId) 
+      }
+
       return {
         player: {
           ...state.player,

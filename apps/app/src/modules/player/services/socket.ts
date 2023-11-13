@@ -37,6 +37,10 @@ const likeSong = (songId: number) => {
   socket.emit('likeSong', songId);
 };
 
+const dislikeSong = (songId: number) => {
+  socket.emit('dislikeSong', songId);
+};
+
 export {
   onTokenUpdated,
   onPlayerUpdate,
@@ -46,4 +50,5 @@ export {
   fetchPlayer,
   addSongToQueue,
   likeSong,
+  dislikeSong
 };
