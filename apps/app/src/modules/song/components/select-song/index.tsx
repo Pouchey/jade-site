@@ -1,9 +1,7 @@
-import Counter from '_components/counter';
+import Icon from '_components/icon';
 import Image from '_components/image';
 
 import { getImageUrl } from '_modules/file/utils';
-
-import socket from '_services/socket';
 
 import { TSong } from '_shared/song/types';
 
@@ -14,9 +12,8 @@ import {
   StyledInformationWrapper,
   StyledSongItemWrapper,
   StyledSongName,
-  StyledRequester
+  StyledRequester,
 } from './style';
-import Icon from '_components/icon';
 
 interface Props {
   song: TSong;
@@ -28,9 +25,8 @@ const SelectSong = ({ song, onClick }: Props) => {
   const isRequested = song.requester;
 
   const handleClick = () => {
-    onClick(song)
-  }
-
+    onClick(song);
+  };
 
   return (
     <StyledSongItemWrapper onClick={handleClick} $requested={!!isRequested}>
@@ -40,13 +36,13 @@ const SelectSong = ({ song, onClick }: Props) => {
       <StyledInformationWrapper>
         <StyledDesc>
           <StyledSongName>{song.title}</StyledSongName>
-          { isRequested &&
-          <StyledRequester>
-            <Icon glyph="heart" size={18} color={'red1'} />
-            <p>{song.count}</p>
-            <span>Requested by {song.requester?.name}</span>
-          </StyledRequester>
-           }
+          {isRequested && (
+            <StyledRequester>
+              <Icon glyph="heart" size={18} color={'red1'} />
+              <p>{song.count}</p>
+              <span>Requested by {song.requester?.name}</span>
+            </StyledRequester>
+          )}
           <StyledArtist>{song.artist}</StyledArtist>
         </StyledDesc>
       </StyledInformationWrapper>

@@ -1,6 +1,5 @@
-import styled from 'styled-components';
 import { rgba } from 'polished';
-
+import styled from 'styled-components';
 
 export interface StyledSongProps {
   $requested: boolean;
@@ -14,17 +13,15 @@ export const StyledSongItemWrapper = styled.div<StyledSongProps>`
   background-color: ${({ theme }) => theme.color.white};
   border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 
-  ${({ $requested, theme }) => 
-    $requested && 
+  ${({ $requested, theme }) =>
+    $requested &&
     `
     background: repeating-linear-gradient(
       45deg,
       ${theme.color.white} 0 12px,
       ${rgba(theme.color.green1, 0.5)} 12px 16px
     );
-    `
-
-  };
+    `};
 `;
 
 export const StyledImageWrapper = styled.div`
@@ -62,11 +59,11 @@ export const StyledSongName = styled.div`
 `;
 
 export const StyledArtist = styled.div`
-  width: 100%;
   align-self: flex-end;
-  text-align: end;
+  width: 100%;
   overflow: hidden;
   font-size: ${({ theme }) => theme.size.tall};
+  text-align: end;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
@@ -75,6 +72,6 @@ export const StyledArtist = styled.div`
 export const StyledRequester = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 4px;
+  align-items: center;
 `;

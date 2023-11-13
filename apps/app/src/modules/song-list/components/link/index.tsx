@@ -27,7 +27,7 @@ const TabLink = React.memo(({ glyph, value }: Props) => {
 
   return (
     <StyledLinkContainer onClick={handleClick}>
-      <StyledLink >
+      <StyledLink>
         <Icon glyph={glyph} size={28} color="white" />
       </StyledLink>
     </StyledLinkContainer>
