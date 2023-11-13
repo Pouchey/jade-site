@@ -7,6 +7,7 @@ interface PlayerState {
   player: TPlayer | null;
   setPlayer: (player: TPlayer | null) => void;
   addSong: (song: TSong) => void;
+  removeSong: (songId: number) => void;
   updateSong: ({ songId, count }: { songId: number; count: number }) => void;
 }
 
@@ -17,6 +18,17 @@ const usePlayerStore = create<PlayerState>((set) => ({
     set((state) => {
       if (!state.player) return state;
       const newSongs = [...state.player.songs, song];
+      return {
+        player: {
+          ...state.player,
+          songs: newSongs,
+        },
+      };
+    }),
+  removeSong: (songId) =>
+    set((state) => {
+      if (!state.player) return state;
+      const newSongs = state.player.songs.filter((song) => song.id !== songId);
       return {
         player: {
           ...state.player,

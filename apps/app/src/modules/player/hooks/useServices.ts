@@ -7,12 +7,14 @@ import {
   onSongAdded,
   onSongUpdated,
   onTokenUpdated,
+  onSongRemoved,
 } from '_modules/player/services/socket';
 
 import usePlayerStore from './useStore';
 
 export const useFetchPlayer = () => {
-  const { player, setPlayer, addSong, updateSong } = usePlayerStore();
+  const { player, setPlayer, addSong, removeSong, updateSong } =
+    usePlayerStore();
 
   useEffect(() => {
     fetchPlayer();
@@ -27,6 +29,10 @@ export const useFetchPlayer = () => {
 
     onSongAdded((data) => {
       addSong(data);
+    });
+
+    onSongRemoved((data) => {
+      removeSong(data);
     });
 
     onSongUpdated((data) => {

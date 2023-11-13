@@ -15,6 +15,10 @@ const onSongAdded = (callback: (data: TSong) => void) => {
   socket.on('songAdded', callback);
 };
 
+const onSongRemoved = (callback: (data: number) => void) => {
+  socket.on('songRemoved', callback);
+};
+
 const onSongUpdated = (
   callback: (data: { songId: number; count: number }) => void,
 ) => {
@@ -37,6 +41,7 @@ export {
   onTokenUpdated,
   onPlayerUpdate,
   onSongAdded,
+  onSongRemoved,
   onSongUpdated,
   fetchPlayer,
   addSongToQueue,

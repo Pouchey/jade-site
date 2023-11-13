@@ -76,7 +76,6 @@ export class PlayerService {
     song.likes = [listener.token];
 
     this.player.songs.push(song);
-
     return song;
   }
 
@@ -116,6 +115,21 @@ export class PlayerService {
     song.count = song.count - 1;
     song.likes = song.likes.filter((like) => like !== listener.token);
 
-    return song;
+    if (song.count === 0) {
+      this.player.songs = this.player.songs.filter(
+        (song) => song.id !== songId,
+      );
+    }
+
+    return {
+      dislike: {
+        songId: song.id,
+        count: song.count,
+      },
+      remove: {
+        songId: song.id,
+        isRemoved: song.count === 0,
+      },
+    };
   }
 }

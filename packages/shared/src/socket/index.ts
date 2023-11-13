@@ -6,6 +6,7 @@ export interface IServerToClient {
   playerUpdated: (data: TPlayer) => void;
   songAdded: (data: TSong) => void;
   songUpdated: (data: { songId: number; count: number }) => void;
+  songRemoved: (data: number) => void;
 }
 
 export interface IClientToServer {

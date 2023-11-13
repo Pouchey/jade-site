@@ -8,11 +8,13 @@ import useInitReactQueryClient from '_hooks/useInitReactQueryClient';
 import Admin from '_modules/admin/views';
 import Donate from '_modules/donate/views';
 import Home from '_modules/home/views';
+import { useFetchPlayer } from '_modules/player/hooks/useServices';
 import SongList from '_modules/song-list/views/list';
 import UIWrapper from '_modules/ui/components';
 
 const App = React.memo(() => {
   useInitReactQueryClient();
+  useFetchPlayer();
 
   return (
     <UIWrapper>

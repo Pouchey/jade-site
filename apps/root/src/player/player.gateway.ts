@@ -74,9 +74,12 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const disliked = this.playerService.dislikeSong(client.id, songId);
-    if (!disliked) return;
+    const res = this.playerService.dislikeSong(client.id, songId);
+    if (!res) return;
 
-    this.server.emit('songUpdated', disliked);
+    if (res.dislike) this.server.emit('songUpdated', res.dislike);
+
+    if (res.remove.isRemoved)
+      this.server.emit('songRemoved', res.remove.songId);
   }
 }

@@ -5,14 +5,14 @@ import Button from '_components/button';
 
 import Player from '_modules/player/components/common/player';
 import RequestedSongs from '_modules/player/components/common/requested-songs';
-import { useFetchPlayer } from '_modules/player/hooks/useServices';
+import usePlayerStore from '_modules/player/hooks/useStore';
 
 import { StyledContainer, StyledWrapper } from './style';
 
 const Home = React.memo(() => {
   const navigate = useNavigate();
 
-  const player = useFetchPlayer();
+  const player = usePlayerStore().player;
 
   const isLoading = !player;
 
