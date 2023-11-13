@@ -23,7 +23,7 @@ interface Props {
 
 const Song = ({ song, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
-  const isLiked = song.likes?.find(like => like === getSocketToken())
+  const isLiked = song.likes?.find((like) => like === getSocketToken());
 
   const handleClick = () => {
     onClick(song.id);
@@ -36,15 +36,14 @@ const Song = ({ song, onClick }: Props) => {
       </StyledImageWrapper>
       <StyledInformationWrapper>
         <StyledDesc>
-          <StyledSongName>{song.title}</StyledSongName>
+          <StyledSongName>
+            <span>{song.title}</span>
+            <span>{song.title}</span>
+          </StyledSongName>
           <StyledArtist>{song.artist}</StyledArtist>
         </StyledDesc>
         <StyledCountWrapper>
-          <Counter
-            onClick={handleClick}
-            count={song.count}
-            liked={!!isLiked}
-          />
+          <Counter onClick={handleClick} count={song.count} liked={!!isLiked} />
         </StyledCountWrapper>
       </StyledInformationWrapper>
     </StyledSongItemWrapper>
