@@ -74,4 +74,8 @@ export const StyledRequester = styled.div`
   flex-direction: row;
   gap: 4px;
   align-items: center;
+
+  p {
+    color: ${({theme}) => theme.color.red1}
+  }
 `;

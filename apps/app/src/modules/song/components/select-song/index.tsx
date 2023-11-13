@@ -14,6 +14,7 @@ import {
   StyledSongName,
   StyledRequester,
 } from './style';
+import { useFetchPlayer } from '_modules/player/hooks/useServices';
 
 interface Props {
   song: TSong;
@@ -22,25 +23,27 @@ interface Props {
 
 const SelectSong = ({ song, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
-  const isRequested = song.requester;
+  const player = useFetchPlayer();
+
+  const requestedSong = player?.songs.find(s => s.id === song.id);
 
   const handleClick = () => {
     onClick(song);
   };
 
   return (
-    <StyledSongItemWrapper onClick={handleClick} $requested={!!isRequested}>
+    <StyledSongItemWrapper onClick={handleClick} $requested={!!requestedSong}>
       <StyledImageWrapper>
         <Image url={imageUrl} alt={song.title} size={64} />
       </StyledImageWrapper>
       <StyledInformationWrapper>
         <StyledDesc>
           <StyledSongName>{song.title}</StyledSongName>
-          {isRequested && (
+          {requestedSong && (
             <StyledRequester>
               <Icon glyph="heart" size={18} color={'red1'} />
-              <p>{song.count}</p>
-              <span>Requested by {song.requester?.name}</span>
+              <p>{requestedSong.count}</p>
+              <span>Requested {requestedSong.requester?.name && "by " + requestedSong.requester?.name}</span>
             </StyledRequester>
           )}
           <StyledArtist>{song.artist}</StyledArtist>

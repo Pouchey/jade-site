@@ -102,6 +102,7 @@ export class PlayerService {
 
     this.player.songs.push(song);
 
+    console.log(song)
     return song;
   }
 }
