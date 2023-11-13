@@ -2,6 +2,7 @@ import React from 'react';
 
 import Loader from '_components/loader';
 
+import { likeSong } from '_modules/player/services/socket';
 import Song from '_modules/song/components/song';
 
 import { TSong } from '_shared/song/types';
@@ -19,9 +20,15 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
 
   if (!songs?.length) return <Fake />;
 
+  const handleClick = (id: number) => {
+    likeSong(id);
+  };
+
   return (
     <StyledSongItemList>
-      {songs?.map((song) => <Song key={song.id} song={song} />)}
+      {songs?.map((song) => (
+        <Song key={song.id} song={song} onClick={handleClick} />
+      ))}
     </StyledSongItemList>
   );
 };
