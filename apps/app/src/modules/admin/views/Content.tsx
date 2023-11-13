@@ -36,7 +36,9 @@ const Content = React.memo(() => {
     <SongListProvider>
       <StyledContainer>
         <AddSong handleClick={handleCreateSong} />
-        <StyledComponentContainer $hide={!!state.isCreateOpen || !!state.isUpdateOpen}>
+        <StyledComponentContainer
+          $hide={!!state.isCreateOpen || !!state.isUpdateOpen}
+        >
           <SelectSong handleClick={handleUpdateSong} />
         </StyledComponentContainer>
         {state.isCreateOpen && <CreateForm />}

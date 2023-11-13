@@ -5,11 +5,12 @@ import Loader from '_components/loader';
 import { addSongToQueue } from '_modules/player/services/socket';
 import LastItem from '_modules/song-list/components/last-item';
 import { formatSongPages } from '_modules/song-list/utils';
+import SelectSong from '_modules/song/components/select-song';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
-import { StyledSongItemList } from './style';
 import { TSong } from '_shared/song/types';
-import SelectSong from '_modules/song/components/select-song';
+
+import { StyledSongItemList } from './style';
 
 const Songs = React.memo(() => {
   const {
@@ -38,7 +39,11 @@ const Songs = React.memo(() => {
       ))}
       {lastItem && (
         <LastItem fetchNext={handleFetchNextPage}>
-          <SelectSong key={lastItem.id} song={lastItem} onClick={handleAddSong} />
+          <SelectSong
+            key={lastItem.id}
+            song={lastItem}
+            onClick={handleAddSong}
+          />
         </LastItem>
       )}
       {isFetchingNextPage && <Loader label="Loading songs..." size={32} />}

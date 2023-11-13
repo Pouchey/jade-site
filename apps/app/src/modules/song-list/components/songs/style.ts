@@ -6,8 +6,8 @@ export const StyledSongItemList = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  border-bottom: 1px solid ${({ theme }) => theme.color.green1};
   background-color: ${({ theme }) => theme.color.white};
+  border-bottom: 1px solid ${({ theme }) => theme.color.green1};
 
   > :last-child {
     > div {
