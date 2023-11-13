@@ -23,7 +23,8 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
 
   const handleClick = (song: number) => {
     const s = songs.find(s => s.id === song);
-    if(s?.requester && s.requester?.id === getSocketToken()){
+    const like = s?.likes?.find(like => like === getSocketToken());
+    if(like){
       dislikeSong(song);
     }
     else{
