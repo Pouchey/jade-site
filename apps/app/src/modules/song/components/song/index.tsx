@@ -25,7 +25,6 @@ const Song = ({ song, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
   const isLiked = song.likes?.find(like => like === getSocketToken())
 
-
   const handleClick = () => {
     onClick(song.id);
   };

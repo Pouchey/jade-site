@@ -8,7 +8,7 @@ interface PlayerState {
   setPlayer: (player: TPlayer | null) => void;
   addSong: (song: TSong) => void;
   removeSong: (songId: number) => void;
-  updateSong: ({ songId, count }: { songId: number; count: number }) => void;
+  updateSong: ({ songId, count, likes }: { songId: number; count: number, likes: string[] }) => void;
 }
 
 const usePlayerStore = create<PlayerState>((set) => ({
@@ -36,13 +36,13 @@ const usePlayerStore = create<PlayerState>((set) => ({
         },
       };
     }),
-  updateSong: ({ songId, count }) =>
+  updateSong: ({ songId, count, likes }) =>
     set((state) => {
       if (!state.player) return state;
       let newSongs;
       if(count > 0){
         newSongs = state.player.songs.map((song) =>
-          song.id === songId ? { ...song, count } : song,
+          song.id === songId ? { ...song, count, likes } : song,
         );
       }
       else{

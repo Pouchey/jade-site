@@ -20,7 +20,7 @@ const onSongRemoved = (callback: (data: number) => void) => {
 };
 
 const onSongUpdated = (
-  callback: (data: { songId: number; count: number }) => void,
+  callback: (data: { songId: number; count: number, likes: string[] }) => void,
 ) => {
   socket.on('songUpdated', callback);
 };
