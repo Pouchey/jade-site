@@ -56,6 +56,30 @@ export class PlayerService {
     return this.player;
   }
 
+  async addSong(clientId: string, songId: number) {
+    if (
+      this.player.current?.id === songId ||
+      this.player.songs.find((song) => song.id === songId)
+    )
+      return;
+
+    const song = await this.songService.findOne(songId);
+
+    const listener = this.connectedUser.get(clientId);
+
+    song.requester = {
+      id: listener.token,
+      name: listener.name,
+    };
+
+    song.count = 1;
+    song.likes = [listener.token];
+
+    this.player.songs.push(song);
+
+    return song;
+  }
+
   setNextSong(clientId: string, songId: number) {
     this.player.current =
       this.player.songs.find((song) => song.id === songId) || null;
@@ -81,27 +105,20 @@ export class PlayerService {
     };
   }
 
-  async addSong(clientId: string, songId: number) {
-    if (
-      this.player.current?.id === songId ||
-      this.player.songs.find((song) => song.id === songId)
-    )
-      return;
+  dislikeSong(clientId: string, songId: number) {
+    if (this.player.current?.id === songId) return;
 
-    const song = await this.songService.findOne(songId);
-
+    const song = this.player.songs.find((song) => song.id === songId);
     const listener = this.connectedUser.get(clientId);
 
-    song.requester = {
-      id: listener.token,
-      name: listener.name,
+    if (!song || !song.likes.includes(listener.token)) return;
+
+    song.count = song.count - 1;
+    song.likes = song.likes.filter((like) => like !== listener.token);
+
+    return {
+      songId: song.id,
+      count: song.count,
     };
-
-    song.count = 1;
-    song.likes = [listener.token];
-
-    this.player.songs.push(song);
-
-    return song;
   }
 }

@@ -38,6 +38,16 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('playerUpdated', player);
   }
 
+  @SubscribeMessage('addSong')
+  async handleAddSong(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() songId: number,
+  ) {
+    const song = await this.playerService.addSong(client.id, songId);
+
+    this.server.emit('songAdded', song);
+  }
+
   @SubscribeMessage('nextSong')
   handleMessage(
     @ConnectedSocket() client: Socket,
@@ -59,13 +69,14 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('songUpdated', liked);
   }
 
-  @SubscribeMessage('addSong')
-  async handleAddSong(
+  @SubscribeMessage('dislikeSong')
+  handleDislikeSong(
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const song = await this.playerService.addSong(client.id, songId);
+    const disliked = this.playerService.dislikeSong(client.id, songId);
+    if (!disliked) return;
 
-    this.server.emit('songAdded', song);
+    this.server.emit('songUpdated', disliked);
   }
 }
