@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export interface StyledCounterProps {
-  $requested?: boolean;
+  $liked?: boolean;
   $disabled?: boolean;
 }
 
@@ -29,7 +29,7 @@ export const StyledReadOnyCounter = styled.div<StyledCounterProps>`
   }
 
   ${StyledCounterText} {
-    color: ${({ theme, $requested }) => $requested && theme.color.red1};
+    color: ${({ theme, $liked }) => $liked && theme.color.red1};
   }
 `;
 
@@ -43,8 +43,8 @@ export const StyledCounter = styled(StyledReadOnyCounter)`
     margin: 0 8px;
   }
 
-  ${({ $requested, theme }) =>
-    $requested &&
+  ${({ $liked, theme }) =>
+    $liked &&
     ` 
       border: 1px solid ${theme.color.red1};
     `};

@@ -24,7 +24,7 @@ const Counter = ({
 }: Props) => {
   if (readonly)
     return (
-      <StyledReadOnyCounter $requested={liked}>
+      <StyledReadOnyCounter $liked={liked}>
         <StyledLike>
           <Icon glyph="heart" size={24} color={liked ? 'red1' : 'black'} />
         </StyledLike>
@@ -36,7 +36,7 @@ const Counter = ({
     <StyledCounter
       onClick={onClick}
       $disabled={disabled}
-      $requested={liked}
+      $liked={liked}
     >
       <StyledCounterText>{count}</StyledCounterText>
       <StyledLike>
