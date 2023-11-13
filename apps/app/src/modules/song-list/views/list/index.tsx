@@ -1,9 +1,9 @@
 import React from 'react';
 
-import TabsFooter from '_modules/song-list/components/footer';
-import TabLink from '_modules/song-list/components/link';
-import SongSearch from '_modules/song-list/components/search';
-import Songs from '_modules/song-list/components/songs';
+import TabsFooter from '_modules/song-list/components/common/footer';
+import TabLink from '_modules/song-list/components/common/link';
+import SongSearch from '_modules/song-list/components/common/search';
+import Songs from '_modules/song-list/components/common/songs';
 import { SongListProvider } from '_modules/song-list/hooks/useContext';
 import { TABS } from '_modules/song-list/utils';
 

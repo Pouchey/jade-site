@@ -4,7 +4,7 @@ import Label from '_components/label';
 import Loader from '_components/loader';
 import Search from '_components/search';
 
-import LastItem from '_modules/song-list/components/last-item';
+import LastItem from '_modules/song-list/components/common/last-item';
 import { useSongListContext } from '_modules/song-list/hooks/useContext';
 import { formatSongPages } from '_modules/song-list/utils';
 import { useFetchSongs } from '_modules/song/hooks/useServices';

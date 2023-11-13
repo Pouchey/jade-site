@@ -56,11 +56,11 @@ export const StyledSongName = styled.div`
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding: 0 8px;
+    width: 100%;
     font-size: ${({ theme }) => theme.size.tall};
     font-weight: ${({ theme }) => theme.weight.medium};
     text-transform: uppercase;
-    animation: ${marquee} 5s linear infinite;
+    animation: ${marquee} 10s linear infinite;
   }
 `;
 
