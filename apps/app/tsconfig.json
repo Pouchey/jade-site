@@ -4,6 +4,7 @@
   "compilerOptions": {
     "rootDir": "../..",
     "jsx": "react-jsx",
+    "resolveJsonModule": true,
     "paths": {
       "_assets/*": ["./src/assets/*"],
       "_components/*": ["./src/components/*"],

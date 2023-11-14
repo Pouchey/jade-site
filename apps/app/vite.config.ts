@@ -1,7 +1,10 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 import svgr from 'vite-plugin-svgr';
+
+import Manifest from './manifest.json';
 
 // https://vitejs.dev/config/
 
@@ -36,12 +39,21 @@ export default defineConfig(({ mode }) => {
     },
   });
 
+  const pwaPlugin = VitePWA({
+    registerType: 'autoUpdate',
+    devOptions: {
+      enabled: true,
+    },
+    includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+    manifest: Manifest,
+  });
+
   return {
     base: './',
     baseUrl: '/',
     resolve: {
       alias: aliases,
     },
-    plugins: [svgr(), reactPlugin],
+    plugins: [svgr(), reactPlugin, pwaPlugin],
   };
 });
