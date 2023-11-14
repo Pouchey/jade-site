@@ -1,5 +1,6 @@
 import Button from '_components/button';
 import Counter from '_components/counter';
+import Icon from '_components/icon';
 import Image from '_components/image';
 
 import { useAuthContext } from '_modules/auth/hooks/useContext';
@@ -16,10 +17,8 @@ import {
   StyledSongItemWrapper,
   StyledSongName,
   StyledCountWrapper,
-  StyledIconContainer
+  StyledIconContainer,
 } from './style';
-import Icon from '_components/icon';
-
 
 interface Props {
   song: TSong;
@@ -51,14 +50,13 @@ const Song = ({ song, onClick, onPlay }: Props) => {
         <StyledDesc>
           <StyledSongName>
             <span>{song.title}</span>
-            <span>{song.title}</span>
           </StyledSongName>
           <StyledArtist>{song.artist}</StyledArtist>
         </StyledDesc>
         <StyledCountWrapper>
           {isLogged && (
             <StyledIconContainer onClick={handlePlay}>
-              <Icon glyph="playCircle" size={32}/>
+              <Icon glyph="playCircle" size={32} />
             </StyledIconContainer>
           )}
           <Counter onClick={handleClick} count={song.count} liked={!!isLiked} />
