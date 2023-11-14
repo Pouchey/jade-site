@@ -77,3 +77,7 @@ export const StyledCountWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const StyledIconContainer = styled.div`
+  cursor: pointer;
+`;
