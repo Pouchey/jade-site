@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { setSocketToken } from '_modules/auth/utils';
 import {
-  onPlayerUpdate,
   fetchPlayer,
+  onPlayerUpdate,
   onSongAdded,
   onSongUpdated,
   onTokenUpdated,
@@ -13,6 +14,7 @@ import {
 import usePlayerStore from './useStore';
 
 export const useFetchPlayer = () => {
+  const navigate = useNavigate();
   const { player, setPlayer, addSong, removeSong, updateSong } =
     usePlayerStore();
 
@@ -25,6 +27,10 @@ export const useFetchPlayer = () => {
 
     onPlayerUpdate((data) => {
       setPlayer(data);
+
+      const pseudo = localStorage.getItem('pseudo');
+
+      if (!pseudo) navigate('/pseudo');
     });
 
     onSongAdded((data) => {

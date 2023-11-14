@@ -7,7 +7,8 @@ import useInitReactQueryClient from '_hooks/useInitReactQueryClient';
 
 import Admin from '_modules/admin/views';
 import Donate from '_modules/donate/views';
-import Home from '_modules/home/views';
+import Home from '_modules/home/views/detail';
+import Pseudo from '_modules/home/views/pseudo';
 import { useFetchPlayer } from '_modules/player/hooks/useServices';
 import SongList from '_modules/song-list/views/list';
 import UIWrapper from '_modules/ui/components';
@@ -19,10 +20,12 @@ const App = React.memo(() => {
   return (
     <UIWrapper>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}>
+          <Route path="pseudo" element={<Pseudo />} />
+          <Route path="donate" element={<Donate />} />
+        </Route>
         <Route path="/admin" element={<Admin />} />
         <Route path="/songlist" element={<SongList />} />
-        <Route path="/donate" element={<Donate />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </UIWrapper>

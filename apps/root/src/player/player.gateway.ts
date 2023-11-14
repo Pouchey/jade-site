@@ -38,6 +38,14 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('playerUpdated', player);
   }
 
+  @SubscribeMessage('setPseudo')
+  handleSetPseudo(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() pseudo: string,
+  ) {
+    this.playerService.setPseudo(client.id, pseudo);
+  }
+
   @SubscribeMessage('addSong')
   async handleAddSong(
     @ConnectedSocket() client: Socket,

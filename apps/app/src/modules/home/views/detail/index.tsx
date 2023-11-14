@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import Button from '_components/button';
 
@@ -32,6 +32,7 @@ const Home = React.memo(() => {
         />
       </StyledWrapper>
       <RequestedSongs songs={player?.songs} isLoading={isLoading} />
+      <Outlet />
     </StyledContainer>
   );
 });

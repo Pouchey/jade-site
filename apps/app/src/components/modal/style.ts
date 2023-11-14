@@ -23,7 +23,7 @@ const modalAnimation = keyframes`
   }
 `;
 
-export const ModalContainer = styled.div`
+export const StyledModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -32,14 +32,35 @@ export const ModalContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+`;
+
+export const StyledOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
   background-color: ${({ theme }) => rgba(theme.color.black, 0.5)};
   animation: ${overlayFadeIn} 0.3s ease-in-out;
 `;
 
-export const ModalInfo = styled.div`
+export const StyledModalContent = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  padding: 20px;
+  margin-top: 150px;
+  background-color: ${({ theme }) => theme.color.green1};
+  border-radius: 8px;
+  animation: ${modalAnimation} 0.3s ease-in-out;
+`;
+
+export const StyledModalInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -50,19 +71,4 @@ export const ModalInfo = styled.div`
   > span {
     text-align: center;
   }
-`;
-
-export const ModalContent = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  width: 250px;
-  height: 250px;
-  padding: 20px;
-  margin-top: 150px;
-  background-color: ${({ theme }) => theme.color.green1};
-  border-radius: 8px;
-  animation: ${modalAnimation} 0.3s ease-in-out;
 `;

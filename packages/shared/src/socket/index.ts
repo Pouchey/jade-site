@@ -15,6 +15,7 @@ export interface IServerToClient {
 
 export interface IClientToServer {
   fetchPlayer: () => void;
+  setPseudo: (pseudo: string) => void;
   addSong: (songId: number) => void;
   likeSong: (songId: number) => void;
   dislikeSong: (songId: number) => void;

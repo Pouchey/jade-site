@@ -56,6 +56,12 @@ export class PlayerService {
     return this.player;
   }
 
+  setPseudo(clientId: string, pseudo: string) {
+    const listener = this.connectedUser.get(clientId);
+
+    listener.name = pseudo;
+  }
+
   async addSong(clientId: string, songId: number) {
     if (
       this.player.current?.id === songId ||

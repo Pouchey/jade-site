@@ -29,6 +29,10 @@ const fetchPlayer = () => {
   socket.emit('fetchPlayer');
 };
 
+const setPseudo = (pseudo: string) => {
+  socket.emit('setPseudo', pseudo);
+};
+
 const addSongToQueue = (songId: number) => {
   socket.emit('addSong', songId);
 };
@@ -52,6 +56,7 @@ export {
   onSongRemoved,
   onSongUpdated,
   fetchPlayer,
+  setPseudo,
   addSongToQueue,
   likeSong,
   dislikeSong,

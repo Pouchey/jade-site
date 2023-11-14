@@ -3,7 +3,12 @@ import { createPortal } from 'react-dom';
 import Icon from '_components/icon';
 import Loader from '_components/loader';
 
-import { ModalContainer, ModalContent, ModalInfo } from './style';
+import {
+  StyledModalContainer,
+  StyledModalContent,
+  StyledModalInfo,
+  StyledOverlay,
+} from './style';
 
 interface Props {
   children: React.ReactNode;
@@ -14,19 +19,20 @@ interface Props {
 
 const Modal = ({ children, isLoading, info, onClose }: Props) =>
   createPortal(
-    <ModalContainer className="modal" onClick={onClose}>
+    <StyledModalContainer className="modal">
+      <StyledOverlay onClick={onClose} />
       {isLoading ? (
         <Loader size={32} />
       ) : (
-        <ModalContent>
-          <ModalInfo>
+        <StyledModalContent>
+          <StyledModalInfo>
             <Icon glyph="info" />
             <span>{info}</span>
-          </ModalInfo>
+          </StyledModalInfo>
           {children}
-        </ModalContent>
+        </StyledModalContent>
       )}
-    </ModalContainer>,
+    </StyledModalContainer>,
     document.getElementById('modal') as HTMLElement,
   );
 
