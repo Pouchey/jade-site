@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
   const pwaPlugin = VitePWA({
     registerType: 'autoUpdate',
     devOptions: {
-      enabled: true,
+      enabled: env.MODE !== 'production',
     },
     includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
     manifest: Manifest,
