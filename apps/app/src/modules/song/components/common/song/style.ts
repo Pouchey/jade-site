@@ -43,6 +43,7 @@ export const StyledDesc = styled.div`
 
 export const StyledSongName = styled.div`
   display: flex;
+  gap: 16px;
   align-items: center;
   min-width: 100%;
   overflow: hidden;
@@ -51,7 +52,6 @@ export const StyledSongName = styled.div`
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding: 0 8px;
     width: max-content;
     min-width: 100%;
     font-size: ${({ theme }) => theme.size.tall};
