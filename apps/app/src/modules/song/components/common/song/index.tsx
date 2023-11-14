@@ -16,7 +16,10 @@ import {
   StyledSongItemWrapper,
   StyledSongName,
   StyledCountWrapper,
+  StyledIconContainer
 } from './style';
+import Icon from '_components/icon';
+
 
 interface Props {
   song: TSong;
@@ -54,7 +57,9 @@ const Song = ({ song, onClick, onPlay }: Props) => {
         </StyledDesc>
         <StyledCountWrapper>
           {isLogged && (
-            <Button label="Play song" size="normal" onClick={handlePlay} />
+            <StyledIconContainer onClick={handlePlay}>
+              <Icon glyph="playCircle" size={32}/>
+            </StyledIconContainer>
           )}
           <Counter onClick={handleClick} count={song.count} liked={!!isLiked} />
         </StyledCountWrapper>
