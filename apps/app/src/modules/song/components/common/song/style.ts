@@ -26,8 +26,8 @@ export const StyledImageWrapper = styled.div`
 
 export const StyledInformationWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   gap: 16px;
+  justify-content: space-between;
   width: 100%;
   padding: 0 16px;
   overflow: hidden;
@@ -50,8 +50,8 @@ export const StyledSongName = styled.div`
   overflow: hidden;
 
   span {
-    flex-shrink: 0;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     width: max-content;
     min-width: 100%;
@@ -59,7 +59,6 @@ export const StyledSongName = styled.div`
     font-weight: ${({ theme }) => theme.weight.medium};
     text-transform: uppercase;
     white-space: nowrap;
-
     transform: translateX(0);
     animation: ${marquee} 15s linear 2s infinite;
   }

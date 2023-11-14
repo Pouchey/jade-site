@@ -15,7 +15,7 @@ const Pseudo = React.memo(() => {
   const [pseudo, setPseudo] = useState('');
 
   const handleClose = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   const handleChange = (value: string) => {
@@ -25,7 +25,7 @@ const Pseudo = React.memo(() => {
   const handleContinue = () => {
     setPseudoLocalStorage(pseudo);
     setSocketPseudo(pseudo);
-    navigate(-1);
+    navigate('/');
   };
 
   return (

@@ -2,7 +2,7 @@
   "name": "Jade Rowley - Songlist",
   "short_name": "Jade Rowley",
   "description": "Jade Rowley's songlist",
-  "theme_color": "#ffffff",
+  "theme_color": "#1E1E1E",
   "icons": [
     {
       "src": "pwa-192x192.png",

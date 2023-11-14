@@ -16,7 +16,8 @@ export default createGlobalStyle`
   }
   
   body {
-    height: 100%;;
+    height: 100%;
+    overflow: hidden;;
     font-family: Inter, sans-serif;
     font-size: ${theme.size.normal};
     font-weight: ${theme.weight.regular};

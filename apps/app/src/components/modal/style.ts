@@ -38,7 +38,6 @@ export const StyledOverlay = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-
   background-color: ${({ theme }) => rgba(theme.color.black, 0.5)};
   animation: ${overlayFadeIn} 0.3s ease-in-out;
 `;
