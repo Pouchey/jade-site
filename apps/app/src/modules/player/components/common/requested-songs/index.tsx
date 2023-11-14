@@ -8,7 +8,7 @@ import {
   likeSong,
   nextSong,
 } from '_modules/player/services/socket';
-import Song from '_modules/song/components/song';
+import Song from '_modules/song/components/common/song';
 
 import { TSong } from '_shared/song/types';
 

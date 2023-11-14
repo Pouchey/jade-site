@@ -5,7 +5,7 @@ import Loader from '_components/loader';
 import { addSongToQueue } from '_modules/player/services/socket';
 import LastItem from '_modules/song-list/components/common/last-item';
 import { formatSongPages } from '_modules/song-list/utils';
-import SelectSong from '_modules/song/components/select-song';
+import SelectSong from '_modules/song/components/common/select-song';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import { TSong } from '_shared/song/types';
