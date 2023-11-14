@@ -6,6 +6,7 @@ import Input from '_components/input';
 import Modal from '_components/modal';
 
 import { setPseudo as setSocketPseudo } from '_modules/player/services/socket';
+import { setPseudo as setPseudoLocalStorage } from '_modules/player/utils';
 
 import { StyledWrapper } from './style';
 
@@ -22,7 +23,7 @@ const Pseudo = React.memo(() => {
   };
 
   const handleContinue = () => {
-    localStorage.setItem('pseudo', pseudo);
+    setPseudoLocalStorage(pseudo);
     setSocketPseudo(pseudo);
     navigate(-1);
   };

@@ -11,6 +11,8 @@ import {
   onSongRemoved,
 } from '_modules/player/services/socket';
 
+import { getPseudo } from '../utils';
+
 import usePlayerStore from './useStore';
 
 export const useFetchPlayer = () => {
@@ -28,7 +30,7 @@ export const useFetchPlayer = () => {
     onPlayerUpdate((data) => {
       setPlayer(data);
 
-      const pseudo = localStorage.getItem('pseudo');
+      const pseudo = getPseudo();
 
       if (!pseudo) navigate('/pseudo');
     });
