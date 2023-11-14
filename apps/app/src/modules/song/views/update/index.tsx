@@ -48,7 +48,7 @@ const UpdateForm = React.memo(() => {
 
   return (
     <SongForm
-      key={song?.id}
+      key={song.id}
       isLoading={isPending || deleteSong.isPending}
       onSubmit={handleSubmit}
       onClose={handleClose}
