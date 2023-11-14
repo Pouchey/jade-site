@@ -1,8 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
 const marquee = keyframes`
-    0% { transform: translate3d(0%, 0, 0); }
-    100% { transform: translate3d(-100%, 0, 0); }
+  0% { transform: translate3d(0%, 0, 0); }
+  60% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
 `;
 
 export const StyledSongItemWrapper = styled.div`
