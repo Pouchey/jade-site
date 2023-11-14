@@ -1,4 +1,3 @@
-import Button from '_components/button';
 import Counter from '_components/counter';
 import Icon from '_components/icon';
 import Image from '_components/image';

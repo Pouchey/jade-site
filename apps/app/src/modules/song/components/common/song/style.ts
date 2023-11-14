@@ -2,8 +2,9 @@ import styled, { keyframes } from 'styled-components';
 
 const marquee = keyframes`
   0% { transform: translate3d(0%, 0, 0); }
+  30% { transform: translate3d(-100%, 0, 0); }
   60% { transform: translate3d(0%, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
+  
 `;
 
 export const StyledSongItemWrapper = styled.div`
@@ -60,7 +61,7 @@ export const StyledSongName = styled.div`
     white-space: nowrap;
 
     transform: translateX(0);
-    animation: ${marquee} 10s linear infinite;
+    animation: ${marquee} 15s linear 2s infinite;
   }
 `;
 
