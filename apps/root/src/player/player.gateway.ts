@@ -27,8 +27,8 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.playerService.handleConnection(client, token);
   }
 
-  handleDisconnect(client: Socket) {
-    this.playerService.handleDisconnect(client);
+  handleDisconnect() {
+    this.playerService.handleDisconnect();
   }
 
   @SubscribeMessage('fetchPlayer')

@@ -19,9 +19,10 @@ export class PlayerService {
   private readonly player: TPlayer = initPlayer();
 
   getListenerByToken(token: string) {
-    return [...this.connectedUser.values()].find(
+    const listener = [...this.connectedUser.values()].find(
       (listener) => listener.token === token,
     );
+    return listener;
   }
 
   handleConnection(client: Socket, token: string) {
@@ -29,6 +30,7 @@ export class PlayerService {
 
     if (listener) {
       this.connectedUser.delete(listener.socketId);
+
       this.connectedUser.set(client.id, {
         ...listener,
         socketId: client.id,
@@ -36,21 +38,14 @@ export class PlayerService {
       return;
     }
 
-    const newListener = createListener(client);
+    const newListener = createListener(client.id);
 
     this.connectedUser.set(newListener.socketId, newListener);
 
     client.emit('tokenUpdated', newListener.token);
   }
 
-  handleDisconnect(client: Socket) {
-    const listener = this.connectedUser.get(client.id);
-
-    this.connectedUser.set(listener.socketId, {
-      ...listener,
-      socketId: null,
-    });
-  }
+  handleDisconnect() {}
 
   fetchPlayer() {
     return this.player;
@@ -60,6 +55,8 @@ export class PlayerService {
     const listener = this.connectedUser.get(clientId);
 
     listener.name = pseudo;
+
+    this.connectedUser.set(listener.socketId, listener);
   }
 
   async addSong(clientId: string, songId: number) {
