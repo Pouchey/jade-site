@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {
   StyledCountWrapper,
   StyledSongItemWrapper,
-} from '_modules/song/components/common/song/style';
+} from '_modules/song/components/common/song/temp-song/style';
 
 export const StyledContainer = styled.div`
   display: flex;

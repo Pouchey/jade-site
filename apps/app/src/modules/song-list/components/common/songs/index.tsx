@@ -5,7 +5,7 @@ import Loader from '_components/loader';
 import { addSongToQueue } from '_modules/player/services/socket';
 import LastItem from '_modules/song-list/components/common/last-item';
 import { formatSongPages } from '_modules/song-list/utils';
-import SelectSong from '_modules/song/components/common/select-song';
+import Song from '_modules/song/components/common/song';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
 
 import { TSong } from '_shared/song/types';
@@ -28,19 +28,20 @@ const Songs = React.memo(() => {
     }
   }, [fetchNextPage, hasNextPage]);
 
-  const handleAddSong = (song: TSong) => {
-    addSongToQueue(song.id);
+  const handleAddSong = (song: number) => {
+    addSongToQueue(song);
   };
 
   return (
     <StyledSongItemList>
       {items?.map((song) => (
-        <SelectSong key={song.id} song={song} onClick={handleAddSong} />
+        <Song key={song.id} type='songlist' song={song} onClick={handleAddSong} />
       ))}
       {lastItem && (
         <LastItem fetchNext={handleFetchNextPage}>
-          <SelectSong
+          <Song
             key={lastItem.id}
+            type='songlist'
             song={lastItem}
             onClick={handleAddSong}
           />

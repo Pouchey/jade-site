@@ -1,9 +1,7 @@
 import React from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { SongListProvider } from '_modules/song-list/hooks/useContext';
-import { useSongContext } from '_modules/song/hooks/useContext';
-import CreateForm from '_modules/song/views/create';
-import UpdateForm from '_modules/song/views/update';
 
 import AddSong from '../components/common/add-song';
 import SelectSong from '../components/common/select-song';
@@ -11,36 +9,24 @@ import SelectSong from '../components/common/select-song';
 import { StyledContainer, StyledComponentContainer } from './style';
 
 const Content = React.memo(() => {
-  const { state, dispatch } = useSongContext();
+  const navigate = useNavigate();
 
   const handleCreateSong = () => {
-    dispatch({
-      type: { value: 'setCreateOpen' },
-      payload: { isCreateOpen: true },
-    });
+    navigate('create');
   };
 
-  const handleUpdateSong = (song: number) => {
-    dispatch({
-      type: { value: 'setUpdateOpen' },
-      payload: {
-        isUpdateOpen: true,
-        song: song,
-      },
-    });
+  const handleUpdateSong = (songId: number) => {
+    navigate(`update/${songId}`);
   };
 
   return (
     <SongListProvider>
       <StyledContainer>
         <AddSong handleClick={handleCreateSong} />
-        <StyledComponentContainer
-          $hide={!!state.isCreateOpen || !!state.isUpdateOpen}
-        >
+        <StyledComponentContainer>
           <SelectSong handleClick={handleUpdateSong} />
         </StyledComponentContainer>
-        {state.isCreateOpen && <CreateForm />}
-        {state.isUpdateOpen && <UpdateForm />}
+        <Outlet />
       </StyledContainer>
     </SongListProvider>
   );

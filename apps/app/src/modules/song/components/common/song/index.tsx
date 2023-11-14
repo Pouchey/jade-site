@@ -1,72 +1,32 @@
-import Counter from '_components/counter';
-import Icon from '_components/icon';
-import Image from '_components/image';
-
-import { useAuthContext } from '_modules/auth/hooks/useContext';
-import { getSocketToken } from '_modules/auth/utils';
-import { getImageUrl } from '_modules/file/utils';
+import Requested from '_modules/song/components/common/song/requested';
 
 import { TSong } from '_shared/song/types';
 
-import {
-  StyledArtist,
-  StyledDesc,
-  StyledImageWrapper,
-  StyledInformationWrapper,
-  StyledSongItemWrapper,
-  StyledSongName,
-  StyledCountWrapper,
-  StyledIconContainer,
-} from './style';
+import Selectable from './selectable';
 
 interface Props {
+  type: 'admin' | 'songlist' | 'player';
   song: TSong;
+  isSelected?: boolean;
   onClick: (id: number) => void;
   onPlay?: (id: number) => void;
 }
 
-const Song = ({ song, onClick, onPlay }: Props) => {
-  const imageUrl = getImageUrl(song.icon);
-  const isLiked = song.likes?.find((like) => like === getSocketToken());
-  const { state } = useAuthContext();
-
-  const isLogged = state.isLogged;
-
-  const handleClick = () => {
-    onClick(song.id);
-  };
-
-  const handlePlay = () => {
-    if (onPlay) onPlay(song.id);
-  };
-
+const Song = ({ type, song, isSelected, onClick, onPlay }: Props) => {
   return (
-    <StyledSongItemWrapper>
-      <StyledImageWrapper>
-        <Image url={imageUrl} alt={song.title} size={64} />
-      </StyledImageWrapper>
-      <StyledInformationWrapper>
-        <StyledDesc>
-          <StyledSongName>
-            <span>{song.title} - 
-            <StyledArtist>&nbsp;{song.artist}</StyledArtist>
-            </span>
-            <span>{song.title} - 
-            <StyledArtist>&nbsp;{song.artist}</StyledArtist>
-            </span>
-          </StyledSongName>
-          
-        </StyledDesc>
-        <StyledCountWrapper>
-          {isLogged && (
-            <StyledIconContainer onClick={handlePlay}>
-              <Icon glyph="playCircle" size={32} />
-            </StyledIconContainer>
-          )}
-          <Counter onClick={handleClick} count={song.count} liked={!!isLiked} />
-        </StyledCountWrapper>
-      </StyledInformationWrapper>
-    </StyledSongItemWrapper>
+    <>
+      {type === 'player' && (
+        <Requested song={song} onClick={onClick} onPlay={onPlay} />
+      )}
+      {(type === 'admin' || type === 'songlist') && (
+        <Selectable
+          song={song}
+          type={type}
+          isSelected={isSelected}
+          onClick={onClick}
+        />
+      )}
+    </>
   );
 };
 

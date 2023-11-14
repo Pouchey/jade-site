@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+
 import Song from '_modules/song/components/common/song';
 
 import { TSong } from '_shared/song/types';
@@ -12,10 +14,19 @@ const Item = ({ song, onClick }: Props) => {
     onClick(song);
   };
 
+  const params = useParams();
+  const songId = parseInt(params.id!, 10);
+
+  const isSelected = songId === song.id;
+
   return (
-    <div>
-      <Song key={song.id} song={song} onClick={handleClick} />
-    </div>
+    <Song
+      key={song.id}
+      type="admin"
+      song={song}
+      isSelected={isSelected}
+      onClick={handleClick}
+    />
   );
 };
 

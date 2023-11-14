@@ -1,4 +1,4 @@
-import styled, { keyframes }  from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const marquee = keyframes`
   0% { transform: translate3d(0%, 0, 0); }
@@ -6,8 +6,6 @@ const marquee = keyframes`
   60% { transform: translate3d(0%, 0, 0); }
   
 `;
-
-
 
 export const StyledSongItemWrapper = styled.div`
   display: flex;
@@ -28,13 +26,21 @@ export const StyledImageWrapper = styled.div`
 
 export const StyledInformationWrapper = styled.div`
   display: flex;
-  gap: 16px;
   justify-content: space-between;
+  gap: 16px;
   width: 100%;
   padding: 0 16px;
   overflow: hidden;
 `;
 
+export const StyledDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: space-evenly;
+  width: 100%;
+  overflow: hidden;
+`;
 
 export const StyledSongName = styled.div`
   display: flex;
@@ -44,8 +50,8 @@ export const StyledSongName = styled.div`
   overflow: hidden;
 
   span {
-    display: flex;
     flex-shrink: 0;
+    display: flex;
     align-items: center;
     width: max-content;
     min-width: 100%;
@@ -53,6 +59,7 @@ export const StyledSongName = styled.div`
     font-weight: ${({ theme }) => theme.weight.medium};
     text-transform: uppercase;
     white-space: nowrap;
+
     transform: translateX(0);
     animation: ${marquee} 15s linear 2s infinite;
   }
@@ -67,12 +74,13 @@ export const StyledArtist = styled.div`
   white-space: nowrap;
 `;
 
-export const StyledDesc = styled.div`
+export const StyledCountWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 4px;
-  width: 100%;
-  overflow: hidden;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
 `;
 
+export const StyledIconContainer = styled.div`
+  cursor: pointer;
+`;

@@ -28,11 +28,8 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
   const handleClick = (song: number) => {
     const s = songs.find((s) => s.id === song);
     const like = s?.likes?.find((like) => like === getSocketToken());
-    if (like) {
-      dislikeSong(song);
-    } else {
-      likeSong(song);
-    }
+    if (like) dislikeSong(song);
+    likeSong(song);
   };
 
   const handlePlay = (song: number) => {
@@ -44,6 +41,7 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
       {songs?.map((song) => (
         <Song
           key={song.id}
+          type="player"
           song={song}
           onClick={handleClick}
           onPlay={handlePlay}
