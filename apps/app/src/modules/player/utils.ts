@@ -20,3 +20,9 @@ export const removePseudo = () => {
   localStorage.removeItem(PSEUDO_KEY);
   localStorage.removeItem(EXPIRATION_KEY);
 };
+
+export const isSongLiked = (liked?: string[], token?: string) => {
+  if (!liked || !token) return false;
+
+  return liked.includes(token);
+};

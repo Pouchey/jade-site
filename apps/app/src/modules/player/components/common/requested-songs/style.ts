@@ -27,3 +27,7 @@ export const StyledWrapper = styled.div`
   width: 100%;
   overflow: hidden;
 `;
+
+export const StyledIconContainer = styled.div`
+  cursor: pointer;
+`;

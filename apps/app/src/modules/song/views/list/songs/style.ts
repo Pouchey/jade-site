@@ -20,8 +20,7 @@ export const StyledSongItemList = styled.div`
 
 export const StyledDesc = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 
@@ -34,5 +33,6 @@ export const StyledDesc = styled.div`
 export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 4px;
 `;

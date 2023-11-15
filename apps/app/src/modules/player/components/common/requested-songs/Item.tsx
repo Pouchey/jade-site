@@ -1,33 +1,44 @@
 import React from 'react';
 
 import Counter from '_components/counter';
+import Icon from '_components/icon';
 
+import { useAuthContext } from '_modules/auth/hooks/useContext';
 import { getSocketToken } from '_modules/auth/utils';
 import {
   dislikeSong,
   likeSong,
   nextSong,
 } from '_modules/player/services/socket';
+import { isSongLiked } from '_modules/player/utils';
 import Requested from '_modules/song/components/common/requested';
 import TitleAndArtist from '_modules/song/components/common/title-and-artist';
 import Song from '_modules/song/views/detail';
 
 import { TSong } from '_shared/song/types';
 
-import { StyledDesc, StyledWrapper } from './style';
+import { StyledDesc, StyledIconContainer, StyledWrapper } from './style';
 
 interface Props {
   song: TSong;
 }
 
 const Item = ({ song }: Props) => {
+  const { state } = useAuthContext();
+
+  const isLogged = state.isLogged;
+  const isLiked = isSongLiked(song?.likes, getSocketToken()!);
+
   const handleCounterClick = () => {
-    dislikeSong(song.id);
+    if (isLiked) {
+      dislikeSong(song.id);
+      return;
+    }
     likeSong(song.id);
   };
 
   const handlePlay = () => {
-    nextSong(song);
+    nextSong(song.id);
   };
 
   return (
@@ -35,9 +46,18 @@ const Item = ({ song }: Props) => {
       <StyledDesc>
         <StyledWrapper>
           <TitleAndArtist title={song.title} artist={song.artist} />
-          <Requested count={song.count} requester={song.requester} />
+          <Requested requester={song.requester} />
         </StyledWrapper>
-        <Counter count={song.count} onClick={handleCounterClick} />
+        {isLogged && (
+          <StyledIconContainer onClick={handlePlay}>
+            <Icon glyph="playCircle" size={32} />
+          </StyledIconContainer>
+        )}
+        <Counter
+          isLiked={isLiked}
+          count={song.count}
+          onClick={handleCounterClick}
+        />
       </StyledDesc>
     </Song>
   );

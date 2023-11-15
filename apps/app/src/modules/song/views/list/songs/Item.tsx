@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { getSocketToken } from '_modules/auth/utils';
+import usePlayerStore from '_modules/player/hooks/useStore';
 import { addSongToQueue } from '_modules/player/services/socket';
+import { isSongLiked } from '_modules/player/utils';
 import Artist from '_modules/song/components/common/artist';
 import Requested from '_modules/song/components/common/requested';
 import Title from '_modules/song/components/common/title';
@@ -14,13 +17,15 @@ interface Props {
   song: TSong;
 }
 const Item = ({ song }: Props) => {
+  const player = usePlayerStore((state) => state.player);
+
   const handleAddSong = (songId: number) => {
     addSongToQueue(songId);
   };
 
-  const isSelected = false;
-  const count = 1;
-  const requester = undefined;
+  const playerSong = player?.songs?.find((s) => s.id === song.id);
+  const isSelected = !!playerSong;
+  const isLiked = isSongLiked(playerSong?.likes, getSocketToken()!);
 
   return (
     <Song
@@ -32,7 +37,11 @@ const Item = ({ song }: Props) => {
       <StyledDesc>
         <StyledWrapper>
           <Title title={song.title} />
-          <Requested count={count} requester={requester} />
+          <Requested
+            count={playerSong?.count}
+            requester={playerSong?.requester}
+            isLiked={isLiked}
+          />
         </StyledWrapper>
         <Artist artist={song.artist} />
       </StyledDesc>

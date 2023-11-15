@@ -5,6 +5,6 @@ export const StyledArtist = styled.div`
   font-size: ${({ theme }) => theme.size.tall};
   font-weight: ${({ theme }) => theme.weight.regular};
   text-overflow: ellipsis;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
 `;

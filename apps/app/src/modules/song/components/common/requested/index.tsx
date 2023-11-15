@@ -1,21 +1,21 @@
 import React from 'react';
 
-import Icon from '_components/icon';
+import Counter from '_components/counter';
 
 import { TSong } from '_shared/song/types';
 
-import { StyledRequested, StyledCount } from './style';
+import { StyledRequested } from './style';
 
 interface Props {
   requester: TSong['requester'];
-  count: TSong['count'];
+  count?: TSong['count'];
+  isLiked?: boolean;
 }
 
-const Requested = React.memo(({ requester, count }: Props) => {
+const Requested = React.memo(({ requester, count, isLiked }: Props) => {
   return (
     <StyledRequested>
-      <Icon glyph="heart" size={18} color={'red1'} />
-      <StyledCount>{count}</StyledCount>
+      {count && <Counter count={count} isLiked={isLiked} size={20} readonly />}
       <span>
         Requested
         {requester?.name && ` by ${requester?.name}`}

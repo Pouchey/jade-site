@@ -9,7 +9,8 @@ import {
 
 interface Props {
   count?: number;
-  liked?: boolean;
+  size?: number;
+  isLiked?: boolean;
   readonly?: boolean;
   disabled?: boolean;
   onClick?: () => void;
@@ -17,26 +18,27 @@ interface Props {
 
 const Counter = ({
   count = 0,
-  liked = false,
+  size = 24,
+  isLiked = false,
   readonly = false,
   disabled = false,
   onClick,
 }: Props) => {
   if (readonly)
     return (
-      <StyledReadOnyCounter $liked={liked}>
+      <StyledReadOnyCounter $liked={isLiked}>
         <StyledLike>
-          <Icon glyph="heart" size={24} color={liked ? 'red1' : 'black'} />
+          <Icon glyph="heart" size={size} color={isLiked ? 'red1' : 'black'} />
         </StyledLike>
         <StyledCounterText>{count}</StyledCounterText>
       </StyledReadOnyCounter>
     );
 
   return (
-    <StyledCounter onClick={onClick} $disabled={disabled} $liked={liked}>
+    <StyledCounter onClick={onClick} $disabled={disabled} $liked={isLiked}>
       <StyledCounterText>{count}</StyledCounterText>
       <StyledLike>
-        <Icon glyph="heart" size={24} color={liked ? 'red1' : 'black'} />
+        <Icon glyph="heart" size={size} color={isLiked ? 'red1' : 'black'} />
       </StyledLike>
     </StyledCounter>
   );
