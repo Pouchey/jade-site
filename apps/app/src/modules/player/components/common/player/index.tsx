@@ -1,10 +1,13 @@
 import React from 'react';
 
 import Counter from '_components/counter';
+import Icon from '_components/icon';
 import Image from '_components/image';
 import Label from '_components/label';
 
+import { useAuthContext } from '_modules/auth/hooks/useContext';
 import { getImageUrl } from '_modules/file/utils';
+import { nextSong } from '_modules/player/services/socket';
 
 import { TSong } from '_shared/song/types';
 
@@ -19,6 +22,7 @@ import {
   StyledPlayerSection,
   StyledPlayerInfos,
   StyledCounterWrapper,
+  StyledIconWrapper,
 } from './style';
 
 interface Props {
@@ -28,6 +32,14 @@ interface Props {
 
 const Player = React.memo(({ current, isLoading = false }: Props) => {
   const imageUrl = getImageUrl(current?.icon);
+
+  const { state } = useAuthContext();
+
+  const isLogged = state.isLogged;
+
+  const handleStop = () => {
+    nextSong(-1);
+  };
 
   if (isLoading) return <Fake />;
 
@@ -53,6 +65,11 @@ const Player = React.memo(({ current, isLoading = false }: Props) => {
             <Label content={`Requested by ${current.requester.name}`} />
           )}
         </StyledPlayerInfos>
+        {isLogged && (
+          <StyledIconWrapper onClick={handleStop}>
+            <Icon glyph="stopCircle" size={32} />
+          </StyledIconWrapper>
+        )}
       </StyledPlayerSection>
     </StyledPlayer>
   );
