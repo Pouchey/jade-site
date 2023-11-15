@@ -63,3 +63,9 @@ export const StyledCounterWrapper = styled.div`
   min-width: 100px;
   margin-right: 16px;
 `;
+
+export const StyledIconWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+`;
