@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { getSocketToken } from '_modules/auth/utils';
 import usePlayerStore from '_modules/player/hooks/useStore';
 import { addSongToQueue } from '_modules/player/services/socket';
