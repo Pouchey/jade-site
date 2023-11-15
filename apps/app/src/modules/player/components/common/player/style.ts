@@ -16,6 +16,11 @@ export const StyledPlayerSection = styled.div`
   justify-content: flex-start;
 `;
 
+export const StyledPlaying = styled.div`
+  align-self: flex-end;
+  margin-top: auto;
+`;
+
 export const StyledImageWrapper = styled.div`
   min-width: 100px;
   min-height: 100px;
@@ -31,24 +36,6 @@ export const StyledDesc = styled.div`
   width: 100%;
   margin-left: 16px;
   overflow: hidden;
-`;
-
-export const StyledSongName = styled.h1`
-  margin-bottom: 8px;
-  overflow: hidden;
-  font-size: ${({ theme }) => theme.size.huge};
-  font-weight: ${({ theme }) => theme.weight.medium};
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  white-space: nowrap;
-`;
-
-export const StyledArtist = styled.h2`
-  overflow: hidden;
-  font-size: ${({ theme }) => theme.size.huge};
-  font-weight: ${({ theme }) => theme.weight.regular};
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 export const StyledPlayerInfos = styled.div`
