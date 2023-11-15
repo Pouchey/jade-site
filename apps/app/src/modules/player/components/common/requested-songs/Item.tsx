@@ -3,6 +3,8 @@ import React from 'react';
 import Counter from '_components/counter';
 import Icon from '_components/icon';
 
+import { useElementSize } from '_hooks/useElementSize';
+
 import { useAuthContext } from '_modules/auth/hooks/useContext';
 import { getSocketToken } from '_modules/auth/utils';
 import {
@@ -29,6 +31,10 @@ const Item = ({ song }: Props) => {
   const isLogged = state.isLogged;
   const isLiked = isSongLiked(song?.likes, getSocketToken()!);
 
+  const [containerRef, { width: containerWidth }] = useElementSize();
+  const [itemRef, { width: itemWidth }] = useElementSize();
+  const isOverflow = containerWidth < itemWidth;
+
   const handleCounterClick = () => {
     if (isLiked) {
       dislikeSong(song.id);
@@ -44,8 +50,13 @@ const Item = ({ song }: Props) => {
   return (
     <Song song={song}>
       <StyledDesc>
-        <StyledWrapper>
-          <TitleAndArtist title={song.title} artist={song.artist} />
+        <StyledWrapper ref={containerRef}>
+          <TitleAndArtist
+            isOverflow={isOverflow}
+            title={song.title}
+            artist={song.artist}
+            ref={itemRef}
+          />
           <Requested requester={song.requester} />
         </StyledWrapper>
         {isLogged && (

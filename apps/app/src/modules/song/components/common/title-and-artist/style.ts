@@ -6,7 +6,11 @@ const marquee = keyframes`
   60% { transform: translate3d(0%, 0, 0); }
 `;
 
-export const StyledSongName = styled.div`
+export type StyledSongNameProps = {
+  $isOverflow: boolean;
+};
+
+export const StyledSongName = styled.div<StyledSongNameProps>`
   display: flex;
   gap: 16px;
   align-items: center;
@@ -25,6 +29,12 @@ export const StyledSongName = styled.div`
     white-space: nowrap;
     transform: translateX(0);
     animation: ${marquee} 15s linear 2s infinite;
+
+    ${({ $isOverflow }) =>
+      !$isOverflow &&
+      `
+      animation: none;
+    `}
   }
 `;
 
