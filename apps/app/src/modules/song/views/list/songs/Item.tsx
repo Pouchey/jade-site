@@ -19,7 +19,9 @@ interface Props {
 const Item = ({ song }: Props) => {
   const player = usePlayerStore((state) => state.player);
 
-  const playerSong = player?.songs?.find((s) => s.id === song.id);
+  const playerSong =
+    player?.songs?.find((s) => s.id === song.id) ||
+    (player?.current?.id === song.id ? player.current : undefined);
   const isSelected = !!playerSong;
   const isLiked = isSongLiked(playerSong?.likes, getSocketToken()!);
 
