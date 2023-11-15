@@ -19,13 +19,13 @@ interface Props {
 const Item = ({ song }: Props) => {
   const player = usePlayerStore((state) => state.player);
 
-  const handleAddSong = (songId: number) => {
-    addSongToQueue(songId);
-  };
-
   const playerSong = player?.songs?.find((s) => s.id === song.id);
   const isSelected = !!playerSong;
   const isLiked = isSongLiked(playerSong?.likes, getSocketToken()!);
+
+  const handleAddSong = (songId: number) => {
+    if (!playerSong) addSongToQueue(songId);
+  };
 
   return (
     <Song
