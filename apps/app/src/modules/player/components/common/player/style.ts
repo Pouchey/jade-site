@@ -36,6 +36,10 @@ export const StyledDesc = styled.div`
   width: 100%;
   margin-left: 16px;
   overflow: hidden;
+
+  * {
+    white-space: pre-wrap;
+  }
 `;
 
 export const StyledPlayerInfos = styled.div`
