@@ -33,7 +33,7 @@ export class SongService {
     q = '',
     visible,
   }: GetSongsDto): Promise<IPaginatedResult<TSong>> {
-    let where = {
+    const where = {
       OR: [
         {
           title: {
