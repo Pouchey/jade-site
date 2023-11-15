@@ -16,7 +16,9 @@ interface Props {
   handleClick: (song: number) => void;
 }
 
-const SelectSong = React.memo(({ handleClick }: Props) => {
+const SongList = React.memo(({ handleClick }: Props) => {
+  const { dispatch } = useSongContext();
+
   const {
     data: songs,
     fetchNextPage,
@@ -33,8 +35,6 @@ const SelectSong = React.memo(({ handleClick }: Props) => {
       void fetchNextPage();
     }
   }, [fetchNextPage, hasNextPage]);
-
-  const { dispatch } = useSongContext();
 
   const handleSearch = (value: string) => {
     dispatch({ type: 'setQ', payload: { q: value } });
@@ -64,4 +64,4 @@ const SelectSong = React.memo(({ handleClick }: Props) => {
   );
 });
 
-export default SelectSong;
+export default SongList;

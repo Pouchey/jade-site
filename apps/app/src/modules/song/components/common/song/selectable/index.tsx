@@ -1,4 +1,3 @@
-import Icon from '_components/icon';
 import Image from '_components/image';
 
 import { getImageUrl } from '_modules/file/utils';
@@ -9,20 +8,19 @@ import { StyledImageWrapper, StyledInformationWrapper } from '../style';
 
 import {
   StyledClickableSongItemWrapper,
-  StyledRequester,
   StyledSelectArtist,
   StyledSelectDesc,
   StyledSongName,
 } from './style';
 
 interface Props {
+  children?: React.ReactNode;
   song: TSong;
-  type: 'admin' | 'songlist';
   isSelected?: boolean;
   onClick: (song: number) => void;
 }
 
-const Selectable = ({ song, type, isSelected, onClick }: Props) => {
+const Selectable = ({ children, song, isSelected, onClick }: Props) => {
   const imageUrl = getImageUrl(song.icon);
 
   const handleClick = () => {
@@ -40,15 +38,18 @@ const Selectable = ({ song, type, isSelected, onClick }: Props) => {
       <StyledInformationWrapper>
         <StyledSelectDesc>
           <StyledSongName>{song.title}</StyledSongName>
-          {type === 'songlist' && song && (
+          {children}
+          {/* {requested && (
             <StyledRequester>
               <Icon glyph="heart" size={18} color={'red1'} />
               <p>{song.count}</p>
               <span>
-                Requested {song.requester?.name && 'by ' + song.requester?.name}
+                Requested
+                {requested.requester?.name &&
+                  ' by ' + requested.requester?.name}
               </span>
             </StyledRequester>
-          )}
+          )} */}
           <StyledSelectArtist>{song.artist}</StyledSelectArtist>
         </StyledSelectDesc>
       </StyledInformationWrapper>

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { StyledArtist } from '_modules/song/components/common/artist/style';
+
 export const StyledSongItemList = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,4 +16,23 @@ export const StyledSongItemList = styled.div`
       border-bottom: none;
     }
   }
+`;
+
+export const StyledDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+
+  ${StyledArtist} {
+    align-self: flex-end;
+    text-align: end;
+  }
+`;
+
+export const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 `;

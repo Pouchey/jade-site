@@ -3,7 +3,6 @@ import Icon from '_components/icon';
 import Image from '_components/image';
 
 import { useAuthContext } from '_modules/auth/hooks/useContext';
-import { getSocketToken } from '_modules/auth/utils';
 import { getImageUrl } from '_modules/file/utils';
 
 import { TSong } from '_shared/song/types';
@@ -20,14 +19,15 @@ import {
 import { StyledCountWrapper, StyledIconContainer } from './style';
 
 interface Props {
+  children?: React.ReactNode;
   song: TSong;
+  isLiked?: boolean;
   onClick: (id: number) => void;
   onPlay?: (id: number) => void;
 }
 
-const Requested = ({ song, onClick, onPlay }: Props) => {
+const Likeable = ({ children, isLiked, song, onClick, onPlay }: Props) => {
   const imageUrl = getImageUrl(song.icon);
-  const isLiked = song.likes?.find((like) => like === getSocketToken());
   const { state } = useAuthContext();
 
   const isLogged = state.isLogged;
@@ -55,6 +55,7 @@ const Requested = ({ song, onClick, onPlay }: Props) => {
               {song.title} -<StyledArtist>&nbsp;{song.artist}</StyledArtist>
             </span>
           </StyledSongName>
+          {children}
         </StyledDesc>
         <StyledCountWrapper>
           {isLogged && (
@@ -69,4 +70,4 @@ const Requested = ({ song, onClick, onPlay }: Props) => {
   );
 };
 
-export default Requested;
+export default Likeable;

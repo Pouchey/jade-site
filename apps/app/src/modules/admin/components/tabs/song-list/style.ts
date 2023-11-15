@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  StyledCountWrapper,
-  StyledSongItemWrapper,
-} from '_modules/song/components/common/song/temp-song/style';
+import { StyledArtist } from '_modules/song/components/common/artist/style';
 
 export const StyledContainer = styled.div`
   display: flex;
@@ -16,14 +13,6 @@ export const StyledContainer = styled.div`
   overflow: scroll;
   background: ${({ theme }) => theme.color.green1};
   border-radius: 8px;
-
-  ${StyledSongItemWrapper} {
-    cursor: pointer;
-  }
-
-  ${StyledCountWrapper} {
-    display: none;
-  }
 
   @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
     grid-row: 1;
@@ -39,4 +28,18 @@ export const StyledSongItemList = styled.div`
   overflow-y: scroll;
   border-top: 1px solid ${({ theme }) => theme.color.green1};
   border-radius: 8px;
+`;
+
+export const StyledDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+
+  ${StyledArtist} {
+    align-self: flex-end;
+    text-align: end;
+  }
 `;

@@ -5,7 +5,7 @@ import NotFound from '_components/not-found';
 
 import useInitReactQueryClient from '_hooks/useInitReactQueryClient';
 
-import Admin from '_modules/admin/views';
+import Admin from '_modules/admin/views/detail';
 import Donate from '_modules/donate/views';
 import Home from '_modules/home/views/detail';
 import Pseudo from '_modules/home/views/pseudo';

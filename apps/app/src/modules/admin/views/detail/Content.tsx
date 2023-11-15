@@ -1,10 +1,9 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
+import AddSong from '_modules/admin/components/tabs/add-song';
+import SongList from '_modules/admin/components/tabs/song-list';
 import { SongProvider } from '_modules/song/hooks/useContext';
-
-import AddSong from '../components/common/add-song';
-import SelectSong from '../components/common/select-song';
 
 import { StyledContainer, StyledComponentContainer } from './style';
 
@@ -24,7 +23,7 @@ const Content = React.memo(() => {
       <StyledContainer>
         <AddSong handleClick={handleCreateSong} />
         <StyledComponentContainer>
-          <SelectSong handleClick={handleUpdateSong} />
+          <SongList handleClick={handleUpdateSong} />
         </StyledComponentContainer>
         <Outlet />
       </StyledContainer>

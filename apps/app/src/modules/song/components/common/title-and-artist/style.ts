@@ -6,32 +6,6 @@ const marquee = keyframes`
   60% { transform: translate3d(0%, 0, 0); }
 `;
 
-export const StyledSongItemWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  padding: 12px 20px;
-  background-color: ${({ theme }) => theme.color.white};
-  border-bottom: 1px solid ${({ theme }) => theme.color.green1};
-`;
-
-export const StyledImageWrapper = styled.div`
-  min-width: 64px;
-  min-height: 64px;
-  overflow: hidden;
-  background-color: ${({ theme }) => theme.color.grey30};
-  border-radius: 8px;
-`;
-
-export const StyledInformationWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 16px;
-  overflow: hidden;
-`;
-
 export const StyledSongName = styled.div`
   display: flex;
   gap: 16px;
@@ -61,13 +35,4 @@ export const StyledArtist = styled.div`
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
-`;
-
-export const StyledDesc = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: space-evenly;
-  width: 100%;
-  overflow: hidden;
 `;

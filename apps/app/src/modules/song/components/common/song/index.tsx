@@ -1,30 +1,43 @@
-import Requested from '_modules/song/components/common/song/requested';
-
 import { TSong } from '_shared/song/types';
 
+import Likeable from './likeable';
 import Selectable from './selectable';
 
 interface Props {
-  type: 'admin' | 'songlist' | 'player';
+  children?: React.ReactNode;
+  type: 'selectable' | 'likeable';
   song: TSong;
   isSelected?: boolean;
+  isLiked?: boolean;
   onClick: (id: number) => void;
   onPlay?: (id: number) => void;
 }
 
-const Song = ({ type, song, isSelected, onClick, onPlay }: Props) => {
+const Song = ({
+  children,
+  type,
+  song,
+  isSelected,
+  isLiked,
+  onClick,
+  onPlay,
+}: Props) => {
   return (
     <>
-      {type === 'player' && (
-        <Requested song={song} onClick={onClick} onPlay={onPlay} />
-      )}
-      {(type === 'admin' || type === 'songlist') && (
-        <Selectable
+      {type === 'likeable' && (
+        <Likeable
           song={song}
-          type={type}
-          isSelected={isSelected}
           onClick={onClick}
-        />
+          onPlay={onPlay}
+          isLiked={isLiked}
+        >
+          {children}
+        </Likeable>
+      )}
+      {type === 'selectable' && (
+        <Selectable song={song} isSelected={isSelected} onClick={onClick}>
+          {children}
+        </Selectable>
       )}
     </>
   );
