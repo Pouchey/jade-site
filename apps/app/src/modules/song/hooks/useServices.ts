@@ -52,6 +52,42 @@ export const useFetchSongs = () => {
   });
 };
 
+export const useFetchVisibleSongs = () => {
+  const { state } = useSongContext();
+
+  const { q, type } = state;
+
+  const params = {
+    q,
+    perPage: DEFAULT_PAGE_SIZE,
+    type,
+  };
+
+  return useInfiniteQuery({
+    queryKey: ['songs', q, type],
+    queryFn: async ({ pageParam }) => {
+      const queryParams = generateQueryParams({
+        ...params,
+        page: pageParam,
+      });
+
+      const { data } = await api.fetchVisibleSongs(queryParams);
+
+      return data;
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { next } = lastPage.meta;
+
+      if (!next) {
+        return undefined;
+      }
+
+      return next;
+    },
+  });
+};
+
 export const useFetchSong = (id: number) => {
   return useQuery({
     queryKey: ['songs', id],

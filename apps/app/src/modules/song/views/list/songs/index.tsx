@@ -3,7 +3,7 @@ import React from 'react';
 import Loader from '_components/loader';
 
 import LastItem from '_modules/song/components/common/last-item';
-import { useFetchSongs } from '_modules/song/hooks/useServices';
+import { useFetchVisibleSongs } from '_modules/song/hooks/useServices';
 import { formatSongPages } from '_modules/song/utils';
 
 import Item from './Item';
@@ -15,7 +15,7 @@ const Songs = React.memo(() => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useFetchSongs();
+  } = useFetchVisibleSongs();
 
   const { items, lastItem } = formatSongPages(songs?.pages);
 

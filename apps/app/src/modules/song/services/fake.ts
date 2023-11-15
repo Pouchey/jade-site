@@ -15,8 +15,13 @@ import { buildSong, buildSongs } from './build';
 const fetchSongs = (queryParams: string) =>
   fakeRequest<TSongsGetResponse>(buildSongs(), `/songs?${queryParams}`);
 
+
 const fetchSong = (id: number) =>
   fakeRequest<TSongGetResponse>(buildSong(), `/songs/${id}`);
+
+const fetchVisibleSongs = (queryParams: string) => 
+  fakeRequest<TSongsGetResponse>(buildSongs(), `/songs/visible?${queryParams}`);
+
 
 const createSong = (formData: TSongPostRequest) =>
   fakeRequest<TSongPostResponse, TSongPostRequest>(
@@ -35,4 +40,4 @@ const updateSong = (formData: TSongPostRequest) =>
 const deleteSong = (id: number) =>
   fakeRequest<TSongDeleteResponse, number>(buildSong(), `/songs/${id}`);
 
-export default { fetchSongs, fetchSong, createSong, updateSong, deleteSong };
+export default { fetchSongs, fetchVisibleSongs, fetchSong, createSong, updateSong, deleteSong };

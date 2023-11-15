@@ -16,6 +16,9 @@ const fetchSongs = (queryParams: string) =>
 const fetchSong = (id: number) =>
   httpRequest.get<TSongGetResponse>(`/songs/${id}`);
 
+const fetchVisibleSongs = (queryParams: string) => 
+  httpRequest.get<TSongsGetResponse>(`/songs/visible?${queryParams}`);
+
 const createSong = (formData: TSongPostRequest) =>
   httpRequest.post<TSongPostResponse>(`/songs`, formData, {
     headers: {
@@ -33,4 +36,4 @@ const updateSong = (formData: TSongPutRequest) =>
 const deleteSong = (id: number) =>
   httpRequest.delete<TSongDeleteResponse>(`/songs/${id}`);
 
-export default { fetchSongs, fetchSong, createSong, updateSong, deleteSong };
+export default { fetchSongs, fetchVisibleSongs, fetchSong, createSong, updateSong, deleteSong };
