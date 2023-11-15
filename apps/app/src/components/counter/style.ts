@@ -1,4 +1,23 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1.2);
+  }
+  10% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(1);
+  }
+
+`;
 
 export interface StyledCounterProps {
   $liked?: boolean;
@@ -13,6 +32,7 @@ export const StyledCounterText = styled.span`
 
 export const StyledLike = styled.span`
   display: flex;
+  animation: ${pulse} cubic-bezier(0.4, 0, 0.6, 1) 5s infinite;
 `;
 
 export const StyledReadOnyCounter = styled.div<StyledCounterProps>`
@@ -41,6 +61,10 @@ export const StyledCounter = styled(StyledReadOnyCounter)`
 
   ${StyledCounterText} {
     margin: 0 8px;
+  }
+
+  ${StyledLike} {
+    animation: none;
   }
 
   ${({ $liked, theme }) =>
