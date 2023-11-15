@@ -39,11 +39,13 @@ const Item = ({ song }: Props) => {
       <StyledDesc>
         <StyledWrapper>
           <Title title={song.title} />
-          <Requested
-            count={playerSong?.count}
-            requester={playerSong?.requester}
-            isLiked={isLiked}
-          />
+          {playerSong && (
+            <Requested
+              count={playerSong.count}
+              requester={playerSong.requester}
+              isLiked={isLiked}
+            />
+          )}
         </StyledWrapper>
         <Artist artist={song.artist} />
       </StyledDesc>
