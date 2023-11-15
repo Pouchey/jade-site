@@ -48,14 +48,13 @@ const Song = ({ song, onClick, onPlay }: Props) => {
       <StyledInformationWrapper>
         <StyledDesc>
           <StyledSongName>
-            <span>{song.title} - 
-            <StyledArtist>&nbsp;{song.artist}</StyledArtist>
+            <span>
+              {song.title} -<StyledArtist>&nbsp;{song.artist}</StyledArtist>
             </span>
-            <span>{song.title} - 
-            <StyledArtist>&nbsp;{song.artist}</StyledArtist>
+            <span>
+              {song.title} -<StyledArtist>&nbsp;{song.artist}</StyledArtist>
             </span>
           </StyledSongName>
-          
         </StyledDesc>
         <StyledCountWrapper>
           {isLogged && (

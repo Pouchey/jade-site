@@ -1,4 +1,4 @@
-import styled, { keyframes }  from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const marquee = keyframes`
   0% { transform: translate3d(0%, 0, 0); }
@@ -6,8 +6,6 @@ const marquee = keyframes`
   60% { transform: translate3d(0%, 0, 0); }
   
 `;
-
-
 
 export const StyledSongItemWrapper = styled.div`
   display: flex;
@@ -34,7 +32,6 @@ export const StyledInformationWrapper = styled.div`
   padding: 0 16px;
   overflow: hidden;
 `;
-
 
 export const StyledSongName = styled.div`
   display: flex;
@@ -70,9 +67,8 @@ export const StyledArtist = styled.div`
 export const StyledDesc = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   gap: 4px;
+  justify-content: space-evenly;
   width: 100%;
   overflow: hidden;
 `;
-

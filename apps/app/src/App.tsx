@@ -10,8 +10,8 @@ import Donate from '_modules/donate/views';
 import Home from '_modules/home/views/detail';
 import Pseudo from '_modules/home/views/pseudo';
 import { useFetchPlayer } from '_modules/player/hooks/useServices';
-import SongList from '_modules/song-list/views/list';
 import CreateSong from '_modules/song/views/create';
+import SongList from '_modules/song/views/list';
 import UpdateSong from '_modules/song/views/update';
 import UIWrapper from '_modules/ui/components';
 
@@ -30,9 +30,7 @@ const App = React.memo(() => {
           <Route path="create" element={<CreateSong />} />
           <Route path="update/:id" element={<UpdateSong />} />
         </Route>
-
         <Route path="/songlist" element={<SongList />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </UIWrapper>

@@ -5,7 +5,7 @@ import {
   TSongPutRequest,
   TSongPutResponse,
   TSongDeleteResponse,
-  TSongListGetResponse,
+  TSongsGetResponse,
 } from '_modules/song/types/request';
 
 import fakeRequest from '_services/fake';
@@ -13,7 +13,7 @@ import fakeRequest from '_services/fake';
 import { buildSong, buildSongs } from './build';
 
 const fetchSongs = (queryParams: string) =>
-  fakeRequest<TSongListGetResponse>(buildSongs(), `/songs?${queryParams}`);
+  fakeRequest<TSongsGetResponse>(buildSongs(), `/songs?${queryParams}`);
 
 const fetchSong = (id: number) =>
   fakeRequest<TSongGetResponse>(buildSong(), `/songs/${id}`);

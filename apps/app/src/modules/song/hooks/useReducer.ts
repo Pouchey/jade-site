@@ -2,18 +2,11 @@ import React from 'react';
 
 import { ESongListType } from '_shared/song/types';
 
-import {
-  DefaultSongListState,
-  SongListActionType,
-  SongListState,
-} from '../types/context';
+import { DefaultSongState, SongActionType, SongState } from '../types/context';
 
-const initialArgs = DefaultSongListState;
+const initialArgs = DefaultSongState;
 
-const SongListReducer = (
-  state: SongListState,
-  { type, payload }: SongListActionType,
-) => {
+const SongReducer = (state: SongState, { type, payload }: SongActionType) => {
   switch (type) {
     case 'setQ':
       return {
@@ -31,4 +24,4 @@ const SongListReducer = (
 };
 
 export default (defaultType?: ESongListType) =>
-  React.useReducer(SongListReducer, { ...initialArgs, type: defaultType });
+  React.useReducer(SongReducer, { ...initialArgs, type: defaultType });

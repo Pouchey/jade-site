@@ -1,10 +1,7 @@
-import { useParams } from 'react-router-dom';
-
 import Icon from '_components/icon';
 import Image from '_components/image';
 
 import { getImageUrl } from '_modules/file/utils';
-import usePlayerStore from '_modules/player/hooks/useStore';
 
 import { TSong } from '_shared/song/types';
 

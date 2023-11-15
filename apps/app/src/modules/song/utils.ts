@@ -1,4 +1,4 @@
-import { TSongListGetResponse } from '_modules/song/types/request';
+import { TSongsGetResponse } from '_modules/song/types/request';
 
 import { ESongListType, TSong } from '_shared/song/types';
 
@@ -8,7 +8,7 @@ export const TABS: ESongListType[] = [
   ESongListType.FAVORITES,
 ];
 
-export const formatSongPages = (pages?: TSongListGetResponse[]) => {
+export const formatSongPages = (pages?: TSongsGetResponse[]) => {
   if (!pages)
     return {
       items: [],

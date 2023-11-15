@@ -19,9 +19,7 @@ const Admin = React.memo(() => {
   if (!state?.isLogged)
     return <Navigate to="/login" state={{ from: pathname }} replace={true} />;
 
-  return (
-      <Content />
-  );
+  return <Content />;
 });
 
 export default Admin;

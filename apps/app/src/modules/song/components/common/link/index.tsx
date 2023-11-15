@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from '_components/icon';
 
-import { useSongListContext } from '_modules/song-list/hooks/useContext';
+import { useSongContext } from '_modules/song/hooks/useContext';
 
 import { ESongListType } from '_shared/song/types';
 
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const TabLink = React.memo(({ glyph, value }: Props) => {
-  const { dispatch } = useSongListContext();
+  const { dispatch } = useSongContext();
 
   const handleClick = () => {
     dispatch({

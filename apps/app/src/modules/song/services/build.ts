@@ -2,7 +2,7 @@ import { buildFile } from '_modules/file/services/build';
 
 import { randInt } from '_utils/random';
 
-import { TSongGetResponse, TSongListGetResponse } from '../types/request';
+import { TSongGetResponse, TSongsGetResponse } from '../types/request';
 
 export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
   return {
@@ -15,13 +15,13 @@ export const buildSong = (id = randInt(1, 100000)): TSongGetResponse => {
     createdAt: new Date(),
     isVisible: true,
     requester: {
-      id: randInt(1, 100000),
+      id: randInt(1, 100000).toString(),
       name: `User ${randInt(1, 100000)}`,
     },
   };
 };
 
-export const buildSongs = (nb = randInt(10, 100)): TSongListGetResponse => {
+export const buildSongs = (nb = randInt(10, 100)): TSongsGetResponse => {
   const songs = [];
   for (let i = 0; i < nb; i++) {
     songs.push(buildSong());

@@ -5,7 +5,7 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 
-import { useSongListContext } from '_modules/song-list/hooks/useContext';
+import { useSongContext } from '_modules/song/hooks/useContext';
 import { TSongForm } from '_modules/song/types/form';
 
 import getAPI from '_services/api';
@@ -17,7 +17,7 @@ const api = getAPI();
 const DEFAULT_PAGE_SIZE = 10;
 
 export const useFetchSongs = () => {
-  const { state } = useSongListContext();
+  const { state } = useSongContext();
 
   const { q, type } = state;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { SongListProvider } from '_modules/song-list/hooks/useContext';
+import { SongProvider } from '_modules/song/hooks/useContext';
 
 import AddSong from '../components/common/add-song';
 import SelectSong from '../components/common/select-song';
@@ -20,7 +20,7 @@ const Content = React.memo(() => {
   };
 
   return (
-    <SongListProvider>
+    <SongProvider>
       <StyledContainer>
         <AddSong handleClick={handleCreateSong} />
         <StyledComponentContainer>
@@ -28,7 +28,7 @@ const Content = React.memo(() => {
         </StyledComponentContainer>
         <Outlet />
       </StyledContainer>
-    </SongListProvider>
+    </SongProvider>
   );
 });
 

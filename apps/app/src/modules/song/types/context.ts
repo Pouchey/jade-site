@@ -1,15 +1,15 @@
 import { ESongListType } from '_shared/song/types';
 
-export interface SongListState {
+export interface SongState {
   q?: string;
   type?: ESongListType;
 }
 
-export const DefaultSongListState = {
+export const DefaultSongState = {
   q: '',
 };
 
-export type SongListActionType =
+export type SongActionType =
   | {
       type: 'setQ';
       payload: {
@@ -23,12 +23,12 @@ export type SongListActionType =
       };
     };
 
-export interface SongListContextInterface {
-  state: SongListState;
-  dispatch: React.Dispatch<SongListActionType>;
+export interface SongContextInterface {
+  state: SongState;
+  dispatch: React.Dispatch<SongActionType>;
 }
 
-export const DefaultSongListContext = {
-  state: DefaultSongListState,
+export const DefaultSongContext = {
+  state: DefaultSongState,
   dispatch: () => undefined,
 };

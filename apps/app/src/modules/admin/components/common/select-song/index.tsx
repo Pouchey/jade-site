@@ -4,10 +4,10 @@ import Label from '_components/label';
 import Loader from '_components/loader';
 import Search from '_components/search';
 
-import LastItem from '_modules/song-list/components/common/last-item';
-import { useSongListContext } from '_modules/song-list/hooks/useContext';
-import { formatSongPages } from '_modules/song-list/utils';
+import LastItem from '_modules/song/components/common/last-item';
+import { useSongContext } from '_modules/song/hooks/useContext';
 import { useFetchSongs } from '_modules/song/hooks/useServices';
+import { formatSongPages } from '_modules/song/utils';
 
 import Item from './Item';
 import { StyledContainer, StyledSongItemList } from './style';
@@ -34,7 +34,7 @@ const SelectSong = React.memo(({ handleClick }: Props) => {
     }
   }, [fetchNextPage, hasNextPage]);
 
-  const { dispatch } = useSongListContext();
+  const { dispatch } = useSongContext();
 
   const handleSearch = (value: string) => {
     dispatch({ type: 'setQ', payload: { q: value } });

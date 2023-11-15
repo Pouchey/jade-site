@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSongListContext } from '_modules/song-list/hooks/useContext';
+import { useSongContext } from '_modules/song/hooks/useContext';
 
 import { ESongListType } from '_shared/song/types';
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const TabsFooter = ({ children, tabs }: Props) => {
-  const { state } = useSongListContext();
+  const { state } = useSongContext();
   const total = tabs.length;
   const activeIndex = tabs.findIndex((tab) => tab === state.type);
 
