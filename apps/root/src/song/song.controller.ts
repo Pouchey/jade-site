@@ -54,12 +54,6 @@ export class SongController {
     return this.songService.findAll(getSongsDto);
   }
 
-  @Get('/visible')
-  @UsePipes(new ValidationPipe({ transform: true }))
-  findVisible(@Query() getSongsDto: GetSongsDto) {
-    return this.songService.findVisible(getSongsDto);
-  }
-
   @UseGuards(AtGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {

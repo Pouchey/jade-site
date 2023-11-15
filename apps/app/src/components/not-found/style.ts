@@ -47,7 +47,7 @@ export const StyledNotFound = styled.div`
   padding: 8px;
   background-color: ${({ theme }) => theme.color.green1};
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 10%);
   animation: ${fadeIn} 0.2s ease-in;
 `;
 
@@ -58,16 +58,16 @@ export const StyledIconWrapper = styled.div`
 export const StyledTitle = styled.h1`
   margin-bottom: 16px;
   font-size: ${({ theme }) => theme.size.diplodocus};
-  text-shadow: 0px 2px 4px ${({ theme }) => rgba(theme.color.black, 0.25)};
   color: ${({ theme }) => theme.color.white};
+  text-shadow: 0 2px 4px ${({ theme }) => rgba(theme.color.black, 0.25)};
 `;
 
 export const StyledSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.size.big};
   max-width: 600px;
-  text-align: center;
+  font-size: ${({ theme }) => theme.size.big};
   line-height: 1.5;
   color: ${({ theme }) => theme.color.black};
+  text-align: center;
 `;
 
 export const StyledLink = styled.a`

@@ -16,7 +16,7 @@ const api = getAPI();
 
 const DEFAULT_PAGE_SIZE = 10;
 
-export const useFetchSongs = () => {
+export const useFetchSongs = (visible?: boolean) => {
   const { state } = useSongContext();
 
   const { q, type } = state;
@@ -25,6 +25,7 @@ export const useFetchSongs = () => {
     q,
     perPage: DEFAULT_PAGE_SIZE,
     type,
+    visible: visible,
   };
 
   return useInfiniteQuery({
@@ -36,42 +37,6 @@ export const useFetchSongs = () => {
       });
 
       const { data } = await api.fetchSongs(queryParams);
-
-      return data;
-    },
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      const { next } = lastPage.meta;
-
-      if (!next) {
-        return undefined;
-      }
-
-      return next;
-    },
-  });
-};
-
-export const useFetchVisibleSongs = () => {
-  const { state } = useSongContext();
-
-  const { q, type } = state;
-
-  const params = {
-    q,
-    perPage: DEFAULT_PAGE_SIZE,
-    type,
-  };
-
-  return useInfiniteQuery({
-    queryKey: ['songs', q, type],
-    queryFn: async ({ pageParam }) => {
-      const queryParams = generateQueryParams({
-        ...params,
-        page: pageParam,
-      });
-
-      const { data } = await api.fetchVisibleSongs(queryParams);
 
       return data;
     },

@@ -1,5 +1,11 @@
 import { Transform } from 'class-transformer';
-import { IsNumber, IsOptional, IsString, Min } from 'class-validator';
+import {
+  IsBoolean,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Min,
+} from 'class-validator';
 
 export class GetSongsDto {
   @Transform(({ value }: { value: string }) => parseInt(value, 10))
@@ -15,4 +21,9 @@ export class GetSongsDto {
   @IsOptional()
   @IsString()
   q: string;
+
+  @IsOptional()
+  @IsBoolean()
+  @Transform(({ value }) => value === 'true')
+  visible: boolean;
 }

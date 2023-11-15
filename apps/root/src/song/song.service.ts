@@ -31,8 +31,9 @@ export class SongService {
     page,
     perPage,
     q = '',
+    visible,
   }: GetSongsDto): Promise<IPaginatedResult<TSong>> {
-    const where = {
+    let where = {
       OR: [
         {
           title: {
@@ -45,6 +46,7 @@ export class SongService {
           },
         },
       ],
+      isVisible: visible,
     };
 
     const total = await this.prismaService.song.count({
@@ -74,46 +76,6 @@ export class SongService {
       },
     });
     return song;
-  }
-
-  async findVisible({
-    page,
-    perPage,
-    q = '',
-  }: GetSongsDto): Promise<IPaginatedResult<TSong>> {
-
-    const where = {
-      OR: [
-        {
-          title: {
-            contains: q,
-          },
-        },
-        {
-          artist: {
-            contains: q,
-          },
-        },
-      ],
-      isVisible: true
-    };
-
-    const total = await this.prismaService.song.count({
-      where: where,
-    });
-    const { skip, take } = getPagination(page, perPage);
-
-    const songList = await this.prismaService.song.findMany({
-      skip,
-      take,
-      where: where,
-      include: {
-        icon: true,
-      },
-    });
-
-    return paginate(songList, skip, take, total);
-
   }
 
   async update(
