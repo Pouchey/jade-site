@@ -50,7 +50,7 @@ export class PlayerService {
   fetchPlayer() {
     if(this.player.songs.length < 2) return this.player;
 
-    const sortedPlayer = this.player.songs.sort(function(a, b) {return a.count - b.count})
+    const sortedPlayer = this.player.songs.sort(function(a, b) {return b.count - a.count})
     return {...this.player, songs:sortedPlayer};
 
   }
