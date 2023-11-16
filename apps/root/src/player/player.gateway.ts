@@ -8,6 +8,7 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
+import { SongService } from 'src/song/song.service';
 
 import { PlayerService } from './player.service';
 
@@ -20,7 +21,10 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;
 
-  constructor(private readonly playerService: PlayerService) {}
+  constructor(
+    private readonly playerService: PlayerService,
+    private readonly songService: SongService,
+  ) {}
 
   handleConnection(client: Socket) {
     const token = client.handshake.auth.token as string;
@@ -52,6 +56,7 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @MessageBody() songId: number,
   ) {
     const song = await this.playerService.addSong(client.id, songId);
+    await this.songService.updateLikes(song.id, 1);
 
     this.server.emit('songAdded', song);
   }
@@ -71,8 +76,9 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const liked = await this.playerService.likeSong(client.id, songId);
+    const liked = this.playerService.likeSong(client.id, songId);
     if (!liked) return;
+    await this.songService.updateLikes(liked.songId, 1);
 
     this.server.emit('songUpdated', liked);
   }
@@ -82,8 +88,10 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const res = await this.playerService.dislikeSong(client.id, songId);
+    const res = this.playerService.dislikeSong(client.id, songId);
     if (!res) return;
+
+    await this.songService.updateLikes(res.dislike.songId, -1);
 
     if (res.dislike) this.server.emit('songUpdated', res.dislike);
 

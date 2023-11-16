@@ -78,8 +78,6 @@ export class PlayerService {
     song.count = 1;
     song.likes = [listener.token];
 
-    await this.songService.updateLikes(song.id, 1);
-    
     this.player.songs.push(song);
     return song;
   }
@@ -92,7 +90,7 @@ export class PlayerService {
     return this.player;
   }
 
-  async likeSong(clientId: string, songId: number) {
+  likeSong(clientId: string, songId: number) {
     if (this.player.current?.id === songId) return;
 
     const song = this.player.songs.find((song) => song.id === songId);
@@ -103,8 +101,6 @@ export class PlayerService {
     song.count = song.count + 1;
     song.likes.push(listener.token);
 
-    await this.songService.updateLikes(song.id, 1);
-
     return {
       songId: song.id,
       count: song.count,
@@ -112,7 +108,7 @@ export class PlayerService {
     };
   }
 
-  async dislikeSong(clientId: string, songId: number) {
+  dislikeSong(clientId: string, songId: number) {
     if (this.player.current?.id === songId) return;
 
     const song = this.player.songs.find((song) => song.id === songId);
@@ -122,8 +118,6 @@ export class PlayerService {
 
     song.count = song.count - 1;
     song.likes = song.likes.filter((like) => like !== listener.token);
-
-    await this.songService.updateLikes(song.id, -1);
 
     if (song.count === 0) {
       this.player.songs = this.player.songs.filter(

@@ -98,18 +98,15 @@ export class SongService {
     return updatedSong;
   }
 
-  async updateLikes(
-    id: number,
-    likes: number
-  ){
+  async updateLikes(id: number, likes: number) {
     const updatedSong = await this.prismaService.song.update({
-      where: {id: id},
+      where: { id: id },
       data: {
-        totalLikes: {increment: likes}
+        totalLikes: { increment: likes },
       },
       include: {
         icon: true,
-      }
+      },
     });
 
     return updatedSong;
