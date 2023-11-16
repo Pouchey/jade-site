@@ -32,6 +32,7 @@ export class SongService {
     perPage,
     q = '',
     visible,
+    type,
   }: GetSongsDto): Promise<IPaginatedResult<TSong>> {
     const where = {
       OR: [
@@ -49,6 +50,14 @@ export class SongService {
       isVisible: visible,
     };
 
+    let orderBy = undefined;
+
+    if(type === 'favorites'){
+      orderBy = {
+        totalLikes: 'desc'
+      }
+    }
+
     const total = await this.prismaService.song.count({
       where: where,
     });
@@ -61,6 +70,7 @@ export class SongService {
       include: {
         icon: true,
       },
+      orderBy: orderBy
     });
 
     return paginate(songList, skip, take, total);

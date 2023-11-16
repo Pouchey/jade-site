@@ -26,4 +26,8 @@ export class GetSongsDto {
   @IsBoolean()
   @Transform(({ value }) => value === 'true')
   visible: boolean;
+
+  @IsOptional()
+  @IsString()
+  type: string;
 }
