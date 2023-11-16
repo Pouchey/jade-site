@@ -18,7 +18,7 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
 
   if (!songs?.length) return <Fake />;
 
-  if (songs.length < 2) songs.sort((a, b) => a.count && b.count ? b.count - a.count : 0);
+  if (songs.length < 2) songs = songs.sort((a, b) => a.count && b.count ? b.count - a.count : 0);
 
   return (
     <StyledSongItemList>
