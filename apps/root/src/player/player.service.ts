@@ -48,7 +48,11 @@ export class PlayerService {
   handleDisconnect() {}
 
   fetchPlayer() {
-    return this.player;
+    if(this.player.songs.length < 2) return this.player;
+
+    const sortedPlayer = this.player.songs.sort(function(a, b) {return a.count - b.count})
+    return {...this.player, songs:sortedPlayer};
+
   }
 
   setPseudo(clientId: string, pseudo: string) {
