@@ -40,4 +40,6 @@ model Song {
 
   icon   File? @relation(fields: [iconId], references: [id])
   iconId Int?
+
+  totalLikes Int @default(0)
 }

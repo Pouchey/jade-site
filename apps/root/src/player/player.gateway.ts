@@ -67,22 +67,22 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('likeSong')
-  handleLikeSong(
+  async handleLikeSong(
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const liked = this.playerService.likeSong(client.id, songId);
+    const liked = await this.playerService.likeSong(client.id, songId);
     if (!liked) return;
 
     this.server.emit('songUpdated', liked);
   }
 
   @SubscribeMessage('dislikeSong')
-  handleDislikeSong(
+  async handleDislikeSong(
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const res = this.playerService.dislikeSong(client.id, songId);
+    const res = await this.playerService.dislikeSong(client.id, songId);
     if (!res) return;
 
     if (res.dislike) this.server.emit('songUpdated', res.dislike);

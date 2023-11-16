@@ -98,6 +98,23 @@ export class SongService {
     return updatedSong;
   }
 
+  async updateLikes(
+    id: number,
+    likes: number
+  ){
+    const updatedSong = await this.prismaService.song.update({
+      where: {id: id},
+      data: {
+        totalLikes: {increment: likes}
+      },
+      include: {
+        icon: true,
+      }
+    });
+
+    return updatedSong;
+  }
+
   async remove(id: number): Promise<TSong> {
     const song = await this.prismaService.song.delete({
       where: { id: id },
