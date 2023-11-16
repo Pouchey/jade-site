@@ -3,13 +3,12 @@ import { TPlayer } from '@jaderowley/shared/src/player/types';
 import { TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { Socket } from 'socket.io';
-import { SongService } from 'src/song/song.service';
 
 import { createListener, initPlayer } from './player.entity';
 
 @Injectable()
 export class PlayerService {
-  constructor(private readonly songService: SongService) {}
+  constructor() {}
 
   // mapped by socketId
   private readonly connectedUser: Map<string, TListener> = new Map<
