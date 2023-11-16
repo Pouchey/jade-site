@@ -18,9 +18,11 @@ const RequestedSongs = ({ songs, isLoading = false }: Props) => {
 
   if (!songs?.length) return <Fake />;
 
+  const orderedSongs = songs.toSorted((a, b) => b.count! - a.count!);
+
   return (
     <StyledSongItemList>
-      {songs?.map((song) => <Item key={song.id} song={song} />)}
+      {orderedSongs?.map((song) => <Item key={song.id} song={song} />)}
     </StyledSongItemList>
   );
 };
