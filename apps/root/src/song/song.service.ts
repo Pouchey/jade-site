@@ -57,6 +57,11 @@ export class SongService {
         totalLikes: 'desc'
       }
     }
+    if(type === 'stars'){
+      orderBy = {
+        createdAt: 'desc'
+      }
+    }
 
     const total = await this.prismaService.song.count({
       where: where,
