@@ -1,5 +1,6 @@
 import { TListener } from '@jaderowley/shared/src/listener/types';
 import { TPlayer } from '@jaderowley/shared/src/player/types';
+import { TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { Socket } from 'socket.io';
 import { SongService } from 'src/song/song.service';
@@ -59,14 +60,12 @@ export class PlayerService {
     this.connectedUser.set(listener.socketId, listener);
   }
 
-  async addSong(clientId: string, songId: number) {
+  async addSong(clientId: string, songId: number, song: TSong) {
     if (
       this.player.current?.id === songId ||
       this.player.songs.find((song) => song.id === songId)
     )
       return;
-
-    const song = await this.songService.findOne(songId);
 
     const listener = this.connectedUser.get(clientId);
 

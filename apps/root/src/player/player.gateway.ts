@@ -55,10 +55,12 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
-    const song = await this.playerService.addSong(client.id, songId);
-    await this.songService.updateLikes(song.id, 1);
+    const song = await this.songService.findOne(songId);
 
-    this.server.emit('songAdded', song);
+    const addedSong = await this.playerService.addSong(client.id, songId, song);
+    await this.songService.updateLikes(addedSong.id, 1);
+
+    this.server.emit('songAdded', addedSong);
   }
 
   @SubscribeMessage('nextSong')
