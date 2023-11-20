@@ -15,6 +15,7 @@ export type TSong = {
   };
   likes?: string[];
   totalLikes?: number;
+  totalPlays?: number;
 };
 
 export enum ESongListType {

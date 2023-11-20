@@ -1,5 +1,5 @@
 import { IPaginatedResult } from '@jaderowley/shared/src/pagination/types';
-import { TSong } from '@jaderowley/shared/src/song/types';
+import { ESongListType, TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { paginate, getPagination } from 'src/utils/paginatior';
@@ -52,6 +52,11 @@ export class SongService {
 
     let orderBy = undefined;
 
+    if(type === 'hots'){
+      orderBy = {
+        totalPlays: 'desc'
+      }
+    }
     if(type === 'favorites'){
       orderBy = {
         totalLikes: 'desc'
@@ -123,6 +128,20 @@ export class SongService {
         icon: true,
       },
     });
+
+    return updatedSong;
+  }
+
+  async updatePlays(id: number, plays: number) {
+    const updatedSong = await this.prismaService.song.update({
+      where: { id: id },
+      data: {
+        totalPlays: { increment: plays },
+      },
+      include: {
+        icon: true,
+      },
+    })
 
     return updatedSong;
   }

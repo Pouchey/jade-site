@@ -69,6 +69,7 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @MessageBody() songId: number,
   ) {
     const player = this.playerService.setNextSong(client.id, songId);
+    if(songId !== -1) this.songService.updatePlays(songId, 1);
 
     this.server.emit('playerUpdated', player);
   }

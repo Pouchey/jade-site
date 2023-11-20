@@ -42,4 +42,5 @@ model Song {
   iconId Int?
 
   totalLikes Int @default(0)
+  totalPlays Int @default(0)
 }
