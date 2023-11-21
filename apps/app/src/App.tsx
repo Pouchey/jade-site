@@ -24,13 +24,13 @@ const App = React.memo(() => {
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="pseudo" element={<Pseudo />} />
-          <Route path="donate" element={<Donate />} />
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route path="create" element={<CreateSong />} />
           <Route path="update/:id" element={<UpdateSong />} />
         </Route>
         <Route path="/songlist" element={<SongList />} />
+        <Route path="/donate" element={<Donate />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </UIWrapper>

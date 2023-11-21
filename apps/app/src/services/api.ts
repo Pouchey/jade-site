@@ -8,6 +8,9 @@ import PlayerRequestFake from '_modules/player/services/fake';
 import PlayerRequestHttp from '_modules/player/services/http';
 import SongRequestFake from '_modules/song/services/fake';
 import SongRequestHttp from '_modules/song/services/http';
+import DonateRequestHttp from '_modules/donate/services/http';
+
+
 
 import { initHttpRequest } from './http';
 
@@ -19,6 +22,7 @@ export const fakeAPI = {
   ...MeRequestFake,
   ...PlayerRequestFake,
   ...SongRequestFake,
+  ...DonateRequestHttp
 } as const;
 
 export const httpAPI = {
@@ -27,6 +31,7 @@ export const httpAPI = {
   ...MeRequestHttp,
   ...PlayerRequestHttp,
   ...SongRequestHttp,
+  ...DonateRequestHttp
 } as const;
 
 export default () =>

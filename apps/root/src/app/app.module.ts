@@ -12,6 +12,7 @@ import { PlayerModule } from '../player/player.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DonateModule } from 'src/donate/donate.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AppService } from './app.service';
       serveRoot: '/images',
     }),
     AuthModule,
+    DonateModule,
     FileModule,
     PlayerModule,
     PrismaModule,
