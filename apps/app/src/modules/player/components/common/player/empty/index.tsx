@@ -18,8 +18,13 @@ import {
 
 import { StyledDescContent, StyledInfoSearch, StyledText } from './style';
 import Button from '_components/button';
+import { useAuthContext } from '_modules/auth/hooks/useContext';
 
 const Empty = React.memo(() => {
+
+  const { state } = useAuthContext();
+
+  const isLogged = state.isLogged;
 
   const handleReset = () => {
     resetPlayed();
@@ -41,7 +46,9 @@ const Empty = React.memo(() => {
       <StyledPlayerSection>
         <StyledPlayerInfos>
           <StyledInfoSearch>
-            <Button label='RESET' size='small' onClick={handleReset}/>
+            {isLogged 
+              ? <Button label='RESET' size='small' onClick={handleReset}/> 
+              : <div></div>}
             <div></div>
             <Icon glyph="note" size={32} color="grey75" />
           </StyledInfoSearch>
