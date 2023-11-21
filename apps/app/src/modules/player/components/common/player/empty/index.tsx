@@ -6,6 +6,8 @@ import Icon from '_components/icon';
 import Image from '_components/image';
 import Label from '_components/label';
 
+import { resetPlayed } from '_modules/player/services/socket';
+
 import {
   StyledPlayer,
   StyledDesc,
@@ -15,8 +17,14 @@ import {
 } from '../style';
 
 import { StyledDescContent, StyledInfoSearch, StyledText } from './style';
+import Button from '_components/button';
 
 const Empty = React.memo(() => {
+
+  const handleReset = () => {
+    resetPlayed();
+  }
+
   return (
     <StyledPlayer>
       <StyledPlayerSection>
@@ -33,7 +41,7 @@ const Empty = React.memo(() => {
       <StyledPlayerSection>
         <StyledPlayerInfos>
           <StyledInfoSearch>
-            <div></div>
+            <Button label='RESET' size='small' onClick={handleReset}/>
             <div></div>
             <Icon glyph="note" size={32} color="grey75" />
           </StyledInfoSearch>

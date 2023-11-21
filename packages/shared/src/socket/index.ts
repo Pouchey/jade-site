@@ -11,6 +11,7 @@ export interface IServerToClient {
     likes: string[];
   }) => void;
   songRemoved: (data: number) => void;
+  playedReset: (data: TSong[]) => void;
 }
 
 export interface IClientToServer {
@@ -20,4 +21,5 @@ export interface IClientToServer {
   likeSong: (songId: number) => void;
   dislikeSong: (songId: number) => void;
   nextSong: (songId: number) => void;
+  resetPlayed: () => void;
 }

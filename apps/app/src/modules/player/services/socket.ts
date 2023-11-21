@@ -11,6 +11,10 @@ const onPlayerUpdate = (callback: (data: TPlayer) => void) => {
   socket.on('playerUpdated', callback);
 };
 
+const onPlayedReset = (callback: (data: TSong[]) => void) => {
+  socket.on('playedReset', callback);
+}
+
 const onSongAdded = (callback: (data: TSong) => void) => {
   socket.on('songAdded', callback);
 };
@@ -28,6 +32,10 @@ const onSongUpdated = (
 const fetchPlayer = () => {
   socket.emit('fetchPlayer');
 };
+
+const resetPlayed = () => {
+  socket.emit('resetPlayed');
+}
 
 const setPseudo = (pseudo: string) => {
   socket.emit('setPseudo', pseudo);
@@ -52,10 +60,12 @@ const nextSong = (songId: number) => {
 export {
   onTokenUpdated,
   onPlayerUpdate,
+  onPlayedReset,
   onSongAdded,
   onSongRemoved,
   onSongUpdated,
   fetchPlayer,
+  resetPlayed,
   setPseudo,
   addSongToQueue,
   likeSong,

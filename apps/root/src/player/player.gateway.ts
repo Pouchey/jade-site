@@ -42,6 +42,15 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('playerUpdated', player);
   }
 
+  @SubscribeMessage('resetPlayed')
+  handleRestPlayed() {
+    const played = this.playerService.fetchPlayed();
+    const updatedSongs = this.songService.resetPlayed(played);
+
+    this.server.emit('playerReset', updatedSongs);
+    
+  }
+
   @SubscribeMessage('setPseudo')
   handleSetPseudo(
     @ConnectedSocket() client: Socket,

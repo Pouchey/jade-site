@@ -17,6 +17,9 @@ export class PlayerService {
   >();
 
   private readonly player: TPlayer = initPlayer();
+  private played: number[] = [];
+
+
 
   getListenerByToken(token: string) {
     const listener = [...this.connectedUser.values()].find(
@@ -49,6 +52,10 @@ export class PlayerService {
 
   fetchPlayer() {
     return this.player;
+  }
+
+  fetchPlayed(){
+    return this.played;
   }
 
   setPseudo(clientId: string, pseudo: string) {
@@ -85,6 +92,7 @@ export class PlayerService {
       this.player.songs.find((song) => song.id === songId) || null;
 
     this.player.songs = this.player.songs.filter((song) => song.id !== songId);
+    if(songId !== -1) this.played.push(songId);
     return this.player;
   }
 

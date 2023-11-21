@@ -137,6 +137,7 @@ export class SongService {
       where: { id: id },
       data: {
         totalPlays: { increment: plays },
+        isVisible: false
       },
       include: {
         icon: true,
@@ -144,6 +145,25 @@ export class SongService {
     })
 
     return updatedSong;
+  }
+
+  async resetPlayed(idList: number[]){
+    let updatedSongs = []
+    for(let id of idList){
+      const updatedSong = await this.prismaService.song.update({
+        where: {id: id},
+        data: {
+          isVisible: true
+        },
+        include: {
+          icon: true
+        }
+      });
+
+      updatedSongs.push(updatedSong)
+    }
+
+    return updatedSongs;
   }
 
   async remove(id: number): Promise<TSong> {
