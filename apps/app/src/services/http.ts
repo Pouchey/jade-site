@@ -10,8 +10,9 @@ import {
 const httpRequest = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api/`,
   data: {},
-  withCredentials: true,
+  // withCredentials: true,
   headers: {
+    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
     'X-Key-Inflection': 'camel',
   },

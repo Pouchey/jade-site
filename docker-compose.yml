@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./apps/app/Dockerfile
+    ports:
+      - '80:4173'
+    depends_on:
+      - root
+    networks:
+      - network1
+    restart: always
+
+  root:
+    build:
+      context: ./
+      dockerfile: ./apps/root/Dockerfile
+    ports:
+      - '8080:3000'
+    volumes:
+      - ./data/db.sqlite:/prisma/ressources/dev.db
+    networks:
+      - network1
+    restart: always
+
+networks:
+  network1:
