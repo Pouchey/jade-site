@@ -48,7 +48,6 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     const updatedSongs = this.songService.resetPlayed(played);
 
     this.server.emit('playerReset', updatedSongs);
-    
   }
 
   @SubscribeMessage('setPseudo')
@@ -73,12 +72,12 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('nextSong')
-  handleMessage(
+  async handleMessage(
     @ConnectedSocket() client: Socket,
     @MessageBody() songId: number,
   ) {
     const player = this.playerService.setNextSong(client.id, songId);
-    if(songId !== -1) this.songService.updatePlays(songId, 1);
+    if (songId !== -1) await this.songService.updatePlays(songId, 1);
 
     this.server.emit('playerUpdated', player);
   }
