@@ -33,7 +33,7 @@ services:
     ports:
       - '2001:3000'
     volumes:
-      - ./data/db.sqlite:/prisma/ressources/prod.db
+      - ./apps/root/prisma/:/apps/root/prisma/
     networks:
       - network1
     restart: always
