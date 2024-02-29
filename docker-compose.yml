@@ -4,12 +4,12 @@ services:
     build:
       context: ./
       dockerfile: ./apps/app/Dockerfile
-    environment:
-      - MODE=${MODE}
-      - VITE_API_MODE=${VITE_API_MODE}
-      - VITE_APP_TITLE=${VITE_APP_TITLE}
-      - VITE_API_URL=${VITE_API_URL}
-      - VITE_SOCKET_URL=${VITE_SOCKET_URL}
+      args:
+        - MODE=${MODE}
+        - VITE_API_MODE=${VITE_API_MODE}
+        - VITE_APP_TITLE=${VITE_APP_TITLE}
+        - VITE_API_URL=${VITE_API_URL}
+        - VITE_SOCKET_URL=${VITE_SOCKET_URL}
 
     ports:
       - '81:4173'
@@ -23,14 +23,14 @@ services:
     build:
       context: ./
       dockerfile: ./apps/root/Dockerfile
-    environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - CORS_ORIGIN=${CORS_ORIGIN}
-      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
-      - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
-      - ADMIN_ID=${ADMIN_ID}
-      - ADMIN_EMAIL=${ADMIN_EMAIL}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      args:
+        - DATABASE_URL=${DATABASE_URL}
+        - CORS_ORIGIN=${CORS_ORIGIN}
+        - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+        - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
+        - ADMIN_ID=${ADMIN_ID}
+        - ADMIN_EMAIL=${ADMIN_EMAIL}
+        - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     ports:
       - '2001:3000'
     volumes:
