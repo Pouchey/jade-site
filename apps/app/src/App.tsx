@@ -6,7 +6,7 @@ import NotFound from '_components/not-found';
 import useInitReactQueryClient from '_hooks/useInitReactQueryClient';
 
 import Admin from '_modules/admin/views/detail';
-// import Donate from '_modules/donate/views';
+import Donate from '_modules/donate/views';
 import Home from '_modules/home/views/detail';
 import Pseudo from '_modules/home/views/pseudo';
 import { useFetchPlayer } from '_modules/player/hooks/useServices';
@@ -30,7 +30,7 @@ const App = React.memo(() => {
           <Route path="update/:id" element={<UpdateSong />} />
         </Route>
         <Route path="/songlist" element={<SongList />} />
-        {/* <Route path="/donate" element={<Donate />} /> */}
+        <Route path="/donate" element={<Donate />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </UIWrapper>
