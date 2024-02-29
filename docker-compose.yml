@@ -14,8 +14,6 @@ services:
       - '81:4173'
     depends_on:
       - root
-    networks:
-      - network1
     restart: always
 
   root:
@@ -34,12 +32,7 @@ services:
       - '2001:3000'
     volumes:
       - prisma:/usr/src/apps/root/prisma/ressources
-    networks:
-      - network1
     restart: always
-
-networks:
-  network1:
 
 volumes:
   prisma:
