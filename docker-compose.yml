@@ -33,10 +33,13 @@ services:
     ports:
       - '2001:3000'
     volumes:
-      - ./apps/root/prisma/:/apps/root/prisma/
+      - prisma:/apps/root/prisma/
     networks:
       - network1
     restart: always
 
 networks:
   network1:
+
+volumes:
+  prisma:
