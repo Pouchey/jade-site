@@ -17,7 +17,7 @@ services:
       context: ./
       dockerfile: ./apps/root/Dockerfile
     ports:
-      - '8080:3000'
+      - '2001:3000'
     volumes:
       - ./data/db.sqlite:/prisma/ressources/dev.db
     networks:
