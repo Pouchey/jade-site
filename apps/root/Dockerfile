@@ -21,6 +21,8 @@ COPY . .
 
 RUN cd apps/root && npm run prisma:generate
 
+RUN cd apps/root && npm run prisma:deploy
+
 
 RUN cd apps/root && npm run build
 
