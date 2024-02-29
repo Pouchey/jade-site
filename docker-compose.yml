@@ -33,7 +33,7 @@ services:
     ports:
       - '2001:3000'
     volumes:
-      - prisma:/apps/root/prisma/
+      - prisma:/usr/src/apps/root/prisma/ressources
     networks:
       - network1
     restart: always
