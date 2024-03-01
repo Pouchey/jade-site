@@ -16,7 +16,7 @@ RUN npm ci
 
 COPY . .
 
-RUN cd apps/app && npm run build
+RUN cd apps/app && npm run build --mode=$MODE
 
 EXPOSE 4173
 

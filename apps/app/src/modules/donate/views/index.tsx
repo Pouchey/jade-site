@@ -5,8 +5,8 @@ import NotFoundPage from '_components/not-found';
 
 import { StyledWrapper } from './style';
 
-const key = import.meta.env.VITE_STRIPE_KEY as string;
-const mode = process.env.MODE as string;
+const key = import.meta.env.VITE_STRIPE_KEY;
+const mode = import.meta.env.MODE;
 
 const Donate = React.memo(() => {
   if (!key) return <NotFoundPage />;
