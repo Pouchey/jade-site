@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.5
+
+- Fix stripe buttonId
+
 ## v1.0.4
 
 - Fix environment variable for VITE_STRIPE_KEY in dockerfile
