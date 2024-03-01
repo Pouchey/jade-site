@@ -11,7 +11,7 @@ const mode = process.env.MODE as string;
 const Donate = React.memo(() => {
   if (!key) return <NotFoundPage />;
 
-  if (mode === 'development') return <Label>Stripe key is not set</Label>;
+  if (mode === 'development') return <Label content="Stripe key is not set" />;
 
   return (
     <StyledWrapper>
