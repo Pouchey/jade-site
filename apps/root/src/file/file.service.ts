@@ -25,6 +25,10 @@ export class FileService {
       },
     });
 
+    if (!deletedFile) {
+      throw new GoneException('File not found');
+    }
+
     fs.unlink('./images/' + deletedFile.name, (err) => {
       if (err) {
         throw new GoneException('File not found');
