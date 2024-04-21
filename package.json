@@ -16,6 +16,7 @@
     "dev:root": "nx dev root",
     "prod:app": "nx prod app",
     "prod:root": "nx prod root",
+    "prod:widget": "nx prod widget",
     "graph": "nx graph",
     "lint:scripts": "eslint --fix --ext ./**/*.{ts,tsx}",
     "lint:styles": "stylelint --fix \"./**/*.{ts,tsx}\"",
