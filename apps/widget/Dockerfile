@@ -1,6 +1,7 @@
 FROM node:18-alpine
 
 ARG VITE_SOCKET_URL
+ARG VITE_API_URL
 
 WORKDIR /usr/src/
 
