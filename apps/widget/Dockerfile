@@ -6,8 +6,8 @@ ARG VITE_API_URL
 WORKDIR /usr/src/
 
 COPY package*.json ./
-COPY apps/widget/package*.json ../apps/widget
-COPY packages/** ../packages
+COPY apps/widget/package.json ../apps/widget/
+COPY packages/** ../packages/
 
 RUN npm ci
 
