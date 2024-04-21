@@ -36,5 +36,13 @@ services:
       - prisma:/usr/src/apps/root/prisma/ressources
     restart: always
 
+  widget:
+    build:
+      context: ./
+      dockerfile: ./apps/widget/Dockerfile
+    ports:
+      - '2002:4173'
+    restart: always
+
 volumes:
   prisma:
