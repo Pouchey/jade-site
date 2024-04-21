@@ -9,7 +9,7 @@ COPY package*.json ./
 
 COPY tsconfig.base.json .
 COPY apps/widget/package.json ./apps/widget/package.json
-COPY packages/** ../packages
+COPY packages ./packages
 
 RUN npm ci
 
