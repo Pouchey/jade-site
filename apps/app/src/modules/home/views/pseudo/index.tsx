@@ -6,7 +6,10 @@ import Input from '_components/input';
 import Modal from '_components/modal';
 
 import { setPseudo as setSocketPseudo } from '_modules/player/services/socket';
-import { setPseudo as setPseudoLocalStorage } from '_modules/player/utils';
+import {
+  setPseudo as setPseudoLocalStorage,
+  setAnonymity,
+} from '_modules/player/utils';
 
 import { StyledWrapper } from './style';
 
@@ -15,6 +18,7 @@ const Pseudo = React.memo(() => {
   const [pseudo, setPseudo] = useState('');
 
   const handleClose = () => {
+    setAnonymity();
     navigate('/');
   };
 

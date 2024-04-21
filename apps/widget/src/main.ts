@@ -19,8 +19,6 @@ const onPlayerUpdate = (callback: (data: TPlayer) => void) => {
 const PlayerElement = document.getElementById('player') as HTMLDivElement;
 
 const setPlayer = (player: TPlayer) => {
-  console.log(player);
-
   if (!player?.current) {
     PlayerElement.innerHTML = `
       <p>Nothing is playing</p>
