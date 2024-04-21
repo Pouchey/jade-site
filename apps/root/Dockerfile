@@ -17,7 +17,7 @@ COPY packages/**/ ../packages/
 
 RUN npm ci
 
-COPY apps/root ./
+COPY apps/root ./apps/root
 
 RUN cd apps/root && npm run prisma:deploy
 
