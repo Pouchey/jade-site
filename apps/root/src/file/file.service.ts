@@ -18,12 +18,14 @@ export class FileService {
     return uploadedFile;
   }
 
-  async deleteFile(id: number): Promise<TFile> {
+  async deleteFile(id: number): Promise<TFile | null> {
     const deletedFile = await this.prismaService.file.delete({
       where: {
         id,
       },
     });
+
+    if (!deletedFile) throw new GoneException('File not found');
 
     fs.unlink('./images/' + deletedFile.name, (err) => {
       if (err) {

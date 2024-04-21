@@ -11,9 +11,13 @@ export const getPseudo = () => {
 };
 
 export const setPseudo = (pseudo: string) => {
-  const expiration = Date.now() + 3600000; // 1 hour in milliseconds
+  const expiration = Date.now() + 60 * 60 * 1000; // 1 hour in milliseconds
   localStorage.setItem(PSEUDO_KEY, pseudo);
   localStorage.setItem(EXPIRATION_KEY, expiration.toString());
+};
+
+export const setAnonymity = () => {
+  localStorage.setItem(EXPIRATION_KEY, Date.now().toString());
 };
 
 export const removePseudo = () => {

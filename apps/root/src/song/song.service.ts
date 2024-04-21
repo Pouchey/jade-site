@@ -1,5 +1,5 @@
 import { IPaginatedResult } from '@jaderowley/shared/src/pagination/types';
-import { ESongListType, TSong } from '@jaderowley/shared/src/song/types';
+import { TSong } from '@jaderowley/shared/src/song/types';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { paginate, getPagination } from 'src/utils/paginatior';
@@ -50,22 +50,22 @@ export class SongService {
       isVisible: visible,
     };
 
-    let orderBy = undefined;
+    let orderBy: unknown;
 
-    if(type === 'hots'){
+    if (type === 'hots') {
       orderBy = {
-        totalPlays: 'desc'
-      }
+        totalPlays: 'desc',
+      };
     }
-    if(type === 'favorites'){
+    if (type === 'favorites') {
       orderBy = {
-        totalLikes: 'desc'
-      }
+        totalLikes: 'desc',
+      };
     }
-    if(type === 'stars'){
+    if (type === 'stars') {
       orderBy = {
-        createdAt: 'desc'
-      }
+        createdAt: 'desc',
+      };
     }
 
     const total = await this.prismaService.song.count({
@@ -80,7 +80,7 @@ export class SongService {
       include: {
         icon: true,
       },
-      orderBy: orderBy
+      orderBy,
     });
 
     return paginate(songList, skip, take, total);
@@ -137,30 +137,30 @@ export class SongService {
       where: { id: id },
       data: {
         totalPlays: { increment: plays },
-        isVisible: false
+        isVisible: false,
       },
       include: {
         icon: true,
       },
-    })
+    });
 
     return updatedSong;
   }
 
-  async resetPlayed(idList: number[]){
-    let updatedSongs = []
-    for(let id of idList){
+  async resetPlayed(idList: number[]) {
+    const updatedSongs: TSong[] = [];
+    for (const id of idList) {
       const updatedSong = await this.prismaService.song.update({
-        where: {id: id},
+        where: { id: id },
         data: {
-          isVisible: true
+          isVisible: true,
         },
         include: {
-          icon: true
-        }
+          icon: true,
+        },
       });
 
-      updatedSongs.push(updatedSong)
+      updatedSongs.push(updatedSong);
     }
 
     return updatedSongs;
