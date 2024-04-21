@@ -12,8 +12,10 @@ ARG ADMIN_PASSWORD
 WORKDIR /usr/src/
 
 COPY package*.json ./
-COPY apps/root/package.json ../apps/root/
-COPY packages/**/ ../packages/
+
+COPY tsconfig.base.json .
+COPY apps/root/package.json ./apps/root/package.json
+COPY packages ./packages
 
 RUN npm ci
 

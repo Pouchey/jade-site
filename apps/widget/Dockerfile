@@ -6,8 +6,10 @@ ARG VITE_API_URL
 WORKDIR /usr/src/
 
 COPY package*.json ./
-COPY apps/widget/package.json ../apps/widget/
-COPY packages/** ../packages/
+
+COPY tsconfig.base.json .
+COPY apps/widget/package.json ./apps/widget/package.json
+COPY packages/** ../packages
 
 RUN npm ci
 
