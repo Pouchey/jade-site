@@ -11,7 +11,7 @@ COPY packages/** ../packages/
 
 RUN npm ci
 
-COPY apps/widget ./
+COPY apps/widget ./apps/widget
 
 RUN cd apps/widget && npm run build --mode=$MODE
 
