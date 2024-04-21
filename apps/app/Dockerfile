@@ -11,8 +11,8 @@ ARG VITE_STRIPE_BUTTON_ID
 WORKDIR /usr/src/
 
 COPY package*.json ./
-COPY apps/app/package*.json ../apps/app
-COPY packages/** ../packages
+COPY apps/app/package.json ../apps/app/
+COPY packages/** ../packages/
 
 RUN npm ci
 
