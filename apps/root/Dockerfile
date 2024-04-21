@@ -13,16 +13,15 @@ WORKDIR /usr/src/
 
 COPY package*.json ./
 COPY apps/root/package*.json ../apps/root
-COPY packages/** ../packages
+COPY packages/**/ ../packages
 
 RUN npm ci
 
-COPY . .
+COPY apps/root ./
 
 RUN cd apps/root && npm run prisma:deploy
 
 RUN cd apps/root && npm run prisma:generate
-
 
 RUN cd apps/root && npm run build
 

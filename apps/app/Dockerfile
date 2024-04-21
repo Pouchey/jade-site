@@ -16,7 +16,7 @@ COPY packages/** ../packages
 
 RUN npm ci
 
-COPY . .
+COPY apps/app ./
 
 RUN cd apps/app && npm run build --mode=$MODE
 
