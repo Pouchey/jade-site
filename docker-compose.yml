@@ -30,6 +30,8 @@ services:
         - ADMIN_ID=${ADMIN_ID}
         - ADMIN_EMAIL=${ADMIN_EMAIL}
         - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
     ports:
       - '2001:3000'
     volumes:
