@@ -6,7 +6,7 @@ export class LoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     // Gets the request log
     console.log(`req:`, {
-      headers: req.headers,
+      authorization: req.headers.authorization,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       body: req.body,
       originalUrl: req.originalUrl,
