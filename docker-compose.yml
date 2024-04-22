@@ -4,8 +4,6 @@ services:
     build:
       context: ./
       dockerfile: ./apps/app/Dockerfile
-      args:
-        MODE: ${MODE}
     environment:
       - MODE=${MODE}
       - VITE_API_MODE=${VITE_API_MODE}
