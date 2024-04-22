@@ -1,5 +1,8 @@
 FROM node:20-alpine
 
+ARG VITE_SOCKET_URL
+ARG VITE_API_URL
+
 WORKDIR /usr/src/
 
 COPY package*.json ./
@@ -12,7 +15,7 @@ RUN npm ci
 
 COPY apps/widget ./apps/widget
 
-RUN cd apps/widget && npm run build
+RUN cd apps/widget && npm run build 
 
 EXPOSE 4173
 
