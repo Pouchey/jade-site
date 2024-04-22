@@ -1,6 +1,6 @@
 import { IPaginatedResult } from '@jaderowley/shared/src/pagination/types';
 import { TSong } from '@jaderowley/shared/src/song/types';
-import { Injectable } from '@nestjs/common';
+import { GoneException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { paginate, getPagination } from 'src/utils/paginatior';
 
@@ -167,6 +167,16 @@ export class SongService {
   }
 
   async remove(id: number): Promise<TSong> {
+    const exist = await this.prismaService.song.findUnique({
+      where: {
+        id: id,
+      },
+    });
+
+    if (!exist) {
+      throw new GoneException('Song not found');
+    }
+
     const song = await this.prismaService.song.delete({
       where: { id: id },
       include: {

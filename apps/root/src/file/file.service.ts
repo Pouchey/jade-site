@@ -19,17 +19,31 @@ export class FileService {
   }
 
   async deleteFile(id: number): Promise<TFile | null> {
+    const exist = await this.prismaService.file.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!exist) {
+      throw new GoneException('File not found');
+    }
+
     const deletedFile = await this.prismaService.file.delete({
       where: {
         id,
       },
     });
 
-    if (!deletedFile) throw new GoneException('File not found');
+    const existFile = fs.readFileSync('./images/' + deletedFile.name);
+
+    if (!existFile) {
+      throw new GoneException('File not found');
+    }
 
     fs.unlink('./images/' + deletedFile.name, (err) => {
       if (err) {
-        throw new GoneException('File not found');
+        console.error(deletedFile.name + ' does not exist');
       }
     });
 
