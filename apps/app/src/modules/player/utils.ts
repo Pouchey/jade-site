@@ -7,7 +7,10 @@ export const getPseudo = () => {
     removePseudo();
     return null;
   }
-  return localStorage.getItem(PSEUDO_KEY);
+
+  const pseudo = localStorage.getItem(PSEUDO_KEY);
+  if (!pseudo) return null;
+  return pseudo;
 };
 
 export const setPseudo = (pseudo: string) => {
