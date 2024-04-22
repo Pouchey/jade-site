@@ -26,7 +26,9 @@ const setPlayer = (player: TPlayer) => {
     return;
   }
 
-  const imageSource = apiUrl + player.current.icon.pathname;
+  const imageSource = player.current.iconId
+    ? apiUrl + player.current.icon.pathname
+    : '/noImage.svg';
   PlayerElement.innerHTML = `
       <img src="${imageSource}" alt="Album Art" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px"/>
       <p>${player.current?.artist}</p>

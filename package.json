@@ -14,6 +14,7 @@
     "dev:app": "nx dev app",
     "dev:app:host": "nx dev:host app",
     "dev:root": "nx dev root",
+    "dev:widget": "nx dev widget",
     "prod:app": "nx prod app",
     "prod:root": "nx prod root",
     "prod:widget": "nx prod widget",
