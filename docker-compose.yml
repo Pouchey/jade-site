@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: ./
-      dockerfile: Dockerfile.app
+      dockerfile: ./apps/app/Dockerfile
       args:
         - MODE=${MODE}
         - VITE_API_MODE=${VITE_API_MODE}
@@ -21,7 +21,7 @@ services:
   root:
     build:
       context: ./
-      dockerfile: Dockerfile.root
+      dockerfile: ./apps/root/Dockerfile
       args:
         - DATABASE_URL=${DATABASE_URL}
         - CORS_ORIGIN=${CORS_ORIGIN}
