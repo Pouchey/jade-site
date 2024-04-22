@@ -24,14 +24,14 @@ services:
       dockerfile: ./apps/root/Dockerfile
       args:
         - DATABASE_URL=${DATABASE_URL}
-        - CORS_ORIGIN=${CORS_ORIGIN}
-        - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
-        - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
-        - ADMIN_ID=${ADMIN_ID}
-        - ADMIN_EMAIL=${ADMIN_EMAIL}
-        - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     environment:
       - DATABASE_URL=${DATABASE_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+      - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
+      - ADMIN_ID=${ADMIN_ID}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     ports:
       - '2001:3000'
     volumes:
