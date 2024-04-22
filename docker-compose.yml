@@ -5,13 +5,15 @@ services:
       context: ./
       dockerfile: ./apps/app/Dockerfile
       args:
-        - MODE=${MODE}
-        - VITE_API_MODE=${VITE_API_MODE}
-        - VITE_APP_TITLE=${VITE_APP_TITLE}
-        - VITE_API_URL=${VITE_API_URL}
-        - VITE_SOCKET_URL=${VITE_SOCKET_URL}
-        - VITE_STRIPE_KEY=${VITE_STRIPE_KEY}
-        - VITE_STRIPE_BUTTON_ID=${VITE_STRIPE_BUTTON_ID}
+        MODE: ${MODE}
+    environment:
+      - MODE=${MODE}
+      - VITE_API_MODE=${VITE_API_MODE}
+      - VITE_APP_TITLE=${VITE_APP_TITLE}
+      - VITE_API_URL=${VITE_API_URL}
+      - VITE_SOCKET_URL=${VITE_SOCKET_URL}
+      - VITE_STRIPE_KEY=${VITE_STRIPE_KEY}
+      - VITE_STRIPE_BUTTON_ID=${VITE_STRIPE_BUTTON_ID}
     ports:
       - '81:4173'
     depends_on:
@@ -22,14 +24,14 @@ services:
     build:
       context: ./
       dockerfile: ./apps/root/Dockerfile
-      args:
-        - DATABASE_URL=${DATABASE_URL}
-        - CORS_ORIGIN=${CORS_ORIGIN}
-        - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
-        - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
-        - ADMIN_ID=${ADMIN_ID}
-        - ADMIN_EMAIL=${ADMIN_EMAIL}
-        - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+      - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
+      - ADMIN_ID=${ADMIN_ID}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     ports:
       - '2001:3000'
     volumes:
@@ -40,6 +42,9 @@ services:
     build:
       context: ./
       dockerfile: ./apps/widget/Dockerfile
+    environment:
+      - VITE_API_URL=${VITE_API_URL}
+      - VITE_SOCKET_URL=${VITE_SOCKET_URL}
     ports:
       - '2002:4173'
     restart: always
